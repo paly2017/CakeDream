@@ -7,7 +7,7 @@
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
  * Contributing author: Tyler Smith (@mbmufffin)
- * 
+ *
  */
 /* ====================================================================================================================
  * FONT-FACE
@@ -126,7 +126,7 @@ html[xmlns] .flexslider .slides {
   overflow: hidden;
   opacity: 0;
   cursor: pointer;
-  
+
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -140,7 +140,7 @@ html[xmlns] .flexslider .slides {
 }
 .flex-direction-nav .flex-next {
   right: -50px;
-  
+
 }
 .flexslider:hover .flex-direction-nav .flex-prev {
   opacity: 0.7;
@@ -234,7 +234,7 @@ html[xmlns] .flexslider .slides {
   margin: 0 1% 0 0;
 }
 .flex-control-thumbs li:nth-child(4){
-	margin:0;
+  margin:0;
 }
 .flex-control-thumbs img {
   width: 100%;
@@ -247,7 +247,7 @@ html[xmlns] .flexslider .slides {
   -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
   transition: all 1s ease;
-    border: 1px solid #D1CFCF;
+  border: 1px solid #D1CFCF;
 }
 .flex-control-thumbs img:hover {
   opacity: 1;

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     //购物车图标计算总价钱
     $("#cart").mouseover(function () {
         var s =$(".spice").add();
@@ -51,6 +52,26 @@ $(document).ready(function () {
             }
             $("#mypay").html(pay);
         }
-     })
-
+     });
+    /*****
+     * header 业务请求 商品分类功能
+     */
+    // count 控制li标签循环次数
+    var count = 0;
+    $("#itemclass").click(function () {
+        $.ajax({
+            type:"post",
+            url:"/classes",
+            success:function (msg,status) {
+              var  jsontype =  jQuery.parseJSON(msg);
+                jsontype.forEach(function (value, index) {
+                    count++;
+                    if (count<=jsontype.length){
+                        var id = parseInt(index)+1;
+                        $("#typeli").append("<li><a class='list' href='goods.html' id='"+id+"' >"+value.name+"</a></li>")
+                    }
+                })
+            }
+        })
+        })
 });

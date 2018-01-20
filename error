@@ -16,3 +16,10 @@
         <property name="username" value="${jdbc.userId}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
+
+3，搭建项目过程中出现time_zone 不识别异常
+解决方案，在MySql数据库执行set global time_zone='+8:00'
+
+4,Ajax 请求返回字符串出现中文乱码问题
+解决方案：
+@RequestMapping(value = "" ,method = RequestMethod.POST,produces = "text/jsp;charset=UTF-8")

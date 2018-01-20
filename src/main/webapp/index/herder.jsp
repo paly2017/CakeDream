@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<!--付款后的订单详情页面-->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>我的订单</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="layer/layer.js"></script>
-    <script type="text/javascript" src="js/cart.js"></script>
-    <link rel="stylesheet" href="css/header.css">
-    <script src="js/header.js"></script>
+        <meta charset="UTF-8">
+        <title>商品列表</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link type="text/css" rel="stylesheet" href="index/css/bootstrap.css">
+        <link type="text/css" rel="stylesheet" href="index/css/style.css">
+        <link type="text/css" rel="stylesheet" href="index/css/header.css">
+
+        <script type="text/javascript" src="index/js/jquery.min.js"></script>
+        <script type="text/javascript" src="index/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="index/layer/layer.js"></script>
+        <script type="text/javascript" src="index/js/cart.js"></script>
+        <script type="text/javascript" src="index/js/header.js"></script>
 </head>
 <body>
 <div class="header">
@@ -32,24 +33,14 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.html" class="active">首页</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle " data-toggle="dropdown">商品分类<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" id="itemclass">商品分类<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-2">
                             <li>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <h4>商品分类</h4>
                                         <ul class="multi-column-dropdown">
-
-                                            <li><a class="list" href="goods.html">经典系列</a></li>
-
-                                            <li><a class="list" href="goods.html">法式系列</a></li>
-
-                                            <li><a class="list" href="goods.html">儿童系列</a></li>
-
-                                            <li><a class="list" href="goods.html">零食系列</a></li>
-
-                                            <li><a class="list" href="goods.html">冰淇淋系列</a></li>
-
+                                            <li id="typeli"><a class="list" href="goods.html"></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -169,64 +160,5 @@
         <div class="clearfix" style="float: right"></div>
     </div>
 </div>
-</div>
-<!--cart-items-->
-<div class="cart-items">
-    <div class="container">
-        <h2>我的订单</h2>
-
-        <table class="table table-bordered table-hover">
-
-            <tr>
-                <th width="10%">ID</th>
-                <th width="10%">总价</th>
-                <th width="20%">商品详情</th>
-                <th width="20%">收货信息</th>
-                <th width="10%">订单状态</th>
-                <th width="10%">支付方式</th>
-                <th width="10%">下单时间</th>
-                <th width="10%">操作</th>
-            </tr>
-            <tr>
-                <td><p>1</p></td>
-                <td><p>299</p></td>
-                <td>
-
-                    <p>草莓冰淇淋(299) x 1</p>
-
-                </td>
-                <td>
-                    <p>Philip</p>
-                    <p>12345678999</p>
-                    <p>陕西西安</p>
-                </td>
-                <td>
-                    <p>
-                        <span style="color:red;">已付款</span>
-                    </p>
-                </td>
-                <td>
-                    <p>
-                        微信
-                    </p>
-                </td>
-                <td><p>2018-01-16 17:16:51</p></td>
-                <td>
-
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
-<!--//cart-items-->
-<div class="footer">
-    <div class="container">
-        <div class="text-center">
-            <p>Compant Name © All rights Reseverd</p>
-        </div>
-    </div>
-</div>
-
-
 </body>
 </html>

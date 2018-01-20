@@ -4,7 +4,9 @@ import com.cake.pojo.Admin;
 import com.cake.service.Impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class Test {
@@ -15,6 +17,7 @@ public class Test {
         System.out.println(adminService);
       Admin admin = adminService.getAdminById(1);
         System.out.println(admin);
-        return "hello";
+        return "index/herder";
     }
+
 }
