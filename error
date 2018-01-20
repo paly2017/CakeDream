@@ -1,0 +1,18 @@
+1,创建项目期间遇见Maven出现中文乱码
+异常提示：MalformedByteSequenceException: 3 字节的 UTF-8 序列的字节 2 无效
+解决方案：
+在pom.xml中增加
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  设置默认编码格式为UTF-8；
+2,Error creating bean with name 'dataSource' defined in class path resource [applicationContext.xml]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanExpressionException: Expression parsing failed; nested exception is org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'jdbc' cannot be found on object of type 'java.util.Properties' - maybe not public?
+异常原因：xml加载generator.propertites文件出错
+解决方案：
+<context:property-placeholder location="generator.propertites"/>
+    <bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
+        <property name="driver" value="${jdbc.driverClass}"/>
+        <property name="url" value="${jdbc.connectionURL}"/>
+        <property name="username" value="${jdbc.userId}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>

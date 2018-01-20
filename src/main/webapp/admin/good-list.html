@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>商品列表</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+</head>
+<body>
+<div class="container-fluid">
+<!--head-->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">蛋糕店后台</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li ><a href="order_list.html">订单管理</a></li>
+                    <li ><a href="user-list.html">客户管理</a></li>
+                    <li class="active"><a href="good-list.html">商品管理</a></li>
+                    <li ><a href="type-list.html">类目管理</a></li>
+                    <li ><a href="user-edit.html">修改密码</a></li>
+                    <li><a href="login.html">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!--head-->
+
+    <div class="text-right"><a class="btn btn-warning" href="goodAdd.action">添加商品</a></div>
+
+    <br>
+
+    <ul role="tablist" class="nav nav-tabs">
+        <li class="active" role="presentation"><a href="goodList.action">全部商品</a></li>
+        <li  role="presentation"><a href="goodList.action?status=1">条幅推荐</a></li>
+        <li  role="presentation"><a href="goodList.action?status=2">热销推荐</a></li>
+        <li  role="presentation"><a href="goodList.action?status=3">新品推荐</a></li>
+    </ul>
+
+    <br>
+
+    <table class="table table-bordered table-hover">
+
+        <tr>
+            <th width="5%">ID</th>
+            <th width="10%">图片</th>
+            <th width="10%">名称</th>
+            <th width="20%">介绍</th>
+            <th width="10%">价格</th>
+            <th width="10%">类目</th>
+            <th width="25%">操作</th>
+        </tr>
+
+
+        <tr>
+            <td><p>14</p></td>
+            <td><p><a href="../index/detail.action?goodid=14" target="_blank"><img src="..//picture/14-1.jpg" width="100px" height="100px"></a></p></td>
+            <td><p><a href="../index/detail.action?goodid=14" target="_blank">意大利芝士饼干</a></p></td>
+            <td><p>采用帕玛森芝士为主要原材料制作的意大利芝士饼,奶香浓郁,鲜香可口.</p></td>
+            <td><p>39</p></td>
+            <td><p>零食系列</p></td>
+            <td>
+                <p>
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=1&tops.good.id=14">加入条幅</a>
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=2&tops.good.id=14">加入热销</a>
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=3&tops.good.id=14">加入新品</a>
+                </p>
+                <a class="btn btn-success" href="goodEdit.action?id=14">修改</a>
+                <a class="btn btn-danger" href="goodDelete.action?good.id=14">删除</a>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td><p>8</p></td>
+            <td><p><a href="../index/detail.action?goodid=8" target="_blank"><img src="..//picture/8-1.jpg" width="100px" height="100px"></a></p></td>
+            <td><p><a href="../index/detail.action?goodid=8" target="_blank">小熊乐园</a></p></td>
+            <td><p>走进小熊乐园,与可爱的小熊一起准备过冬的食物吧,摘颗草莓藏放在巧克力做的房子里,好朋友一起分享劳动的果实.
+                主口味:草莓奶油味 主要原料:乳脂奶油,纯巧克力,朗姆酒,幼砂糖,鲜草莓 甜度:二星（满五星） 最佳食用温度：5-7摄氏度</p></td>
+            <td><p>299</p></td>
+            <td><p></p></td>
+            <td>
+                <p>
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=1&tops.good.id=8">加入条幅</a>
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=2&tops.good.id=8">加入热销</a>
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=3&tops.good.id=8">加入新品</a>
+                </p>
+                <a class="btn btn-success" href="goodEdit.action?id=8">修改</a>
+                <a class="btn btn-danger" href="goodDelete.action?good.id=8">删除</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td><p>7</p></td>
+            <td><p><a href="../index/detail.action?goodid=7" target="_blank"><img src="..//picture/7-1.jpg" width="100px" height="100px"></a></p></td>
+            <td><p><a href="../index/detail.action?goodid=7" target="_blank">爱之玫瑰</a></p></td>
+            <td><p>爱之魅力,悄然跃于玫瑰之上,包裹时光,翩翩起舞,让这一切置身于梦幻旅途之中邂逅玫瑰,享受梦境一刻.
+                主口味:玫瑰奶油味 主要原料:云南玫瑰,澳洲奶油芝士,澳洲乳脂奶油,古巴朗姆酒,白巧克力软糖 甜度:二星（满五星） 最佳食用温度：5-7摄氏度</p></td>
+            <td><p>299</p></td>
+            <td><p>法式系列</p></td>
+            <td>
+                <p>
+                    <a class="btn btn-info" href="topDelete.action?tops.type=1&tops.good.id=7">移出条幅</a>
+
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=2&tops.good.id=7">加入热销</a>
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=3&tops.good.id=7">加入新品</a>
+                </p>
+                <a class="btn btn-success" href="goodEdit.action?id=7">修改</a>
+                <a class="btn btn-danger" href="goodDelete.action?good.id=7">删除</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td><p>6</p></td>
+            <td><p><a href="../index/detail.action?goodid=6" target="_blank"><img src="..//picture/6-1.jpg" width="100px" height="100px"></a></p></td>
+            <td><p><a href="../index/detail.action?goodid=6" target="_blank">夜礼服</a></p></td>
+            <td><p>空气中流动着的厚重巧克力气息,一切在夜色下坡上银装.可可野性的诱惑,加之朗姆酒的浪漫清冽,传递出来自神秘过度的魅惑与力量.
+                主口味:香浓巧克力 主要原料:黑巧克力,乳脂奶油,大黄油,朗姆酒,巧克力果仁脆,黑巧克力软糖 甜度:四星（满五星） 最佳食用温度：5-7摄氏度</p></td>
+            <td><p>299</p></td>
+            <td><p>经典系列</p></td>
+            <td>
+                <p>
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=1&tops.good.id=6">加入条幅</a>
+                    <a class="btn btn-info" href="topDelete.action?tops.type=2&tops.good.id=6">移出热销</a>
+
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=3&tops.good.id=6">加入新品</a>
+                </p>
+                <a class="btn btn-success" href="goodEdit.action?id=6">修改</a>
+                <a class="btn btn-danger" href="goodDelete.action?good.id=6">删除</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td><p>5</p></td>
+            <td><p><a href="../index/detail.action?goodid=5" target="_blank"><img src="..//picture/5-1.jpg" width="100px" height="100px"></a></p></td>
+            <td><p><a href="../index/detail.action?goodid=5" target="_blank">芒果列车</a></p></td>
+            <td><p>黄橙橙的时光列车,散发出温暖的灯光,连接着过去与未来.这是一款纯慕斯型的蛋糕,芒果慕斯镶嵌芒果果冻丁,不含蛋糕胚体,均匀莫斯体和果冻,口感细腻嫩滑,酸甜适口零脂肪,美容又零脂肪
+                主口味: 芒果慕斯 主要原料:芒果果溶,芒果果冻,乳脂奶油,法国君度力娇酒  甜度:三星（满五星） 最佳食用温度：5-7摄氏度</p></td>
+            <td><p>269</p></td>
+            <td><p>经典系列</p></td>
+            <td>
+                <p>
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=1&tops.good.id=5">加入条幅</a>
+                    <a class="btn btn-info" href="topDelete.action?tops.type=2&tops.good.id=5">移出热销</a>
+
+
+                    <a class="btn btn-primary" href="topSave.action?tops.type=3&tops.good.id=5">加入新品</a>
+                </p>
+                <a class="btn btn-success" href="goodEdit.action?id=5">修改</a>
+                <a class="btn btn-danger" href="goodDelete.action?good.id=5">删除</a>
+            </td>
+        </tr>
+
+
+    </table>
+
+    <br><div style='text-align:center;'>
+    <a class='btn btn-info' disabled >首页</a>
+    <a class='btn btn-info' disabled >上一页</a>
+    <h2 style='display:inline;'>[1/2]</h2>
+    <h2 style='display:inline;'>[14]</h2>
+    <a class='btn btn-info' href='http://localhost:8020/ssh_cake/admin/goodList.action?page=2'>下一页</a>
+    <a class='btn btn-info' href='http://localhost:8020/ssh_cake/admin/goodList.action?page=2'>末页</a>
+    <input type='text' class='form-control' style='display:inline;width:60px;' value=''/><a class='btn btn-info' href='javascript:void(0);' onclick='location.href="http://localhost:8020/ssh_cake/admin/goodList.action?page="+(this.previousSibling.value)+""'>GO</a>
+</div>
+    <br>
+</div>
+</body>
+</html>
