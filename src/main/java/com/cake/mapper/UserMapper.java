@@ -2,7 +2,9 @@ package com.cake.mapper;
 
 
 import com.cake.pojo.User;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 

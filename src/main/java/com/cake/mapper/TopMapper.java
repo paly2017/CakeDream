@@ -1,8 +1,9 @@
 package com.cake.mapper;
 
 import com.cake.pojo.Top;
+import org.apache.ibatis.annotations.Mapper;
 
-
+@Mapper
 public interface TopMapper {
     int deleteByPrimaryKey(Integer id);
 

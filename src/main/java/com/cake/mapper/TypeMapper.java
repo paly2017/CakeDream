@@ -1,20 +1,26 @@
 package com.cake.mapper;
 
 import com.cake.pojo.Type;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
-
+@Mapper
 public interface TypeMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Type record);
 
     int insertSelective(Type record);
-
+    @Select(value = "SELECT id,name FROM types WHERE id=#{id } ")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "name",column = "name")
+    })
     Type selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Type record);

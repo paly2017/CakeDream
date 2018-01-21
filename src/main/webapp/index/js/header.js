@@ -68,7 +68,7 @@ $(document).ready(function () {
                     count++;
                     if (count<=jsontype.length){
                         var id = parseInt(index)+1;
-                        $("#typeli").append("<li><a class='list' href='goods.html' id='"+id+"' >"+value.name+"</a></li>")
+                        $("#typeli").append("<li><a class='list' href='/typegoogs?typeId="+id+"'>"+value.name+"</a></li>")
                     }
                 })
             }

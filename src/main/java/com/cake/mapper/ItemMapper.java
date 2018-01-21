@@ -2,7 +2,9 @@ package com.cake.mapper;
 
 
 import com.cake.pojo.Item;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface ItemMapper {
     int deleteByPrimaryKey(Integer id);
 

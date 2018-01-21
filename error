@@ -23,3 +23,10 @@
 4,Ajax 请求返回字符串出现中文乱码问题
 解决方案：
 @RequestMapping(value = "" ,method = RequestMethod.POST,produces = "text/jsp;charset=UTF-8")
+
+5,问题提示：HTTP Status 500 - Missing URI template variable 'typeId' for method parameter of type Integer
+
+原因：控制器获取参数值时用错注解
+public class ItemContorller 类中 public ModelAndView doGoodsPage方法
+解决方案;使用@RequestParam(value = "typeId")Integer typeId
+
