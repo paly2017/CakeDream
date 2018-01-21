@@ -30,3 +30,6 @@
 public class ItemContorller 类中 public ModelAndView doGoodsPage方法
 解决方案;使用@RequestParam(value = "typeId")Integer typeId
 
+
+6,goods.jsp 页面使用jstl以后，jq的飞入效果没有了
+

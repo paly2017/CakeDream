@@ -1,10 +1,9 @@
 
-
 /*
 实现飞入购物车效果
 */
 
-$().ready(function () {
+$(document).ready(function () {
     //获取购物车位置
     var offset =$("#cart").offset();
     $(".items").click(function (event) {
@@ -29,7 +28,7 @@ $().ready(function () {
         });
     });
 
-
-
-
 });
+function fly() {
+
+}

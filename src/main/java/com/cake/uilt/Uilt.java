@@ -1,8 +1,10 @@
 package com.cake.uilt;
 
 import com.google.gson.Gson;
+import org.springframework.web.servlet.HttpServletBean;
 
-public class Uilt {
+
+public class Uilt{
 
     private static  Gson gson;
     //实例化一个Gson对象
@@ -24,4 +26,8 @@ public class Uilt {
         return  gson.toJson(object);
     }
 
+    public static String getPage(HttpServletBean httpServletBean){
+
+        return null;
+    }
 }

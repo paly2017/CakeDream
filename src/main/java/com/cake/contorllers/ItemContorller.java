@@ -1,15 +1,10 @@
 package com.cake.contorllers;
 
-import com.cake.mapper.GoodMapper;
 import com.cake.pojo.Good;
 import com.cake.service.Impl.GoodServiceImpl;
 import com.google.common.base.Optional;
-import com.sun.org.glassfish.external.probe.provider.annotations.ProbeParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.stereotype.Controller;;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +26,7 @@ public class ItemContorller {
         modelAndView.setViewName("index/goods");
         modelAndView.addObject("type",key);
         modelAndView.addObject("goods",stringGoodMap.get(key));
+        modelAndView.addObject("size", stringGoodMap.get(key).size()/4+1);
         System.out.println("typeId = [" + typeId + "], modelAndView = [" + modelAndView + "]");
         return modelAndView;
     }
