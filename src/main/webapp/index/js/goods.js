@@ -29,9 +29,35 @@ $(document).ready(function () {
     });
 
 });
+
+/***
+ * 分页请求
+ * @param index
+ * @param obj
+ */
 function pageSize(index,obj) {
     $(document).ready(function () {
         $(obj).attr("href","/pageing?index="+index)
     })
+}
 
+/***
+ * 分页请求go功能
+ * @param index
+ */
+function gopageing(index) {
+    $(document).ready(function () {
+       var objinput=$("#inputgo").val();
+       if (objinput==null||objinput==""){
+           alert("go不能为空，请输入跳转的页码")
+       }
+       if(isNaN(objinput)){
+           alert("请输入数字")
+       }
+       if (parseInt(objinput)<=index&&parseInt(objinput)>0){
+           $("#goto").attr("href","/pageing?index="+parseInt(objinput));
+       }else {
+           alert("输入有误，请重新输入")
+       }
+    })
 }

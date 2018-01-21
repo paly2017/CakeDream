@@ -64,7 +64,8 @@
                 <h2 style='display:inline;'>[${requestScope.size}]</h2>
                 <a class='btn btn-info' onclick="pageSize(${requestScope.index+1},this)" >下一页〉</a>
                 <a class='btn btn-info' onclick="pageSize(${requestScope.size},this)" >最后一页〉</a>
-            <input type='text' class='form-control' style='display:inline;width:60px;' value=''/><a class='btn btn-info' href='javascript:void(0);' onclick='location.href="http://localhost:7070/ssh_cake/index/goods.action?page="+(this.previousSibling.value)+"&typeid=5"'>GO</a>
+            <input id="inputgo" type='text' class='form-control' style='display:inline;width:60px;' value=''/>
+                <a class='btn btn-info' id="goto" onclick="gopageing(${requestScope.size})">GO</a>
             </div>
         </div>
     </div>
