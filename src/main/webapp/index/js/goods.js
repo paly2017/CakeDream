@@ -29,9 +29,9 @@ $(document).ready(function () {
     });
 
 });
-function pageSize(index,set) {
+function pageSize(index,obj) {
     $(document).ready(function () {
-        $(set).attr("href","/pageing?index="+index)
+        $(obj).attr("href","/pageing?index="+index)
     })
 
 }
