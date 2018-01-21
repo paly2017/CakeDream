@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class ItemContorller {
     private Map<String,List<Good>> stringGoodMap;
     @RequestMapping("/typegoogs")
     public ModelAndView doGoodsPage(@RequestParam(value = "typeId")Integer typeId,
-                                    ModelAndView modelAndView){
+                                    ModelAndView modelAndView, HttpServletRequest request){
         Optional.of(typeId);
         stringGoodMap = goodService.getGoodList(typeId);
         String key =(String) stringGoodMap.keySet().toArray()[0];
@@ -30,8 +31,9 @@ public class ItemContorller {
         modelAndView.addObject("type",key);
         modelAndView.addObject("goods",stringGoodMap.get(key));
         modelAndView.addObject("size", Uilt.pageCount);
-        modelAndView.addObject("pagenow", Uilt.pageNow);
-        modelAndView.addObject("typeid",typeId);
+        modelAndView.addObject("index",1);
+        request.getSession().setAttribute("typeid",typeId);
+        request.getSession().setAttribute("pagecount",stringGoodMap.get(key).size());
         System.out.println("typeId = [" + typeId + "], modelAndView = [" + modelAndView + "]");
         return modelAndView;
     }
@@ -42,11 +44,18 @@ public class ItemContorller {
      * @param modelAndView
      * @return
      */
-    @PostMapping("/pageing")
+    @RequestMapping("/pageing")
     public ModelAndView doPageing(@RequestParam(value = "index") Integer index,
-                                  @RequestParam(value = "typeId")Integer typeId,
-                                  ModelAndView modelAndView){
-
-        return null;
+                                  ModelAndView modelAndView, HttpServletRequest request){
+        Integer typeid =Integer.parseInt(request.getSession().getAttribute("typeid").toString());
+        Integer pageCount = Integer.parseInt(request.getSession().getAttribute("pagecount").toString());
+        Uilt.getPageNum(index,pageCount);
+        List<Good> goodList =  goodService.getPageingGoods(typeid);
+        modelAndView.addObject("goods",goodList);
+        modelAndView.addObject("size", Uilt.pageCount);
+        modelAndView.addObject("index",Uilt.pageIndex);
+        modelAndView.setViewName("index/goods");
+        System.out.println("index = [" + index + "], pageIndex = [" + Uilt.pageIndex + "], request = [" + pageCount+"]");
+        return modelAndView;
     }
 }

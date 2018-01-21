@@ -1,7 +1,7 @@
 package com.cake.service.inteerfaces;
 
 import com.cake.pojo.Good;
-import com.cake.pojo.Type;
+
 
 import java.util.List;
 import java.util.Map;
@@ -14,5 +14,11 @@ public interface IGoodService {
      */
     Map<String,List<Good>> getGoodList(Integer integer);
 
-    List<Good> getPageingGoods(Integer index,Integer typeId);
+    /***
+     * Goods分页查询
+
+     * @param typeId
+     * @return
+     */
+    List<Good> getPageingGoods(Integer typeId);
 }

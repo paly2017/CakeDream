@@ -5,6 +5,7 @@ import com.cake.mapper.TypeMapper;
 import com.cake.pojo.Good;
 import com.cake.pojo.Type;
 import com.cake.service.inteerfaces.IGoodService;
+import com.cake.uilt.Uilt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,12 +36,13 @@ public class GoodServiceImpl implements IGoodService {
 
     /***
      * 根据下标，及类型id查询商品
-     * @param index
      * @param typeId
      * @return
      */
-    public List<Good> getPageingGoods(Integer index, Integer typeId) {
-
-        return null;
+    public List<Good> getPageingGoods(Integer typeId) {
+        System.out.println("SELECT id,name,cover,image1,image2,price,intro,stock,type_id FROM goods" +
+                "  WHERE type_id="+typeId+" ORDER BY id LIMIT "+Uilt.startSize+","+Uilt.pageSize+";");
+        List<Good> goodList =goodMapper.selectGoosPageByIdAndIndex(typeId,Uilt.startSize,Uilt.pageSize);
+        return goodList;
     }
 }

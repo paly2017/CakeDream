@@ -29,8 +29,9 @@ $(document).ready(function () {
     });
 
 });
-function pageSize(index) {
-    $.post("/say",{},function (msg) {
-        alert("222222"+msg)
+function pageSize(index,set) {
+    $(document).ready(function () {
+        $(set).attr("href","/pageing?index="+index)
     })
+
 }

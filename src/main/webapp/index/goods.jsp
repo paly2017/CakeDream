@@ -43,13 +43,13 @@
                              </div>
                      </a>
                       <div class="product-info simpleCart_shelfItem">
-                             <div class="product-info-cust prt_name">
+                          <div class="product-info-cust prt_name">
                                  <h4>${good.name}</h4>
                                  <span class="item_price">¥${good.price}</span>
                                  <input type="button" class="item_add items" value="加入购物车">
                                 <div class="clearfix"></div>
-                             </div>
-                </div>
+                          </div>
+                      </div>
             </div>
                 </c:if>
             </c:forEach>
@@ -58,12 +58,12 @@
         </div>
         <div>
             <div style='text-align:center;'>
-                <a class='btn btn-info' onclick="pageSize(1,${requestScope.typeid})">〈首页</a>
-                <a class='btn btn-info' onclick="pageSize(${requestScope.pagenow-1},${requestScope.typeid})"  >〈上一页</a>
-                <h2 style='display:inline;'>[${requestScope.pagenow}/${requestScope.size}]</h2>
+                <a class='btn btn-info' onclick="pageSize(1,this)" >〈首页</a>
+                <a class='btn btn-info' onclick="pageSize(${requestScope.index-1},this)"  >〈上一页</a>
+                <h2 style='display:inline;'>[${requestScope.index}/${requestScope.size}]</h2>
                 <h2 style='display:inline;'>[${requestScope.size}]</h2>
-                <a class='btn btn-info' onclick="pageSize(${requestScope.pagenow+1},${requestScope.typeid})" >下一页〉</a>
-                <a class='btn btn-info' onclick="pageSize(${requestScope.size},${requestScope.typeid})" >最后一页〉</a>
+                <a class='btn btn-info' onclick="pageSize(${requestScope.index+1},this)" >下一页〉</a>
+                <a class='btn btn-info' onclick="pageSize(${requestScope.size},this)" >最后一页〉</a>
             <input type='text' class='form-control' style='display:inline;width:60px;' value=''/><a class='btn btn-info' href='javascript:void(0);' onclick='location.href="http://localhost:7070/ssh_cake/index/goods.action?page="+(this.previousSibling.value)+"&typeid=5"'>GO</a>
             </div>
         </div>

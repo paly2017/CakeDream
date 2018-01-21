@@ -2,15 +2,14 @@ package com.cake.uilt;
 
 import com.google.gson.Gson;
 
+import javax.servlet.http.HttpServletRequest;
 
 
 public class Uilt{
-    //需要显示的条数
-    public static Integer pageSize=4;
-    //总页码
     public static Integer pageCount;
-    //当前页码
-    public static Integer pageNow;
+    public static final Integer pageSize = 4;
+    public static Integer startSize ;
+    public static Integer pageIndex;
     private static  Gson gson;
     //实例化一个Gson对象
     static {
@@ -33,13 +32,22 @@ public class Uilt{
 
     /***
      * 分页处理工具，获得分页的总页码，分页当前页码
-     * @param index
+     * pagecount 总的数据条数
+     * index 页面下标
+     * @param  index
+     * @param  pagecount
      */
-   public static void getPageNum(Integer index,Integer dataSize){
-       if (null==index){
-           index = 0;
+   public static void getPageNum(Integer index,Integer pagecount){
+       pageCount = pagecount%pageSize==0?pagecount/pageSize:pagecount/pageSize+1;
+       pageIndex=index;
+       if (index<=0){
+           pageIndex=1;
        }
-       pageCount = dataSize%pageSize==0?dataSize/pageSize:(dataSize/pageSize)+1;
-       pageNow = index*pageSize+1>pageCount?pageCount:index*pageSize+1;
+       if (index>=pageCount){
+           pageIndex = pageCount ;
+       }
+       startSize = (pageIndex-1)*pageSize<=0?0:(pageIndex-1)*pageSize;
+
    }
+
 }
