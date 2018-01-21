@@ -29,6 +29,8 @@ $(document).ready(function () {
     });
 
 });
-function fly() {
-
+function pageSize(index) {
+    $.post("/say",{},function (msg) {
+        alert("222222"+msg)
+    })
 }

@@ -13,4 +13,6 @@ public interface IGoodService {
      * @return
      */
     Map<String,List<Good>> getGoodList(Integer integer);
+
+    List<Good> getPageingGoods(Integer index,Integer typeId);
 }

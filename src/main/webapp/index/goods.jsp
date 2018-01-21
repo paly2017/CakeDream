@@ -12,19 +12,13 @@
     <title>首页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="index/js/simpleCart.min.js"></script>
-    <script type="text/javascript" src="layer/layer.js"></script>
-    <script type="text/javascript" src="js/cart.js"></script>
-    <!--加入购物车-->
-    <script src="js/header.js"></script>
-    <link  rel="stylesheet" href="css/header.css">
+    <link type="text/css" rel="stylesheet" href="index/css/bootstrap.css">
     <!-- 飞入购物车-->
     <script src="index/js/jquery.fly.min.js"></script>
     <script src="index/js/goods.js"></script>
+    <link rel="stylesheet" href="css/header.css">
+    <script type="text/javascript" src="js/header.js"></script>
+
 </head>
 <body>
 <jsp:include page="herder.jsp"/>
@@ -52,7 +46,7 @@
                              <div class="product-info-cust prt_name">
                                  <h4>${good.name}</h4>
                                  <span class="item_price">¥${good.price}</span>
-                                 <input type="button" class="item_add items" value="加入购物车" onclick="fly()">
+                                 <input type="button" class="item_add items" value="加入购物车">
                                 <div class="clearfix"></div>
                              </div>
                 </div>
@@ -62,15 +56,16 @@
 
             <div class="clearfix"> </div>
         </div>
-        <div><div style='text-align:center;'>
-            <a class='btn btn-info' disabled >〈首页</a>
-            <a class='btn btn-info' disabled >〈上一页</a>
-            <h2 style='display:inline;'>[1/${requestScope.size}]</h2>
-            <h2 style='display:inline;'>[${requestScope.size}]</h2>
-            <a class='btn btn-info' disabled >下一页〉</a>
-            <a class='btn btn-info' disabled >最后一页〉</a>
+        <div>
+            <div style='text-align:center;'>
+                <a class='btn btn-info' onclick="pageSize(1,${requestScope.typeid})">〈首页</a>
+                <a class='btn btn-info' onclick="pageSize(${requestScope.pagenow-1},${requestScope.typeid})"  >〈上一页</a>
+                <h2 style='display:inline;'>[${requestScope.pagenow}/${requestScope.size}]</h2>
+                <h2 style='display:inline;'>[${requestScope.size}]</h2>
+                <a class='btn btn-info' onclick="pageSize(${requestScope.pagenow+1},${requestScope.typeid})" >下一页〉</a>
+                <a class='btn btn-info' onclick="pageSize(${requestScope.size},${requestScope.typeid})" >最后一页〉</a>
             <input type='text' class='form-control' style='display:inline;width:60px;' value=''/><a class='btn btn-info' href='javascript:void(0);' onclick='location.href="http://localhost:7070/ssh_cake/index/goods.action?page="+(this.previousSibling.value)+"&typeid=5"'>GO</a>
-        </div>
+            </div>
         </div>
     </div>
 </div>

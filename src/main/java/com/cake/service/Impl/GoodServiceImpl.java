@@ -32,4 +32,15 @@ public class GoodServiceImpl implements IGoodService {
         stringGoodMap.put(type.getName(),goodList);
         return stringGoodMap;
     }
+
+    /***
+     * 根据下标，及类型id查询商品
+     * @param index
+     * @param typeId
+     * @return
+     */
+    public List<Good> getPageingGoods(Integer index, Integer typeId) {
+
+        return null;
+    }
 }
