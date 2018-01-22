@@ -27,7 +27,7 @@
                         <a href="#" class="dropdown-toggle " data-toggle="dropdown" id="itemclass">商品分类<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-2">
                             <li>
-                                
+
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <h4>商品分类</h4>
