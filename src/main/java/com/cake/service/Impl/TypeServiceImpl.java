@@ -13,6 +13,11 @@ public class TypeServiceImpl implements ITypeService {
 
     @Autowired
     private TypeMapper typeMapper;
+    //根据id查询商品类型,返回一个Type--jelly
+    public Type selectTpyeById(Integer type_id) {
+        return typeMapper.selectTpyeById(type_id);
+    }
+
     public String selectAllType() {
         List<Type> typeList = typeMapper.selectAllItemType();
         return Uilt.getGsonToString(typeList);

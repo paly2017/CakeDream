@@ -40,3 +40,6 @@ css文件和js文件引入冲突
                                           @Param("size") Integer size);
 
 8,AJAX发送POST请求遇见 POST http://localhost:8080/getgood 400 ()
+9、异常Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException:
+ nested exception is org.apache.ibatis.exceptions.PersistenceException:
+ 解决：检查实体类属性的类型是否和Mapper方法中传入的类型一致

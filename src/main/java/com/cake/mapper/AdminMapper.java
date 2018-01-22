@@ -2,7 +2,9 @@ package com.cake.mapper;
 
 import com.cake.pojo.Admin;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Component;
 
+@Component
 @Mapper
 public interface AdminMapper {
     /**

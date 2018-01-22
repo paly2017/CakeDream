@@ -1,5 +1,6 @@
 <html>
 <body>
+<h2><a href="/index">wwww</a></h2>
 
 <h2><a href="/say">wwww</a></h2>
 

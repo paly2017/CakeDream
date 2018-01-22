@@ -7,6 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface IGoodService {
+
+    //根据商品 id,查询一个对应的good--jelly
+  public Good slectGoodByGoodId(Integer good_id);
+
+
     /***
      * 根据类型id,查询对应的goods
      * @param integer

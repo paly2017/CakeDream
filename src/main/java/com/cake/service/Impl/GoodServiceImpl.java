@@ -21,6 +21,12 @@ public class GoodServiceImpl implements IGoodService {
     private TypeMapper typeMapper;
 
     private Map<String,List<Good>> stringGoodMap;
+
+
+    //根据 商品 id 查询一个商品--jelly
+    public Good slectGoodByGoodId(Integer good_id) {
+        return goodMapper.slectGoodByGoodId(good_id);
+    }
     /***
      * 根据商品类型id获取所有对应类型的商品
      * @param integer
@@ -52,7 +58,7 @@ public class GoodServiceImpl implements IGoodService {
      * @return
      */
     public String getOneGood(Integer goodID) {
-       Good good = goodMapper.slectGoodsByGoodId(goodID);
+       Good good = goodMapper.slectGoodByGoodId(goodID);
         System.out.println("goodID = [" + goodID + "]");
        if (null==good){
            return "";

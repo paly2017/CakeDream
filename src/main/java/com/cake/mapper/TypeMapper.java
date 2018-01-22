@@ -12,6 +12,20 @@ import java.util.List;
 @Mapper
 @Component
 public interface TypeMapper {
+//types表---字段  id   name
+    //根据id查询商品类型--jelly
+    @Select("SELECT * FROM  `types` WHERE id=#{id}")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "name",column = "name")
+    })
+
+    public Type selectTpyeById(Integer type_id);
+    //结束
+
+
+
+
 
     int deleteByPrimaryKey(Integer id);
 

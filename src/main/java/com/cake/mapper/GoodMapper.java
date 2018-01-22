@@ -11,8 +11,27 @@ import java.util.List;
 @Mapper
 @Component
 public interface GoodMapper {
+
+    //根据商品 id 查询单个商品--jelly
+    @Select("SELECT * FROM goods WHERE id=#{good_id}")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "name",column = "name") ,
+            @Result(property = "cover",column = "cover"),
+            @Result(property = "image1",column = "image1"),
+            @Result(property = "image2",column = "image2"),
+            @Result(property = "price",column = "price"),
+            @Result(property = "intro",column = "intro"),
+            @Result(property = "stock",column = "stock"),
+            @Result(property = "typeId",column = "type_id")
+    })
+     public Good slectGoodByGoodId(Integer good_id);
+
+
+
+
     /***
-     * 根据类型id查询Goods
+     * 根据类型 id查询Goods
      * @param integer
      * @return
      */
@@ -53,6 +72,10 @@ public interface GoodMapper {
     List<Good> selectGoosPageByIdAndIndex(@Param("integer") Integer integer,
                                           @Param("index") Integer index,
                                           @Param("size") Integer size);
+
+
+
+
 
     /****
      * 根据GoodId查询good
