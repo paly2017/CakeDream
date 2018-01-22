@@ -75,18 +75,16 @@ function cartinto(obj,goodId) {
                 data:{goodid:goodId},
                 success:function (msg) {
                     var  jsontype =  jQuery.parseJSON(msg);
-                    jsontype.forEach(function (value,index) {
+                       var  index = $("#card_num").html();
                         $("#card_num").html(parseInt(index)+1);
                         $("#mincart").append(
-                            "<tr> <td> <img src='../"+value.cover+" 'height='80' width='80'/> </td>"+
-                            "<td> <div>"+value.name+"</div> <div>价钱：<span class='spice'>"+value.price+"</span></div>"+
-                            "<div>数量：<span id='cake1'>"+value.stock+"</span></div> <div>"+
+                            "<tr> <td> <img src='../"+jsontype.cover+" 'height='80' width='80'/> </td>"+
+                            "<td> <div>"+jsontype.name+"</div> <div>价钱：<span class='spice'>"+jsontype.price+"</span></div>"+
+                            "<div>数量：<span id='cake1'>"+jsontype.stock+"</span></div> <div>"+
                             "<button class='btn-success' type='button' >加</button>"+
                             " <button class='btn-success' type='button'>减</button> </div> </td> </tr>"+
                             "<tr> <td></td> <td></td></tr>"
                         )
-                    });
-
                 }
             })
     })
@@ -94,7 +92,7 @@ function cartinto(obj,goodId) {
 (function () {
     $.ajax({
         type:"post",
-        url:"/getgood",
+        url:"/newpageing",
         success:function (msg) {
             var  jsontype =  jQuery.parseJSON(msg);
             jsontype.forEach(function (value,index) {

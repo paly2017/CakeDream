@@ -45,11 +45,23 @@ public class ReqAjax {
         }
         integerList.add(Integer.parseInt(goodID));
         session.setAttribute("minCartGoodId",integerList);
-        return  goodService.getOneGood(integerList);
+        return  goodService.getOneGood(Integer.parseInt(goodID));
     }
 
+    /****
+     * Ajax 请求
+     * Mini购物车，页面刷新时，查询购物车中所有商品
+     * @param request
+     * @return
+     */
+    @PostMapping("/newpageing")
     public String getGood(HttpServletRequest request){
         HttpSession session = request.getSession();
-        return null;
+        integerList = (List<Integer>) session.getAttribute("minCartGoodId");
+        if (null==integerList){
+            return "";
+        }else {
+            return  goodService.getOneGood(integerList);
+        }
     }
 }
