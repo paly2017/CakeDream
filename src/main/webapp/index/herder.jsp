@@ -5,15 +5,6 @@
         <title>商品列表</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link type="text/css" rel="stylesheet" href="index/css/bootstrap.css">
-        <link type="text/css" rel="stylesheet" href="index/css/style.css">
-        <link type="text/css" rel="stylesheet" href="index/css/header.css">
-
-        <script type="text/javascript" src="index/js/jquery.min.js"></script>
-        <script type="text/javascript" src="index/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="index/layer/layer.js"></script>
-        <script type="text/javascript" src="index/js/cart.js"></script>
-        <script type="text/javascript" src="index/js/header.js"></script>
 </head>
 <body>
 <div class="header">

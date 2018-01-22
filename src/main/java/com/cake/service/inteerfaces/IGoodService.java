@@ -21,4 +21,11 @@ public interface IGoodService {
      * @return
      */
     List<Good> getPageingGoods(Integer typeId);
+
+    /***
+     * 根据GoodId查询good
+     * @param goodID
+     * @return
+     */
+    String getOneGood(Integer goodID);
 }

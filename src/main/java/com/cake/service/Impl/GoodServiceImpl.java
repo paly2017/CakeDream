@@ -45,4 +45,18 @@ public class GoodServiceImpl implements IGoodService {
         List<Good> goodList =goodMapper.selectGoosPageByIdAndIndex(typeId,Uilt.startSize,Uilt.pageSize);
         return goodList;
     }
+
+    /****
+     * 根据GoodId查询good,返回一个json 字符串
+     * @param goodID
+     * @return
+     */
+    public String getOneGood(Integer goodID) {
+       Good good = goodMapper.slectGoodsByGoodId(goodID);
+        System.out.println("goodID = [" + goodID + "]");
+       if (null==good){
+           return "";
+       }
+        return Uilt.getGsonToString(good);
+    }
 }

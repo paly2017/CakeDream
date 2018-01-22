@@ -32,10 +32,11 @@ public class ItemContorller 类中 public ModelAndView doGoodsPage方法
 
 
 6,goods.jsp 页面使用jstl以后，jq的飞入效果没有了
-
+css文件和js文件引入冲突
 7,Parameter 'integer jdbcType=INTEGER' not found. Available parameters are [arg2, arg1, arg0, param3, param1, param2]] with root cause
 解决方案：增加注解
  List<Good> selectGoosPageByIdAndIndex(@Param("integer") Integer integer,
                                           @Param("index") Integer index,
                                           @Param("size") Integer size);
 
+8,AJAX发送POST请求遇见 POST http://localhost:8080/getgood 400 ()

@@ -49,15 +49,32 @@ function gopageing(index) {
     $(document).ready(function () {
        var objinput=$("#inputgo").val();
        if (objinput==null||objinput==""){
-           alert("go不能为空，请输入跳转的页码")
+           $(this).attr("class","disabled");
        }
        if(isNaN(objinput)){
-           alert("请输入数字")
+           $(this).attr("class","disabled");
        }
        if (parseInt(objinput)<=index&&parseInt(objinput)>0){
            $("#goto").attr("href","/pageing?index="+parseInt(objinput));
        }else {
-           alert("输入有误，请重新输入")
+           $(this).attr("class","disabled");
        }
+    })
+}
+
+/***
+ * min购物车异步请求
+ * @param obj
+ * @param goodId
+ */
+function cartinto(obj,goodId) {
+    $(this).ready(function () {
+            $.ajax({
+                type:"post",
+                url:"/getgood?goodid="+goodId,
+                success:function (msg) {
+                    alert(msg)
+                }
+            })
     })
 }

@@ -4,6 +4,7 @@ import com.cake.pojo.Good;
 import com.cake.service.Impl.GoodServiceImpl;
 import com.cake.service.Impl.TypeServiceImpl;
 import com.cake.uilt.Uilt;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +27,18 @@ public class ReqAjax {
     private GoodServiceImpl goodService;
     /***
      * 商品类型查询控制器，通过AJAX发送异步请求，
+     * 商品类型全查
      * 返回商品类型的字符串
      * @return
      */
     @PostMapping("/classes")
-    public String hell(){
+    public String goodsType(){
         return typeService.selectAllType();
     }
-
+    @PostMapping("/getgood")
+    public String getGood(@RequestParam("goodid")String goodID){
+        System.out.println("goodId = [" + goodID + "]");
+        return  goodService.getOneGood(Integer.parseInt(goodID));
+    }
 
 }
