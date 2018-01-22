@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Mapper
+@Component
 public interface AdminMapper {
     /**
      * 根主键id 删除数据

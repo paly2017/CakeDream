@@ -1,27 +1,30 @@
 package com.cake.pojo;
+/**
+ * 订单信息实体类
+ */
 
 import java.util.Date;
 
 public class Order {
     private Integer id;
 
-    private Integer total;
+    private Integer total;//总价
 
-    private Integer amount;
+    private Integer amount;//商品总数
 
-    private Byte status;
+    private Byte status;//订单状态(1未付款/2已付款/3已发货/4已完成)
 
-    private Byte paytype;
+    private Byte paytype;//支付方式 (1微信/2支付宝/3货到付款)
 
-    private String name;
+    private String name;//收货人
 
-    private String phone;
+    private String phone;//收货电话'
 
-    private String address;
+    private String address;//收获地址
 
-    private Date systime;
+    private Date systime;//下单时间
 
-    private Integer userId;
+    private Integer userId;//下单用户
 
     public Order(Integer id, Integer total, Integer amount, Byte status, Byte paytype, String name, String phone, String address, Date systime, Integer userId) {
         this.id = id;
