@@ -71,9 +71,11 @@ function cartinto(obj,goodId) {
     $(this).ready(function () {
             $.ajax({
                 type:"post",
-                url:"/getgood?goodid="+goodId,
+                url:"/getgood",
+                data:{goodid:goodId},
                 success:function (msg) {
-                    alert(msg)
+                    var  jsontype =  jQuery.parseJSON(msg);
+                    $("#mincart").children("tr").append("")
                 }
             })
     })

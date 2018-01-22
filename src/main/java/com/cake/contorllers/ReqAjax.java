@@ -1,17 +1,11 @@
 package com.cake.contorllers;
 
-import com.cake.pojo.Good;
 import com.cake.service.Impl.GoodServiceImpl;
 import com.cake.service.Impl.TypeServiceImpl;
-import com.cake.uilt.Uilt;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /***
  * Ajax请求控制器

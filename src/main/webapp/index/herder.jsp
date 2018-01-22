@@ -68,7 +68,7 @@
                 </a>
                 <div class="dropdown-content">
                     <form action="" method="">
-                        <table class="table table-condensed">
+                        <table class="table table-condensed" id="mincart">
                             <tr>
                                 <td>
                                     <img src="../picture/1-2.jpg" height="80" width="80"/>
