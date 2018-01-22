@@ -11,16 +11,16 @@
 <head>
     <title>商品详情</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/flexslider.css">
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.flexslider.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="layer/layer.js"></script>
-    <script type="text/javascript" src="js/cart.js"></script>
-    <link rel="stylesheet" href="css/header.css">
+    <meta http-equiv="Content-Type" content="text/jsp; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="index/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="index/css/style.css">
+    <link type="text/css" rel="stylesheet" href="index/css/flexslider.css">
+    <script type="text/javascript" src="index/js/jquery.min.js"></script>
+    <script type="text/javascript" src="index/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="index/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="index/layer/layer.js"></script>
+    <script type="text/javascript" src="index/js/cart.js"></script>
+    <link rel="stylesheet" href="index/css/header.css">
     <script>
         $(function() {
             $(".flexslider").flexslider({
