@@ -1,10 +1,13 @@
 package com.cake.contorllers;
 
 import com.cake.pojo.Good;
+import com.cake.pojo.Type;
 import com.cake.service.Impl.GoodServiceImpl;
+import com.cake.service.Impl.TypeServiceImpl;
 import com.cake.uilt.Uilt;
 import com.google.common.base.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +20,12 @@ import java.util.Map;
 
 @Controller
 public class ItemContorller {
+
     @Autowired
     private GoodServiceImpl goodService;
     private Map<String,List<Good>> stringGoodMap;
+    private TypeServiceImpl typeService;
+
     @RequestMapping("/typegoogs")
     public ModelAndView doGoodsPage(@RequestParam(value = "typeId")Integer typeId,
                                     ModelAndView modelAndView, HttpServletRequest request){
@@ -58,4 +64,31 @@ public class ItemContorller {
         System.out.println("index = [" + index + "], pageIndex = [" + Uilt.pageIndex + "], request = [" + pageCount+"]");
         return modelAndView;
     }
+
+    /**
+     * 根据商品ID查询商品
+     * @param goodId 从页面获取到的商品ID
+     * @return 返回商品详情页面显示单品
+     */
+    @RequestMapping("/detail")
+    public ModelAndView getGoodById(@RequestParam("goodId")Integer goodId){
+        //创建视图模型对象
+        ModelAndView modelAndView = new ModelAndView();
+        //通过方法创建新的商品对象
+        Good good = goodService.getGoodById(goodId);
+        //获取蛋糕系列对象
+        Type type = typeService.findTypeBuTypeId(good.getTypeId());
+        //将商品放进视图模型中
+        modelAndView.addObject("goodDetail",good);
+        modelAndView.addObject("type",type);
+        //设置页面跳转地址
+        modelAndView.setViewName("detail");
+        //返回视图模型
+        return modelAndView;
+
+    }
+
+
+
+
 }

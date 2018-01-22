@@ -3,11 +3,13 @@ package com.cake.mapper;
 
 import com.cake.pojo.Good;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 
 @Mapper
+@Component
 public interface GoodMapper {
     /***
      * 根据类型id查询Goods
@@ -69,5 +71,6 @@ public interface GoodMapper {
             @Result(property = "stock",column = "stock"),
             @Result(property = "typeId",column = "type_id")
     })
+
     Good slectGoodsByGoodId(Integer goodId);
 }

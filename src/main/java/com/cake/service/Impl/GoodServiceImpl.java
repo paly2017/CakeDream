@@ -59,4 +59,15 @@ public class GoodServiceImpl implements IGoodService {
        }
         return Uilt.getGsonToString(good);
     }
+
+    /**
+     * 根据商品id查询商品
+     * @param goodID  商品id
+     * @return 商品对象
+     */
+    public Good getGoodById(Integer goodID) {
+        Good good = goodMapper.slectGoodsByGoodId(goodID);
+        return good;
+    }
+
 }

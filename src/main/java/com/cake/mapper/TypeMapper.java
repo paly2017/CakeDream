@@ -5,10 +5,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Mapper
+@Component
 public interface TypeMapper {
 
     int deleteByPrimaryKey(Integer id);
@@ -16,6 +18,12 @@ public interface TypeMapper {
     int insert(Type record);
 
     int insertSelective(Type record);
+
+    /**
+     * 根据系列类型id查询系列名称
+     * @param id 蛋糕系列id
+     * @return 一个系列实例
+     */
     @Select(value = "SELECT id,name FROM types WHERE id=#{id } ")
     @Results({
             @Result(id = true,property = "id",column = "id"),
@@ -32,4 +40,11 @@ public interface TypeMapper {
             @Result(property = "name",column = "name")
     })
     List<Type> selectAllItemType();
+
+
+
+
+
+
+
 }

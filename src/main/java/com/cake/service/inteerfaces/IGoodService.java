@@ -28,4 +28,14 @@ public interface IGoodService {
      * @return
      */
     String getOneGood(Integer goodID);
+
+    /**
+     * 根据商品ID查询商品
+     * @param goodID  商品id
+     * @return 一个商品对象
+     */
+    Good getGoodById(Integer goodID);
+
+
+
 }

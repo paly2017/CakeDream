@@ -36,7 +36,7 @@
             <c:forEach items="${requestScope.goods}" var="good" varStatus="count">
                 <c:if test="${count.count<5}">
                   <div class="product-grid">
-                     <a href="detail.action?${good.id}">
+                     <a href="detail?goodId=${good.id}">
                          <div class="more-product"><span> </span></div>
                             <div class="product-img b-link-stripe b-animate-go  thickbox">
                                 <img src="..//${good.cover}" class="img-responsive" alt="${good.name}" width="240" height="240">
