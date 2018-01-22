@@ -44,27 +44,27 @@
                     <div class="flexslider">
 
                         <ul class="slides">
-                            <li data-thumb="${goodDetail.cover}">
-                                <div class="thumb-image"> <img src="${goodDetail.cover}" data-imagezoom="true" class="img-responsive"> </div>
+                            <li data-thumb="${requestScope.goodDetail.cover}">
+                                <div class="thumb-image"> <img src="${requestScope.goodDetail.cover}" data-imagezoom="true" class="img-responsive"> </div>
                             </li>
-                            <li data-thumb="${goodDetail.image1}">
-                                <div class="thumb-image"> <img src="${goodDetail.image1}" data-imagezoom="true" class="img-responsive"> </div>
+                            <li data-thumb="${requestScope.goodDetail.image1}">
+                                <div class="thumb-image"> <img src="${requestScope.goodDetail.image1}" data-imagezoom="true" class="img-responsive"> </div>
                             </li>
-                            <li data-thumb="${goodDetail.image2}">
-                                <div class="thumb-image"> <img src="${goodDetail.image2}" data-imagezoom="true" class="img-responsive"> </div>
+                            <li data-thumb="${requestScope.goodDetail.image2}">
+                                <div class="thumb-image"> <img src="${requestScope.goodDetail.image2}" data-imagezoom="true" class="img-responsive"> </div>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4 single-grid simpleCart_shelfItem">
-                    <h3>${goodDetail.name}</h3>
+                    <h3>${requestScope.goodDetail.name}</h3>
                     <div class="tag">
-                        <p>分类 : <a href="goods.action?typeid=5">${typeDetail.name}</a></p>
+                        <p>分类 : <a href="goods.action?typeid=5">${requestScope.typeDetail.name}</a></p>
                     </div>
-                    <p>${goodDetail.intro}</p>
+                    <p>${requestScope.goodDetail.intro}</p>
                     <div class="galry">
                         <div class="prices">
-                            <h5 class="item_price">¥${goodDetail.price}</h5>
+                            <h5 class="item_price">¥${requestScope.goodDetail.price}</h5>
                         </div>
                         <div class="clearfix"></div>
                     </div>

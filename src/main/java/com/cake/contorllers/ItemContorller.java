@@ -81,10 +81,10 @@ public class ItemContorller {
         //获取蛋糕系列对象
         Type type = typeService.findTypeByTypeId(typeId);
         //将商品放进视图模型中
-        modelAndView.addObject("goodDetail","good");
-        modelAndView.addObject("typeDetail","type");
+        modelAndView.addObject("goodDetail",good);
+        modelAndView.addObject("typeDetail",type);
         //设置页面跳转地址
-        modelAndView.setViewName("detail");
+        modelAndView.setViewName("index/detail");
         //返回视图模型
         return modelAndView;
     }
