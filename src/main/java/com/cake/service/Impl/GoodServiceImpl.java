@@ -82,6 +82,7 @@ public class GoodServiceImpl implements IGoodService {
      * 根据商品id查询商品
      * @param goodID  商品id
      * @return 商品对象
+     * author Philip
      */
     public Good getGoodById(Integer goodID) {
         Good good = goodMapper.slectGoodsByGoodId(goodID);

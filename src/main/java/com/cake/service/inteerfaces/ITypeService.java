@@ -18,7 +18,7 @@ public interface ITypeService {
      * @param typeId
      * @return 一个实例蛋糕系列
      */
-    Type findTypeBuTypeId(Integer typeId);
+    Type findTypeByTypeId(Integer typeId);
 
 
 

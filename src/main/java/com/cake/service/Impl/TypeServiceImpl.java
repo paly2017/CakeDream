@@ -28,8 +28,9 @@ public class TypeServiceImpl implements ITypeService {
      * 根据商品的type_id查询蛋糕系列的实体类
      * @param typeId 系列ID
      * @return 一个系列实体类
+     * Philip
      */
-    public Type findTypeBuTypeId(Integer typeId) {
+    public Type findTypeByTypeId(Integer typeId) {
         //调用mapper里面的方法查询系列
         Type type = typeMapper.selectByPrimaryKey(typeId);
         return type;

@@ -1,10 +1,7 @@
 package com.cake.mapper;
 
 import com.cake.pojo.Type;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -34,16 +31,19 @@ public interface TypeMapper {
     int insertSelective(Type record);
 
     /**
-     * 根据系列类型id查询系列名称
-     * @param id 蛋糕系列id
+     * 根据系列类型id查询系列对象
+     * @param typeId 蛋糕系列id
      * @return 一个系列实例
      */
-    @Select(value = "SELECT id,name FROM types WHERE id=#{id } ")
+    @Select(value = "SELECT id,name FROM types WHERE id=#{typeId } ")
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "name",column = "name")
     })
-    Type selectByPrimaryKey(Integer id);
+    Type selectByPrimaryKey(@Param("typeId") Integer typeId);
+
+
+
 
     int updateByPrimaryKeySelective(Type record);
 

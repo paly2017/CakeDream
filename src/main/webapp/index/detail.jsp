@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/header.css">
     <script>
         $(function() {
-            $('.flexslider').flexslider({
+            $(".flexslider").flexslider({
                 animation: "slide",
                 controlNav: "thumbnails"
             });
@@ -36,7 +36,7 @@
     <%--</head>--%>
 
     <!--商品详情页面-->
-    <!--//single-page-->
+
     <div class="single">
         <div class="container">
             <div class="single-grids">
@@ -59,7 +59,7 @@
                 <div class="col-md-4 single-grid simpleCart_shelfItem">
                     <h3>${goodDetail.name}</h3>
                     <div class="tag">
-                        <p>分类 : <a href="goods.action?typeid=5">${type.name}</a></p>
+                        <p>分类 : <a href="goods.action?typeid=5">${typeDetail.name}</a></p>
                     </div>
                     <p>${goodDetail.intro}</p>
                     <div class="galry">
@@ -75,7 +75,6 @@
                 <div class="col-md-4 single-grid1">
                     <!-- <h2>商品分类</h2> -->
                     <ul>
-
                         <li><a href="goods.html">经典系列</a></li>
 
                         <li><a href="goods.html">法式系列</a></li>
@@ -85,7 +84,6 @@
                         <li><a href="goods.html">零食系列</a></li>
 
                         <li><a href="goods.html">冰淇淋系列</a></li>
-
                     </ul>
                 </div>
                 <div class="clearfix"> </div>
@@ -96,8 +94,5 @@
     <%--<foot>--%>
     <jsp:include page="footer.jsp"/>
     <%--</foot>--%>
-
-
-
 </body>
 </html>

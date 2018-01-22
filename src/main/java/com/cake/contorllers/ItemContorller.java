@@ -24,6 +24,7 @@ public class ItemContorller {
     @Autowired
     private GoodServiceImpl goodService;
     private Map<String,List<Good>> stringGoodMap;
+    @Autowired
     private TypeServiceImpl typeService;
 
     @RequestMapping("/typegoogs")
@@ -67,25 +68,25 @@ public class ItemContorller {
 
     /**
      * 根据商品ID查询商品
-     * @param goodId 从页面获取到的商品ID
+     * @param goodID 从页面获取到的商品ID
      * @return 返回商品详情页面显示单品
      */
     @RequestMapping("/detail")
-    public ModelAndView getGoodById(@RequestParam("goodId")Integer goodId){
+    public ModelAndView getGoodById(@RequestParam("goodId")Integer goodID){
         //创建视图模型对象
         ModelAndView modelAndView = new ModelAndView();
         //通过方法创建新的商品对象
-        Good good = goodService.getGoodById(goodId);
+        Good good = goodService.getGoodById(goodID);
+        Integer typeId = good.getTypeId();
         //获取蛋糕系列对象
-        Type type = typeService.findTypeBuTypeId(good.getTypeId());
+        Type type = typeService.findTypeByTypeId(typeId);
         //将商品放进视图模型中
-        modelAndView.addObject("goodDetail",good);
-        modelAndView.addObject("type",type);
+        modelAndView.addObject("goodDetail","good");
+        modelAndView.addObject("typeDetail","type");
         //设置页面跳转地址
         modelAndView.setViewName("detail");
         //返回视图模型
         return modelAndView;
-
     }
 
 
