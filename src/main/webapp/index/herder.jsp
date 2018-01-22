@@ -70,66 +70,7 @@
                 <div class="dropdown-content">
                     <form action="" method="">
                         <table class="table table-condensed" id="mincart">
-                            <tr>
-                                <td>
-                                    <img src="../picture/1-2.jpg" height="80" width="80"/>
-                                </td>
-                                <td>
-                                    <div>晚礼服</div>
-                                    <div>价钱：<span class="spice">4000</span></div>
-                                    <div>数量：<span id="cake1">20</span></div>
-                                    <div>
-                                        <button class="btn-success" type="button" >加</button>
-                                        <button class="btn-success" type="button">减</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="../picture/1-2.jpg" height="80" width="80"/>
-                                </td>
-                                <td>
-                                    <div>晚礼服</div>
-                                    <div>价钱：<span class="spice">1200</span></div>
-                                    <div>数量：<span>20</span></div>
-                                    <div>
-                                        <button class="btn-success" type="button" >加</button>
-                                        <button class="btn-success" type="button">减</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="../picture/1-2.jpg" height="80" width="80"/>
-                                </td>
-                                <td>
-                                    <div>晚礼服</div>
-                                    <div>价钱：<span class="spice">1200</span></div>
-                                    <div>数量：<span>20</span></div>
-                                    <div>
-                                        <button class="btn-success" type="button" >加</button>
-                                        <button class="btn-success" type="button">减</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="../picture/1-2.jpg" height="80" width="80"/>
-                                </td>
-                                <td>
-                                    <div>晚礼服</div>
-                                    <div>价钱：<span class="spice">1200</span></div>
-                                    <div>数量：<span>20</span></div>
-                                    <div>
-                                        <button class="btn-success" type="button" >加</button>
-                                        <button class="btn-success" type="button">减</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
+
                         </table>
                         <div class="btn-group btn-success">
                             <div class="btn btn-success" style="float: left">总价：<span id="mypay"></span> </div>

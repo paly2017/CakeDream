@@ -6,6 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /***
  * Ajax请求控制器
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @ResponseBody
 @RequestMapping(value = "" ,method = RequestMethod.POST,produces = "text/jsp;charset=UTF-8")
 public class ReqAjax {
+    private List<Integer> integerList;
     //类型service
     @Autowired
      private TypeServiceImpl typeService;
@@ -30,9 +36,20 @@ public class ReqAjax {
         return typeService.selectAllType();
     }
     @PostMapping("/getgood")
-    public String getGood(@RequestParam("goodid")String goodID){
-        System.out.println("goodId = [" + goodID + "]");
-        return  goodService.getOneGood(Integer.parseInt(goodID));
+    public String getGood(@RequestParam("goodid")String goodID ,HttpServletRequest request){
+       HttpSession session = request.getSession();
+        if (null==session.getAttribute("minCartGoodId")){
+            integerList = new ArrayList<Integer>();
+        }else {
+            integerList = (List<Integer>) session.getAttribute("minCartGoodId");
+        }
+        integerList.add(Integer.parseInt(goodID));
+        session.setAttribute("minCartGoodId",integerList);
+        return  goodService.getOneGood(integerList);
     }
 
+    public String getGood(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        return null;
+    }
 }

@@ -1,12 +1,11 @@
 $(document).ready(function () {
-
     //购物车图标计算总价钱
     $("#cart").mouseover(function () {
         var s =$(".spice").add();
         var pay=0;
         //计算购物车总价钱
         for (var i=0;i<s.length;i++){
-            var ss =s.eq(i).html()
+            var ss =s.eq(i).html();
             pay+=parseInt(ss);
         }
         //当前总价钱赋值

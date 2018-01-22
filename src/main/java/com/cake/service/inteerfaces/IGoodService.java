@@ -10,15 +10,12 @@ public interface IGoodService {
 
     //根据商品 id,查询一个对应的good--jelly
   public Good slectGoodByGoodId(Integer good_id);
-
-
     /***
      * 根据类型id,查询对应的goods
      * @param integer
      * @return
      */
     Map<String,List<Good>> getGoodList(Integer integer);
-
     /***
      * Goods分页查询
 
@@ -32,6 +29,7 @@ public interface IGoodService {
      * @param goodID
      * @return
      */
+
     String getOneGood(Integer goodID);
 
     /**
@@ -41,6 +39,11 @@ public interface IGoodService {
      */
     Good getGoodById(Integer goodID);
 
-
+    /***
+     * 根据goodid集合查询goods,返回一个json字符串
+     * @param goodID
+     * @return
+     */
+    String getOneGood(List<Integer> goodID);
 
 }

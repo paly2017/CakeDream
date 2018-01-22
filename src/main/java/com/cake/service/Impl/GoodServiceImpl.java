@@ -9,6 +9,7 @@ import com.cake.uilt.Uilt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,13 +58,24 @@ public class GoodServiceImpl implements IGoodService {
      * @param goodID
      * @return
      */
+
     public String getOneGood(Integer goodID) {
-       Good good = goodMapper.slectGoodByGoodId(goodID);
+        Good good = goodMapper.slectGoodByGoodId(goodID);
         System.out.println("goodID = [" + goodID + "]");
-       if (null==good){
-           return "";
-       }
+        if (null == good) {
+            return "";
+        }
         return Uilt.getGsonToString(good);
+    }
+    public String getOneGood(List<Integer> goodID) {
+       List<Good> goodList = new ArrayList<Good>();
+       for (Integer integer : goodID ){
+           Good good = goodMapper.slectGoodsByGoodId(integer);
+           if (null!=good){
+               goodList.add(good);
+           }
+       }
+        return Uilt.getGsonToString(goodList);
     }
 
     /**
