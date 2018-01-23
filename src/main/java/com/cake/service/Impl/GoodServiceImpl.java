@@ -95,6 +95,7 @@ public class GoodServiceImpl implements IGoodService {
                miniCart = new MiniCart();
                miniCart.setGood(good);
                miniCart.setCount(1);
+
            }
        }else {
            //判断集合中购物车的good_id是否存在
@@ -102,7 +103,7 @@ public class GoodServiceImpl implements IGoodService {
                //更新已存在商品数量
                if (itemgood.getGood().getId().equals(integer)){
                    itemgood.setCount(itemgood.getCount()+1);
-                   miniCart = itemgood;
+                   break;
                }else {
                    //根据good_id查询商品
                    Good good = goodMapper.slectGoodByGoodId(integer);
@@ -110,17 +111,17 @@ public class GoodServiceImpl implements IGoodService {
                        miniCart = new MiniCart();
                        miniCart.setGood(good);
                        miniCart.setCount(1);
+                       break;
                    }
                }
            }
        }
-       //如果有新增数据，则加入到集合当中
        if (null!=miniCart){
            miniCartList.add(miniCart);
+           request.getSession().setAttribute("minGoodsNum",miniCartList);
        }
-        request.getSession().setAttribute("minGoodsNum",miniCartList);
         System.out.println("integer = "+Uilt.getGsonToString(miniCart));
-        return Uilt.getGsonToString(miniCart);
+        return Uilt.getGsonToString(miniCartList);
     }
 
     /***
@@ -129,18 +130,13 @@ public class GoodServiceImpl implements IGoodService {
      * @return
      */
     public String mincartGoodSrevice(HttpSession session) {
-        Map<String,Integer> StringMap = new HashMap<String, Integer>();
-        Map<Good,Integer> integerMap =
-                (Map<Good, Integer>) session.getAttribute("minGoodsNum");
-        if (null==integerMap){
-            return null;
-        }else {
-            Set<Good> keySet = integerMap.keySet();
-            for (Good good : keySet){
-                StringMap.put(Uilt.getGsonToString(good),integerMap.get(good));
-            }
-            return  Uilt.getGsonToString(StringMap);
-        }
+       List<MiniCart> miniCartList =(List<MiniCart>) session.getAttribute("minGoodsNum");
+       if (null!=miniCartList){
+           System.out.println("session = [" + miniCartList + "]");
+           return  Uilt.getGsonToString(miniCartList);
+       }else {
+           return null;
+       }
     }
 
     /**

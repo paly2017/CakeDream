@@ -10,8 +10,6 @@ $(document).ready(function () {
         }
         //当前总价钱赋值
         $("#mypay").html(pay);
-        //购物车商品数量赋值
-        $("#card_num").html(s.length);
     });
     /*****
      * header 业务请求 商品分类功能

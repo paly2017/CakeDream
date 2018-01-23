@@ -71,52 +71,58 @@ function gopageing(index) {
  */
 
 function cartinto(obj,goodId) {
-    alert("mad")
     $(obj).ready(function () {
             $.ajax({
                 type:"post",
                 url:"/getgood",
                 data:{goodid:goodId},
                 success:function (msg) {
-                    alert(msg);
-                    var cartmsg = jquery.parseJSON(msg);
+                    var cartmsg = jQuery.parseJSON(msg);
+                    var index=0;
+                   $("table").find("*").detach();
+                    alert(cartmsg);
+                    cartmsg.forEach(function (value) {
+                        alert(index);
                         $("#mincart").append(
-                            "<tr> <td> <img src='../"+cartmsg.good.cover+" 'height='80' width='80'/> </td>"+
-                            "<td> <div>"+cartmsg.good.name+"</div> <div>价钱：<span class='spice'>"+cartmsg.good.price+"</span></div>"+
-                            "<div>数量：<span id='cake1'>"+cartmsg.count+"</span></div> <div>"+
+                            "<tr> <td> <img src='../"+value.good.cover+" 'height='80' width='80'/> </td>"+
+                            "<td> <div>"+value.good.name+"</div> <div>价钱：<span class='spice'>"+value.good.price+"</span></div>"+
+                            "<div>数量：<span id='cake1'>"+value.count+"</span></div> <div>"+
                             "<button class='btn-success' type='button'onclick='cartsum(this)' >加</button>"+
                             " <button class='btn-success' type='button' onclick='cartsum(this)'>减</button> </div> </td> </tr>"+
                             "<tr> <td></td> <td></td></tr>");
-                    var  index = $("#card_num").html();
-                    $("#card_num").html(parseInt(index)+1);
+                        index += parseInt(value.count);
+                    });
+                    $("#card_num").html(index);
                 }
             })
     })
 }
-/**
+
 (function () {
     $.ajax({
         type:"post",
         url:"/newpageing",
-        success:function (date) {
-            var Date = JSON.parse(date);
-            var index=0;
-            for (var key in Date){
-                ++index;
-                var jsonKye = JSON.parse(key);
-                $("#mincart").append(
-                    "<tr> <td> <img src='../"+jsonKye.cover+" 'height='80' width='80'/> </td>"+
-                    "<td> <div>"+jsonKye.name+"</div> <div>价钱：<span class='spice'>"+jsonKye.price+"</span></div>"+
-                    "<div>数量：<span id='cake1'>"+Date[key]+"</span></div> <div>"+
-                    "<button class='btn-success' type='button'onclick='cartsum(this)' >加</button>"+
-                    " <button class='btn-success' type='button' onclick='cartsum(this)'>减</button> </div> </td> </tr>"+
-                    "<tr> <td></td> <td></td></tr>")
+        success:function (msg) {
+            if (null!=msg){
+                var cartmsg = jQuery.parseJSON(msg);
+                var index=0;
+                cartmsg.forEach(function (value) {
+                    $("#mincart").append(
+                        "<tr> <td> <img src='../"+value.good.cover+" 'height='80' width='80'/> </td>"+
+                        "<td> <div>"+value.good.name+"</div> <div>价钱：<span class='spice'>"+value.good.price+"</span></div>"+
+                        "<div>数量：<span id='cake1'>"+value.count+"</span></div> <div>"+
+                        "<button class='btn-success' type='button'onclick='cartsum(this)' >加</button>"+
+                        " <button class='btn-success' type='button' onclick='cartsum(this)'>减</button> </div> </td> </tr>"+
+                        "<tr> <td></td> <td></td></tr>");
+                    index += parseInt(value.count);
+                });
+                $("#card_num").html(index);
             }
-            $("#card_num").html(parseInt(index));
         }
     })
 })(window);
-*/
+
+
 
 function cartsum(object) {
     $(document).ready(function () {

@@ -47,6 +47,7 @@
                                   </div>
                              </div>
                      </a>
+                      <input type="hidden" value="${good.id}" id="goodid">
                       <div class="product-info simpleCart_shelfItem">
                           <div class="product-info-cust prt_name">
                                  <h4>${good.name}</h4>
