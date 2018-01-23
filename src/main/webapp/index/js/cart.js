@@ -14,11 +14,11 @@
                 success: function (data) {
                     if (data == "empty") {
                         alert("库存不足")
-                    } else {
+                    }else{
                         //将json字符串转换成json对象
-                        var jsonCatr = jQuery.parseJSON(data);
+                        var jsonCart = jQuery.parseJSON(data);
                         //然后改变属性显示
-                        $("#count").html("数量："+jsonCatr.count);
+                        $("#count").html("数量:"+jsonCart.count);
                     }
 
                 }
@@ -44,7 +44,7 @@
                 //将json字符串转换成json对象
                 var jsonCatr = jQuery.parseJSON(data);
                 //然后改变属性显示
-                $("#count").html("数量："+jsonCatr.count);
+                $("#count").html("数量:"+jsonCatr.count);
             }
 
         }

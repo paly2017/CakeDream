@@ -33,21 +33,21 @@
     <div class="container">
         <h2>我的购物车</h2>
 
-<c:forEach items="" var="">
+<c:forEach var="cart" items="${minGoodsNum}" >
         <div class="cart-header col-md-6">
             <div class="cart-sec simpleCart_shelfItem">
                 <div class="cart-item cyc">
-                    <a href="/detail?goodId=${goodid}">
-                        <img src="..//picture/6-1.jpg" class="img-responsive">
+                    <a href="/detail?goodId=${cart.good.id}">
+                        <img src="..//${cart.good.cover}" class="img-responsive">
                     </a>
                 </div>
                 <div class="cart-item-info">
-                    <h3><a href="detail?goodId=${goodid}">${goodName }</a></h3>
-                    <h3><span>单价: ${goodPrice }</span></h3>
-                    <h3><span class="goodAmount">数量: 1</span></h3>
-                    <a class="btn btn-info" href="javascript:buy(6);">增加</a>
-                    <a class="btn btn-warning" href="javascript:lessen(6);">减少</a>
-                    <a class="btn btn-danger" href="javascript:deletes(6);">删除</a>
+                    <h3><a href="detail?goodId=${cart.good.id}">${cart.good.name}</a></h3>
+                    <h3><span>单价: ${cart.good.price}</span></h3>
+                    <h3><span class="goodAmount">数量: ${cart.count}</span></h3>
+                    <a class="btn btn-info" href="javascript:void(0)" onclick="add(${cart.good.id})">增加</a>
+                    <a class="btn btn-warning" href="javascript:void(0)" onclick="dec(${cart.good.id})">减少</a>
+                    <a class="btn btn-danger" href="javascript:void(0)" onclick="delet(${cart.good.id})">删除</a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -59,9 +59,6 @@
             <h3 class="goodTotal">订单总金额: ¥ 797</h3>
             <a class="btn btn-success btn-lg" style="margin-left:74%" href="/pay">提交订单</a>
         </div>
-
-
-
     </div>
 </div>
 <!--//cart-items-->

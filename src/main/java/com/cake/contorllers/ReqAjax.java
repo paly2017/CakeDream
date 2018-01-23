@@ -55,6 +55,9 @@ public class ReqAjax {
     }
 
 
+
+
+
     //加入购物车的方法
     @PostMapping("/addcart")
     public String addCart(@RequestParam("goodid") Integer goodId, HttpServletRequest request){
