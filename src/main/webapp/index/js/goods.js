@@ -79,7 +79,7 @@ function cartinto(obj,goodId) {
                 success:function (msg) {
                     var cartmsg = jQuery.parseJSON(msg);
                     var index=0;
-                   $("table").find("*").detach();
+                    $("table").empty();
                     cartmsg.forEach(function (value) {
                         $("#mincart").append(
                             "<tr> <td> <img src='../"+value.good.cover+" 'height='80' width='80'/> </td>"+
@@ -102,7 +102,6 @@ function cartinto(obj,goodId) {
         url:"/newpageing",
         success:function (msg) {
             if (null!=msg){
-                $("table").find("*").detach();
                 var cartmsg = jQuery.parseJSON(msg);
                 var index=0;
                 cartmsg.forEach(function (value) {

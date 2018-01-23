@@ -36,9 +36,15 @@ public class ReqAjax {
     public String goodsType(HttpServletRequest request){
         return typeService.selectAllType(request);
     }
+
+    /***
+     * mini购物车增加
+     * @param goodID
+     * @param request
+     * @return
+     */
     @PostMapping("/getgood")
     public String getGood(@RequestParam("goodid")String goodID ,HttpServletRequest request){
-        System.out.println("goodID = [" + goodID + "], request = [" + request + "]");
         return  goodService.mincartGoodSrevice(Integer.parseInt(goodID),request);
     }
 
