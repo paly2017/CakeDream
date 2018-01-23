@@ -1,1 +1,3 @@
 1、cart.jsp页面需要循环购物车里面的商品 商品id和商品名称等有关信息需要继续完善
+2、 Timestamp timestamp = Timestamp.valueOf(orderDate);
+          order.setSystime(timestamp);//时间类型转换 String转换为Timestamp

@@ -49,3 +49,7 @@ css文件和js文件引入冲突
  The server cannot or will not process the request due to something that is perceived to be a client error
  (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
  解决：检查页面或js语法错误
+
+12、nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException:
+    There is no getter for property named 'user_id' in 'class com.cake.pojo.Order'
+    解决：在Ordermapper映射类里面的映射插入没有输入正确的属性名

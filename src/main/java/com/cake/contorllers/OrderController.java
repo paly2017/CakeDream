@@ -1,6 +1,7 @@
 package com.cake.contorllers;
 
 import com.cake.pojo.MiniCart;
+import com.cake.pojo.Order;
 import com.cake.pojo.User;
 import com.cake.service.Impl.OrderServiceImpl;
 import com.cake.service.Impl.UserServiceImpl;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Controller
@@ -66,6 +68,23 @@ public class OrderController {
         //设置跳转的页面至支付页面
         return "index/pay";
     }
+
+    @RequestMapping("/payOk")
+    public String jumpToOrderPayOk(HttpServletRequest request,@RequestParam("payType")Integer payType){
+        HttpSession httpSession = request.getSession();
+        //从session中获取相应的信息
+        User user = (User) httpSession.getAttribute("user");//用户
+        Long orderNumber = (Long) httpSession.getAttribute("orderNumber"); //订单号
+        Integer allAmount = (Integer) httpSession.getAttribute("allAmount"); //商品总价
+        Integer goodNums = (Integer) httpSession.getAttribute("goodNums");//商品总数
+        String orderDate = (String) httpSession.getAttribute("orderDate"); //生成订单号时间
+        //调用方法
+        Order order = orderService.insertOrder(user,orderNumber,allAmount,goodNums,orderDate,payType);
+        httpSession.setAttribute("order",order);
+        return "index/payok";
+    }
+
+
 
 
 }

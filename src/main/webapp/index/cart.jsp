@@ -57,7 +57,7 @@
         <div class="cart-header col-md-12">
             <hr>
             <h3 class="goodTotal">订单总金额: ¥ 797</h3>
-            <a class="btn btn-success btn-lg" style="margin-left:74%" href="/pay">提交订单</a>
+            <a class="btn btn-success btn-lg" style="margin-left:74%" href="/pay?userId=1">提交订单</a>
         </div>
     </div>
 </div>

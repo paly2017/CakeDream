@@ -59,21 +59,21 @@
         <h3>订单编号:${sessionScope.orderNumber }  支付金额: ${sessionScope.allAmount} </h3><br><br>
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/payOk?payType=1">
+                <a href="payOk?payType=1">
                     <img src="images/wechat.jpg" alt="微信支付">
                 </a>
             </div>
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/payOk?payType=2">
+                <a href="payOk?payType=2">
                     <img src="images/alipay.jpg" alt="支付宝支付">
                 </a>
             </div>
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
-                <a href="/payOk?payType=3">
+                <a href="payOk?payType=3">
                     <img src="images/offline.jpg" alt="货到付款">
                 </a>
             </div>

@@ -1,8 +1,13 @@
 package com.cake.service.Impl;
 
+import com.cake.mapper.OrderMapper;
+import com.cake.pojo.Order;
+import com.cake.pojo.User;
 import com.cake.service.inteerfaces.IOrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,6 +17,8 @@ import java.util.Date;
  */
 @Service
 public class OrderServiceImpl implements IOrderService {
+    @Autowired
+    private OrderMapper orderMapper;
     public String getOrderDate() {
         //创建时间对象
         Date date = new Date();
@@ -29,4 +36,29 @@ public class OrderServiceImpl implements IOrderService {
         long orderNumber =  System.currentTimeMillis();
         return orderNumber;
     }
+
+    //组装order对象
+    public Order insertOrder(User user, Long orderNumber, Integer allAmount, Integer goodNums, String orderDate,Integer payType) {
+        //创建order对象
+        Order order = new Order();
+        //对order对象属性进行组装
+        order.setTotal(allAmount);
+        Timestamp timestamp = Timestamp.valueOf(orderDate);
+        order.setSystime(timestamp);//时间类型转换 String转换为Timestamp
+        order.setAmount(goodNums);
+        order.setPhone(user.getPhone());
+        order.setName(user.getName());
+        order.setUserId(user.getId());
+        order.setAddress(user.getAddress());
+        order.setPaytype(payType);//支付方法
+        order.setStatus(2);
+        //将对象放入数据库
+        orderMapper.insert(order);
+        return order;
+    }
+
+
+
+
+
 }

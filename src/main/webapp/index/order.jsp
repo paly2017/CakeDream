@@ -27,7 +27,53 @@
 <!--引入头部-->
 <jsp:include page="herder.jsp"/>
 
+<!--cart-items-->
+<div class="cart-items">
+    <div class="container">
+        <h2>我的订单</h2>
 
+        <table class="table table-bordered table-hover">
+
+            <tr>
+                <th width="10%">ID</th>
+                <th width="10%">总价</th>
+                <th width="20%">商品详情</th>
+                <th width="20%">收货信息</th>
+                <th width="10%">订单状态</th>
+                <th width="10%">支付方式</th>
+                <th width="10%">下单时间</th>
+                <th width="10%">操作</th>
+            </tr>
+
+            <tr>
+                <td><p>${requestScope.order.id}</p></td>
+                <td><p>${requestScope.order.total}</p></td>
+                <td>
+                    <p></p>
+                </td>
+                <td>
+                    <p>${requestScope.order.name}</p>
+                    <p>${requestScope.order.phone}</p>
+                    <p>${requestScope.order.address}</p>
+                </td>
+                <td>
+                    <p>
+                        <span style="color:red;">${requestScope.order.status}</span>
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        ${requestScope.order.paytype}
+                    </p>
+                </td>
+                <td><p>${requestScope.order.systime }</p></td>
+                <td>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!--//cart-items-->
 
 <!--引入尾部-->
 <jsp:include page="footer.jsp"/>
