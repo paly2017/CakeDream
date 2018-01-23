@@ -49,3 +49,5 @@ css文件和js文件引入冲突
  The server cannot or will not process the request due to something that is perceived to be a client error
  (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
  解决：检查页面或js语法错误
+ 12、购物车页面，循环显示中数量的增加，不能直接写类名，应该获取上级标签或者同胞标签，在找到标签本身
+ 解决：$(this).siblings("h3").eq(2).html("数量:"+jsonCart.count);

@@ -61,7 +61,7 @@ public class ReqAjax {
     //加入购物车的方法
     @PostMapping("/addcart")
     public String addCart(@RequestParam("goodid") Integer goodId, HttpServletRequest request){
-        System.out.println("获取参数"+goodId);
+        System.out.println("增加获取参数"+goodId);
         String statue =null;
         //从session中取出购物车里的数据
         HttpSession httpSession= request.getSession();
@@ -70,7 +70,7 @@ public class ReqAjax {
         //循环遍历集合
         for (MiniCart cart:cartList) {
             //找到该商品
-            if(goodId.equals(cart.getGood().getId())){
+            if(goodId==cart.getGood().getId()){
                 //判断该商品库存--库存充足，购物车加1
                 if( cart.getGood().getStock()>0){
                     cart.setCount(cart.getCount()+1);
@@ -100,7 +100,7 @@ public class ReqAjax {
             //找到该商品
             if(goodId==cart.getGood().getId()){
                 //判断商品数量大于0，减1
-                if(cart.getCount()>0){
+                if(cart.getCount()>=1){
                     cart.setCount(cart.getCount()-1);
                     statue= Uilt.getGsonToString(cart);
                 }else{
