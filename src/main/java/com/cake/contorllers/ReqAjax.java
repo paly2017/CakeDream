@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -37,15 +36,8 @@ public class ReqAjax {
     }
     @PostMapping("/getgood")
     public String getGood(@RequestParam("goodid")String goodID ,HttpServletRequest request){
-       HttpSession session = request.getSession();
-        if (null==session.getAttribute("minCartGoodId")){
-            integerList = new ArrayList<Integer>();
-        }else {
-            integerList = (List<Integer>) session.getAttribute("minCartGoodId");
-        }
-        integerList.add(Integer.parseInt(goodID));
-        session.setAttribute("minCartGoodId",integerList);
-        return  goodService.getOneGood(Integer.parseInt(goodID));
+        System.out.println("goodID = [" + goodID + "], request = [" + request + "]");
+        return  goodService.mincartGoodSrevice(Integer.parseInt(goodID),request);
     }
 
     /****
@@ -57,11 +49,6 @@ public class ReqAjax {
     @PostMapping("/newpageing")
     public String getGood(HttpServletRequest request){
         HttpSession session = request.getSession();
-        integerList = (List<Integer>) session.getAttribute("minCartGoodId");
-        if (null==integerList){
-            return "";
-        }else {
-            return  goodService.getOneGood(integerList);
-        }
+        return goodService.mincartGoodSrevice(session);
     }
 }

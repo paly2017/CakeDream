@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CakeDream:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="CakeDream.war">
+      <element id="artifact" artifact-name="CakeDream:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -3,16 +3,16 @@ package com.cake.service.Impl;
 import com.cake.mapper.GoodMapper;
 import com.cake.mapper.TypeMapper;
 import com.cake.pojo.Good;
+import com.cake.pojo.MiniCart;
 import com.cake.pojo.Type;
 import com.cake.service.inteerfaces.IGoodService;
 import com.cake.uilt.Uilt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.*;
 
 @Service
 public class GoodServiceImpl implements IGoodService {
@@ -74,6 +74,73 @@ public class GoodServiceImpl implements IGoodService {
            }
        }
         return Uilt.getGsonToString(goodList);
+    }
+
+    /***
+     * 处理miniCart(立即购买，和加入购物车功能)
+     * @param integer goodId
+     * @param request
+     * @return
+     */
+    public String mincartGoodSrevice(Integer integer, HttpServletRequest request) {
+        MiniCart miniCart=null;
+        //从session中获取mini购物车数据
+       List<MiniCart> miniCartList =
+               (List<MiniCart>)request.getSession().getAttribute("minGoodsNum");
+       //判断mini购物车数据中数据是否为空
+       if (null==miniCartList){
+           miniCartList = new ArrayList<MiniCart>();
+           Good good = goodMapper.slectGoodByGoodId(integer);
+           if (null!=good){
+               miniCart = new MiniCart();
+               miniCart.setGood(good);
+               miniCart.setCount(1);
+           }
+       }else {
+           //判断集合中购物车的good_id是否存在
+           for (MiniCart itemgood : miniCartList){
+               //更新已存在商品数量
+               if (itemgood.getGood().getId().equals(integer)){
+                   itemgood.setCount(itemgood.getCount()+1);
+                   miniCart = itemgood;
+               }else {
+                   //根据good_id查询商品
+                   Good good = goodMapper.slectGoodByGoodId(integer);
+                   if (null!=good){
+                       miniCart = new MiniCart();
+                       miniCart.setGood(good);
+                       miniCart.setCount(1);
+                   }
+               }
+           }
+       }
+       //如果有新增数据，则加入到集合当中
+       if (null!=miniCart){
+           miniCartList.add(miniCart);
+       }
+        request.getSession().setAttribute("minGoodsNum",miniCartList);
+        System.out.println("integer = "+Uilt.getGsonToString(miniCart));
+        return Uilt.getGsonToString(miniCart);
+    }
+
+    /***
+     * 页面刷新时，更新mini购物车信息
+     * @param session
+     * @return
+     */
+    public String mincartGoodSrevice(HttpSession session) {
+        Map<String,Integer> StringMap = new HashMap<String, Integer>();
+        Map<Good,Integer> integerMap =
+                (Map<Good, Integer>) session.getAttribute("minGoodsNum");
+        if (null==integerMap){
+            return null;
+        }else {
+            Set<Good> keySet = integerMap.keySet();
+            for (Good good : keySet){
+                StringMap.put(Uilt.getGsonToString(good),integerMap.get(good));
+            }
+            return  Uilt.getGsonToString(StringMap);
+        }
     }
 
     /**

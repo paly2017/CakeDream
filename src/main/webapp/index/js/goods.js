@@ -69,45 +69,87 @@ function gopageing(index) {
  * @param obj
  * @param goodId
  */
+
 function cartinto(obj,goodId) {
-    $(this).ready(function () {
+    alert("mad")
+    $(obj).ready(function () {
             $.ajax({
                 type:"post",
                 url:"/getgood",
                 data:{goodid:goodId},
                 success:function (msg) {
-                    var  jsontype =  jQuery.parseJSON(msg);
-                       var  index = $("#card_num").html();
-                        $("#card_num").html(parseInt(index)+1);
+                    alert(msg);
+                    var cartmsg = jquery.parseJSON(msg);
                         $("#mincart").append(
-                            "<tr> <td> <img src='../"+jsontype.cover+" 'height='80' width='80'/> </td>"+
-                            "<td> <div>"+jsontype.name+"</div> <div>价钱：<span class='spice'>"+jsontype.price+"</span></div>"+
-                            "<div>数量：<span id='cake1'>"+jsontype.stock+"</span></div> <div>"+
-                            "<button class='btn-success' type='button' >加</button>"+
-                            " <button class='btn-success' type='button'>减</button> </div> </td> </tr>"+
-                            "<tr> <td></td> <td></td></tr>"
-                        )
+                            "<tr> <td> <img src='../"+cartmsg.good.cover+" 'height='80' width='80'/> </td>"+
+                            "<td> <div>"+cartmsg.good.name+"</div> <div>价钱：<span class='spice'>"+cartmsg.good.price+"</span></div>"+
+                            "<div>数量：<span id='cake1'>"+cartmsg.count+"</span></div> <div>"+
+                            "<button class='btn-success' type='button'onclick='cartsum(this)' >加</button>"+
+                            " <button class='btn-success' type='button' onclick='cartsum(this)'>减</button> </div> </td> </tr>"+
+                            "<tr> <td></td> <td></td></tr>");
+                    var  index = $("#card_num").html();
+                    $("#card_num").html(parseInt(index)+1);
                 }
             })
     })
 }
+/**
 (function () {
     $.ajax({
         type:"post",
         url:"/newpageing",
-        success:function (msg) {
-            var  jsontype =  jQuery.parseJSON(msg);
-            jsontype.forEach(function (value,index) {
-                $("#card_num").html(parseInt(index)+1);
+        success:function (date) {
+            var Date = JSON.parse(date);
+            var index=0;
+            for (var key in Date){
+                ++index;
+                var jsonKye = JSON.parse(key);
                 $("#mincart").append(
-                    "<tr> <td> <img src='../"+value.cover+" 'height='80' width='80'/> </td>"+
-                    "<td> <div>"+value.name+"</div> <div>价钱：<span class='spice'>"+value.price+"</span></div>"+
-                    "<div>数量：<span id='cake1'>"+value.stock+"</span></div> <div>"+
-                    "<button class='btn-success' type='button' >加</button>"+
-                    " <button class='btn-success' type='button'>减</button> </div> </td> </tr>"+
-                    "<tr> <td></td> <td></td></tr>"
-                )
-            });
+                    "<tr> <td> <img src='../"+jsonKye.cover+" 'height='80' width='80'/> </td>"+
+                    "<td> <div>"+jsonKye.name+"</div> <div>价钱：<span class='spice'>"+jsonKye.price+"</span></div>"+
+                    "<div>数量：<span id='cake1'>"+Date[key]+"</span></div> <div>"+
+                    "<button class='btn-success' type='button'onclick='cartsum(this)' >加</button>"+
+                    " <button class='btn-success' type='button' onclick='cartsum(this)'>减</button> </div> </td> </tr>"+
+                    "<tr> <td></td> <td></td></tr>")
+            }
+            $("#card_num").html(parseInt(index));
         }
     })
 })(window);
+*/
+
+function cartsum(object) {
+    $(document).ready(function () {
+        if($(object).html()=="加"){
+            var obj = $(object).parent().siblings().add();
+            var num = obj.eq(2).find("span").html();
+            num = parseInt(num)+1;
+            obj.eq(2).find("span").html(num);
+            obj.eq(1).find("span").html(num*120 );
+            var s =$(".spice").add();
+            var pay=0;
+            for (var i=0;i<s.length;i++){
+                var ss =s.eq(i).html();
+                pay+=parseInt(ss);
+            }
+            $("#mypay").html(pay);
+        }else {
+            var obj = $(object).parent().siblings().add();
+            var num = obj.eq(2).find("span").html();
+            num = parseInt(num)-1;
+            if (num<=0){
+                num=0;
+            }
+            obj.eq(2).find("span").html(num);
+            obj.eq(1).find("span").html(num*120 );
+            var s =$(".spice").add();
+            var pay=0;
+            for (var i=0;i<s.length;i++){
+                var ss =s.eq(i).html();
+                pay+=parseInt(ss);
+            }
+            $("#mypay").html(pay);
+        }
+    })
+
+}

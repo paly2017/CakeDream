@@ -3,6 +3,8 @@ package com.cake.service.inteerfaces;
 import com.cake.pojo.Good;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -45,5 +47,9 @@ public interface IGoodService {
      * @return
      */
     String getOneGood(List<Integer> goodID);
+
+    String mincartGoodSrevice(Integer integer, HttpServletRequest request);
+
+  String mincartGoodSrevice(HttpSession session);
 
 }

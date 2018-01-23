@@ -20,11 +20,13 @@
     <link type="text/css" rel="stylesheet" href="index/css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="index/css/style.css">
     <link type="text/css" rel="stylesheet" href="index/css/header.css">
-    <script type="text/javascript" src="index/js/jquery.min.js"></script>
+    <script type="text/javascript" src="index/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="index/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="index/layer/layer.js"></script>
     <script type="text/javascript" src="index/js/cart.js"></script>
     <script src="index/js/header.js"></script>
+    <script src="index/js/goods.js"></script>
+    <script src="index/js/index.js"></script>
 </head>
 <body>
 <jsp:include page="herder.jsp"/>
@@ -33,7 +35,7 @@
     <div class="container">
         <h2 class="hdng"><a href="detail.html">${jingPinList[0].good.name}</a><span></span></h2>
         <p>今日精选推荐</p>
-        <a class="banner_a" href="cart.html" onclick="buy(14)">立刻购买</a>
+        <a class="banner_a" href="cart.html" onclick="cartinto(this,${jingPinList[0].good.id})">立刻购买</a>
         <div class="banner-text">
             <a href="detail.html">
                 <img src="..//${jingPinList[0].good.cover}" alt="${jingPinList[0].good.name}" width="350" height="350">
@@ -66,7 +68,7 @@
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                             <a href="detail.action?goodid=14">查看详情</a>
                         </p>
-                        <a class="shop" href="javascript:;" onclick="buy(14)">立刻购买</a>
+                        <a class="shop" href="javascript:" onclick="indexbuy(${hot.good.id})">立刻购买</a>
                         <div class="clearfix"> </div>
                     </div>
                     <div class="galy-info">
@@ -101,7 +103,7 @@
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                             <a href="detail.action?goodid=13">查看详情</a>
                         </p>
-                        <a class="shop" href="javascript:;" onclick="buy(13)">立刻购买</a>
+                        <a class="shop " href="javascript:" onclick="indexbuy(${hot.good.id}">立刻购买</a>
                         <div class="clearfix"> </div>
                     </div>
                     <div class="galy-info">
