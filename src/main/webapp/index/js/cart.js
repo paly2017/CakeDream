@@ -37,7 +37,7 @@
         data: {
             "goodid": goodid
         },
-        success:function (data) {
+        success:function (data) {            
             if(data=="success"){
                 location.reload();  //重新刷新页面
             }else{

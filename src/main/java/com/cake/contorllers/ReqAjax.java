@@ -107,7 +107,7 @@ public class ReqAjax {
                     //直接删除该商品
                     //在集合中移除
                     cartList.remove(cart);
-                    return "sussess";
+                    return "success";
                 }
             }
         }//for
