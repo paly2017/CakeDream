@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="cake@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="cake">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="electroniccommerceproject"/>
+    <schema id="4" parent="1" name="exam"/>
+    <schema id="5" parent="1" name="information_schema"/>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="school"/>
+    <schema id="9" parent="1" name="shopping"/>
+    <schema id="10" parent="1" name="sys"/>
+    <table id="11" parent="2" name="admins"/>
+    <table id="12" parent="2" name="goods"/>
+    <table id="13" parent="2" name="items"/>
+    <table id="14" parent="2" name="orders"/>
+    <table id="15" parent="2" name="tops">
+      <Comment>首页推荐商品</Comment>
+    </table>
+    <table id="16" parent="2" name="types"/>
+    <table id="17" parent="2" name="users"/>
+    <column id="18" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="19" parent="11" name="username">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="20" parent="11" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="21" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="22" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="23" parent="12" name="name">
+      <Position>2</Position>
+      <Comment>名称</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="24" parent="12" name="cover">
+      <Position>3</Position>
+      <Comment>封面</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="25" parent="12" name="image1">
+      <Position>4</Position>
+      <Comment>细节图片1</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="26" parent="12" name="image2">
+      <Position>5</Position>
+      <Comment>细节图片2</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="27" parent="12" name="price">
+      <Position>6</Position>
+      <Comment>价格</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="28" parent="12" name="intro">
+      <Position>7</Position>
+      <Comment>介绍</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="29" parent="12" name="stock">
+      <Position>8</Position>
+      <Comment>库存</Comment>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="30" parent="12" name="type_id">
+      <Position>9</Position>
+      <Comment>分类</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="31" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="32" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="13" name="price">
+      <Position>2</Position>
+      <Comment>购买时价格</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="34" parent="13" name="amount">
+      <Position>3</Position>
+      <Comment>购买数量</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="35" parent="13" name="order_id">
+      <Position>4</Position>
+      <Comment>订单id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="36" parent="13" name="good_id">
+      <Position>5</Position>
+      <Comment>蛋糕id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="37" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="38" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="39" parent="14" name="total">
+      <Position>2</Position>
+      <Comment>总价</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="40" parent="14" name="amount">
+      <Position>3</Position>
+      <Comment>商品总数</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="41" parent="14" name="status">
+      <Position>4</Position>
+      <Comment>订单状态(1未付款/2已付款/3已发货/4已完成)</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="42" parent="14" name="paytype">
+      <Position>5</Position>
+      <Comment>支付方式 (1微信/2支付宝/3货到付款)</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="43" parent="14" name="name">
+      <Position>6</Position>
+      <Comment>收货人</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="44" parent="14" name="phone">
+      <Position>7</Position>
+      <Comment>收货电话</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="45" parent="14" name="address">
+      <Position>8</Position>
+      <Comment>收货地址</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="46" parent="14" name="systime">
+      <Position>9</Position>
+      <Comment>下单时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="47" parent="14" name="user_id">
+      <Position>10</Position>
+      <Comment>下单用户</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="48" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="15" name="type">
+      <Position>2</Position>
+      <Comment>推荐类型(1条幅/2大图/3小图)</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="51" parent="15" name="good_id">
+      <Position>3</Position>
+      <Comment>蛋糕id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="52" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="53" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="54" parent="16" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="55" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="56" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="57" parent="17" name="username">
+      <Position>2</Position>
+      <Comment>用户名</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="58" parent="17" name="password">
+      <Position>3</Position>
+      <Comment>密码</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="59" parent="17" name="name">
+      <Position>4</Position>
+      <Comment>收货人</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="60" parent="17" name="phone">
+      <Position>5</Position>
+      <Comment>收货电话</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="61" parent="17" name="address">
+      <Position>6</Position>
+      <Comment>收货地址</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="62" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
