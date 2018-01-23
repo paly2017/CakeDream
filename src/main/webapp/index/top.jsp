@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="index/css/header.css">
     <script src="index/js/header.js"></script>
     <script src="index/js/tops.js"></script>
+    <script src="index/js/jquery.fly.min.js"></script>
+    <script src="index/js/goods.js"></script>
+
 </head>
 <body>
 <!--头部页面;导航栏-->

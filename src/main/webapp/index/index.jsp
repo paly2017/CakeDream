@@ -27,6 +27,8 @@
     <script src="index/js/header.js"></script>
     <script src="index/js/goods.js"></script>
     <script src="index/js/index.js"></script>
+    <script src="index/js/jquery.fly.min.js"></script>
+    <script src="index/js/goods.js"></script>
 </head>
 <body>
 <jsp:include page="herder.jsp"/>

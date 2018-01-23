@@ -18,8 +18,36 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="layer/layer.js"></script>
     <script type="text/javascript" src="js/cart.js"></script>
+    <script src="index/js/jquery.fly.min.js"></script>
+    <script src="index/js/goods.js"></script>
 </head>
 <body>
+<!--引入头部-->
+<jsp:include page="herder.jsp"/>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--引入尾部-->
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

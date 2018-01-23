@@ -20,6 +20,8 @@
     <script type="text/javascript" src="index/js/cart.js"></script>
     <script src="index/js/header.js"></script>
     <link rel="stylesheet" href="index/css/header.css">
+    <script src="index/js/jquery.fly.min.js"></script>
+    <script src="index/js/goods.js"></script>
 </head>
 <body>
 <%--<head>--%>
