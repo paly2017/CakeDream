@@ -1,7 +1,6 @@
 <html>
-<head>
-    <meta http-equiv="refresh" content="0;url=/index">
-</head>
 <body>
+<meta http-equiv="refresh" content="0;url=/index">
+
 </body>
 </html>

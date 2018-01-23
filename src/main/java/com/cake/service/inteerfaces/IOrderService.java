@@ -7,4 +7,6 @@ public interface IOrderService {
     //生成一个随机订单号
     long getOrderNumber();
 
+    //
+
 }

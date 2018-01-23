@@ -42,7 +42,7 @@
                     </a>
                 </div>
                 <div class="cart-item-info">
-                    <h3><a href="detail.html">${goodName }</a></h3>
+                    <h3><a href="detail?goodId=${goodid}">${goodName }</a></h3>
                     <h3><span>单价: ${goodPrice }</span></h3>
                     <h3><span class="goodAmount">数量: 1</span></h3>
                     <a class="btn btn-info" href="javascript:buy(6);">增加</a>
@@ -54,14 +54,10 @@
         </div>
 </c:forEach>
 
-
-
-
-
         <div class="cart-header col-md-12">
             <hr>
             <h3 class="goodTotal">订单总金额: ¥ 797</h3>
-            <a class="btn btn-success btn-lg" style="margin-left:74%" href="pay.html">提交订单</a>
+            <a class="btn btn-success btn-lg" style="margin-left:74%" href="/pay">提交订单</a>
         </div>
 
 

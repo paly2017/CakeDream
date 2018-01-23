@@ -73,6 +73,7 @@ public class ItemContorller {
      */
     @RequestMapping("/detail")
     public ModelAndView getGoodById(@RequestParam("goodId")Integer goodID){
+
         //创建视图模型对象
         ModelAndView modelAndView = new ModelAndView();
         //通过方法创建新的商品对象
