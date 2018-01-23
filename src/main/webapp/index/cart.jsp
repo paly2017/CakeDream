@@ -44,7 +44,7 @@
                 <div class="cart-item-info">
                     <h3><a href="detail?goodId=${cart.good.id}">${cart.good.name}</a></h3>
                     <h3><span>单价: ${cart.good.price}</span></h3>
-                    <h3><span class="goodAmount">数量: ${cart.count}</span></h3>
+                    <h3><span id="count" class="goodAmount">数量: ${cart.count}</span></h3>
                     <a class="btn btn-info" href="javascript:void(0)" onclick="add(${cart.good.id})">增加</a>
                     <a class="btn btn-warning" href="javascript:void(0)" onclick="dec(${cart.good.id})">减少</a>
                     <a class="btn btn-danger" href="javascript:void(0)" onclick="delet(${cart.good.id})">删除</a>
