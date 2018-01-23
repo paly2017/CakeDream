@@ -80,9 +80,7 @@ function cartinto(obj,goodId) {
                     var cartmsg = jQuery.parseJSON(msg);
                     var index=0;
                    $("table").find("*").detach();
-                    alert(cartmsg);
                     cartmsg.forEach(function (value) {
-                        alert(index);
                         $("#mincart").append(
                             "<tr> <td> <img src='../"+value.good.cover+" 'height='80' width='80'/> </td>"+
                             "<td> <div>"+value.good.name+"</div> <div>价钱：<span class='spice'>"+value.good.price+"</span></div>"+
@@ -104,6 +102,7 @@ function cartinto(obj,goodId) {
         url:"/newpageing",
         success:function (msg) {
             if (null!=msg){
+                $("table").find("*").detach();
                 var cartmsg = jQuery.parseJSON(msg);
                 var index=0;
                 cartmsg.forEach(function (value) {

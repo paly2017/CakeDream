@@ -60,7 +60,7 @@
                         <div class="product-info-cust prt_name">
                             <h4>${top.good.name}</h4>
                             <span class="item_price">¥ ${top.good.price}</span>
-                            <input type="button" class="item_add items" value="加入购物车" onclick="buy(6)">
+                            <input type="button" class="item_add items" value="加入购物车" onclick="cartinto(this,top.good.id)">
                             <div class="clearfix"> </div>
                         </div>
                     </div>
