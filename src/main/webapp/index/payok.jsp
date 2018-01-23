@@ -24,29 +24,16 @@
 <body>
 <!--引入头部-->
 <jsp:include page="herder.jsp"/>
+<!--cart-items-->
+<div class="cart-items">
+    <div class="container">
 
+        <c:if test="${msg!=null}"><div class="alert alert-success">${msg}</div></c:if>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <p><a class="btn btn-success" href="order.jsp">查看我的订单</a></p>
+    </div>
+</div>
+<!--//cart-items-->
 <!--引入尾部-->
 <jsp:include page="footer.jsp"/>
 </body>
