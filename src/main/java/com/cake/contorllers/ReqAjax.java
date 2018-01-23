@@ -33,8 +33,8 @@ public class ReqAjax {
      * @return
      */
     @PostMapping("/classes")
-    public String goodsType(){
-        return typeService.selectAllType();
+    public String goodsType(HttpServletRequest request){
+        return typeService.selectAllType(request);
     }
     @PostMapping("/getgood")
     public String getGood(@RequestParam("goodid")String goodID ,HttpServletRequest request){

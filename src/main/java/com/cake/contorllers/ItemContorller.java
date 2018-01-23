@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -72,8 +73,11 @@ public class ItemContorller {
      * @return 返回商品详情页面显示单品
      */
     @RequestMapping("/detail")
-    public ModelAndView getGoodById(@RequestParam("goodId")Integer goodID){
-
+    public ModelAndView getGoodById(@RequestParam("goodId")Integer goodID,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        if (null==session.getAttribute("alltype")){
+             typeService.selectAllType(request);
+        }
         //创建视图模型对象
         ModelAndView modelAndView = new ModelAndView();
         //通过方法创建新的商品对象
