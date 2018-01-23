@@ -1,8 +1,15 @@
 package com.cake.uilt;
 
+import com.cake.pojo.Good;
+import com.cake.pojo.Top;
+import com.cake.pojo.Type;
+import com.cake.service.Impl.GoodServiceImpl;
+import com.cake.service.Impl.TypeServiceImpl;
 import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 
 public class Uilt{
@@ -11,6 +18,8 @@ public class Uilt{
     public static Integer startSize ;
     public static Integer pageIndex;
     private static  Gson gson;
+
+
     //实例化一个Gson对象
     static {
         if (gson==null){
@@ -49,5 +58,6 @@ public class Uilt{
        startSize = (pageIndex-1)*pageSize<=0?0:(pageIndex-1)*pageSize;
 
    }
+
 
 }

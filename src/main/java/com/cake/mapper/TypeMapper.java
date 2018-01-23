@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Mapper
-@Component
 public interface TypeMapper {
 //types表---字段  id   name
     //根据id查询商品类型--jelly

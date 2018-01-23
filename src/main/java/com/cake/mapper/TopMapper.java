@@ -1,10 +1,7 @@
 package com.cake.mapper;
 
 import com.cake.pojo.Top;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 
 import java.util.List;
@@ -23,6 +20,14 @@ public interface TopMapper {
     })
     public List<Top> selectTopListByType(Integer type);
 
+   //根据商品类型，起始下标、及页面容量 进行分页查询--jelly
+    @Select("SELECT * FROM tops WHERE `type`=#{type} LIMIT #{fromIndex},#{pageSize};")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "type",column = "type"),
+            @Result(property = "goodId",column = "good_id")
+    })
+    public List<Top> selectByLimit(@Param("type") Integer type, @Param("fromIndex") Integer fromIndex, @Param("pageSize") Integer pageSize);
 
 
     //满哥

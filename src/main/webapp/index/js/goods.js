@@ -62,6 +62,8 @@ function gopageing(index) {
     })
 }
 
+
+
 /***
  * min购物车异步请求
  * @param obj

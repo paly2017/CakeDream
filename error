@@ -45,3 +45,7 @@ css文件和js文件引入冲突
  解决：检查实体类属性的类型是否和Mapper方法中传入的类型一致
  10、org.springframework.web.util.NestedServletException: Request processing failed; nested exception is java.lang.NullPointerException
  解决方案：在封装类属性时前面添加 @Autowired  进行自动装配
+11、异常HTTP Status 400 – Bad Request
+ The server cannot or will not process the request due to something that is perceived to be a client error
+ (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ 解决：检查页面或js语法错误

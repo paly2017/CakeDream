@@ -17,4 +17,8 @@ public class TopServiceImpl implements ITopService {
         //根据商品类型查询推荐商品--得到一个List集合
         return  topMapper.selectTopListByType(type);
     }
+    //根据商品类型，起始下标、及页面容量 进行分页查询--jelly
+    public List<Top> selectByLimit(Integer type, Integer fromIndex, Integer pageSize) {
+        return topMapper.selectByLimit(type,fromIndex,pageSize);
+    }
 }

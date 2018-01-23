@@ -39,8 +39,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a id="hotGood" href="top.html" >热销</a></li>
-                    <li><a id="newGood" href="top.html" >新品</a></li>
+                    <li><a id="hotGood" href="/tops?type=2" >热销</a></li>
+                    <li><a id="newGood" href="/tops?type=3" >新品</a></li>
 
                     <li><a href="register.html" >注册</a></li>
                     <li><a href="login.html" >登录</a></li>
