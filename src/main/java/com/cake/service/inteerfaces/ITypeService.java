@@ -14,7 +14,7 @@ public interface ITypeService {
 
 
     /**
-     * 根据蛋糕系列ID查询祷告系列
+     * 根据蛋糕系列ID查询蛋糕系列
      * @param typeId
      * @return 一个实例蛋糕系列
      */

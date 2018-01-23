@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+
 @Controller
 public class Test {
     @Autowired
@@ -19,5 +23,20 @@ public class Test {
         System.out.println(admin);
         return "index/herder";
     }
+
+    public static void main(String[] args) {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:ssss");
+        String orderDate = simpleDateFormat.format(date);
+        System.out.println(orderDate);
+        long s = System.currentTimeMillis();
+
+        System.out.println(s);
+        Random random = new Random(555L);
+
+            System.out.println("random"+random.nextInt());
+
+    }
+
 
 }
