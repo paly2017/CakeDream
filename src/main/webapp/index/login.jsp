@@ -32,7 +32,7 @@
         <div class="register">
 
             <!--登录页面-->
-            <form id="lf" action="login.action" method="post">
+            <form id="lf" action="/login" method="post">
                 <div class="register-top-grid">
                     <h3>用户登录</h3>
                     <div class="input">

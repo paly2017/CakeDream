@@ -22,7 +22,7 @@
             <!--navbar-header-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html" class="active">首页</a></li>
+                    <li><a href="/index" class="active">首页</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle " data-toggle="dropdown" id="itemclass">商品分类<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-2">
@@ -32,7 +32,7 @@
                                     <div class="col-sm-12">
                                         <h4>商品分类</h4>
                                         <ul class="multi-column-dropdown">
-
+                                            <li id="typeli"><a class="list" href=""></a></li>
                                         </ul>
                                     </div>
                                 </div>
