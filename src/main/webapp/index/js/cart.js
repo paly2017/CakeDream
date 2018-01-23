@@ -7,7 +7,7 @@
     function add(obj,goodid) {
             $.ajax({
                 type: "POST",
-                url: "/getgood",
+                url: "/addcart",
                 data: {
                     "goodid": goodid
                 },
@@ -20,9 +20,7 @@
                         //然后改变属性显示
                         $(obj).siblings("h3").eq(2).find("span").html("数量:"+jsonCart.count);
                     }
-
                 }
-
             })
     }
 

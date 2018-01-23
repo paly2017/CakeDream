@@ -62,6 +62,11 @@ public class ReqAjax {
      * @param request
      * @return
      */
+
+
+
+
+    //加入购物车的方法--jelly
     @PostMapping("/addcart")
     public String addCart(@RequestParam("goodid") Integer goodId, HttpServletRequest request){
         System.out.println("增加获取参数"+goodId);
