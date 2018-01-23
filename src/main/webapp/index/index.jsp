@@ -34,11 +34,11 @@
 <!--banner，首页精选推荐，一个商品-->
 <div class="banner">
     <div class="container">
-        <h2 class="hdng"><a href="detail.html">${jingPinList[0].good.name}</a><span></span></h2>
+        <h2 class="hdng"><a href="/detail?goodId=${jingPinList[0].good.id}">${jingPinList[0].good.name}</a><span></span></h2>
         <p>今日精选推荐</p>
         <a class="banner_a" href="cart.html" onclick="cartinto(this,${jingPinList[0].good.id})">立刻购买</a>
         <div class="banner-text">
-            <a href="detail.html">
+            <a href="/detail?goodId=${jingPinList[0].good.id}">
                 <img src="..//${jingPinList[0].good.cover}" alt="${jingPinList[0].good.name}" width="350" height="350">
             </a>
         </div>
