@@ -25,7 +25,6 @@
     <script type="text/javascript" src="index/layer/layer.js"></script>
     <script type="text/javascript" src="index/js/cart.js"></script>
     <script src="index/js/header.js"></script>
-    <script src="index/js/goods.js"></script>
     <script src="index/js/index.js"></script>
     <script src="index/js/jquery.fly.min.js"></script>
     <script src="index/js/goods.js"></script>
@@ -70,7 +69,7 @@
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                             <a href="detail.action?goodid=14">查看详情</a>
                         </p>
-                        <a class="shop" href="javascript:" onclick="indexbuy(${hot.good.id})">立刻购买</a>
+                        <a class="shop" href="javascript:" onclick="cartinto(this,${hot.good.id})">立刻购买</a>
                         <div class="clearfix"> </div>
                     </div>
                     <div class="galy-info">
@@ -105,7 +104,7 @@
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                             <a href="detail.action?goodid=13">查看详情</a>
                         </p>
-                        <a class="shop " href="javascript:" onclick="indexbuy(${hot.good.id}">立刻购买</a>
+                        <a class="shop " href="javascript:" onclick="cartinto(this,newgood.good.id)">立刻购买</a>
                         <div class="clearfix"> </div>
                     </div>
                     <div class="galy-info">

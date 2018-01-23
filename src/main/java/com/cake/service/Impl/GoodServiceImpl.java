@@ -65,6 +65,12 @@ public class GoodServiceImpl implements IGoodService {
         }
         return Uilt.getGsonToString(good);
     }
+
+    /***
+     *
+     * @param goodID
+     * @return
+     */
     public String getOneGood(List<Integer> goodID) {
        List<Good> goodList = new ArrayList<Good>();
        for (Integer integer : goodID ){
@@ -130,7 +136,8 @@ public class GoodServiceImpl implements IGoodService {
      * @return
      */
     public String mincartGoodSrevice(HttpSession session) {
-       List<MiniCart> miniCartList =(List<MiniCart>) session.getAttribute("minGoodsNum");
+       List<MiniCart> miniCartList =
+               (List<MiniCart>) session.getAttribute("minGoodsNum");
        if (null!=miniCartList){
            System.out.println("session = [" + miniCartList + "]");
            return  Uilt.getGsonToString(miniCartList);
