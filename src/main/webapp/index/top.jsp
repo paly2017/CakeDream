@@ -45,7 +45,7 @@
         <div class="col-md-12 product-model-sec">
             <c:forEach var="top" items="${limitList}">
                 <div class="product-grid">
-                    <a href="detail.action?goodid=6">
+                    <a href="/detail?goodId=${top.good.id}">
                         <div class="more-product"><span> </span></div>
                         <div class="product-img b-link-stripe b-animate-go  thickbox">
                             <img src="..//${top.good.cover}" class="img-responsive" alt="${top.good.name}" width="240" height="240">
@@ -60,7 +60,7 @@
                         <div class="product-info-cust prt_name">
                             <h4>${top.good.name}</h4>
                             <span class="item_price">¥ ${top.good.price}</span>
-                            <input type="button" class="item_add items" value="加入购物车" onclick="cartinto(this,top.good.id)">
+                            <input type="button" class="item_add items" value="加入购物车" onclick="cartinto(this,${top.good.id})">
                             <div class="clearfix"> </div>
                         </div>
                     </div>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 1
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="index/css/header.css">
     <script src="index/js/jquery.fly.min.js"></script>
     <script src="index/js/goods.js"></script>
+    <script src="index/js/header.js"></script>
     <script>
         $(function() {
             $(".flexslider").flexslider({
@@ -71,21 +73,15 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="btn_form">
-                        <a href="javascript:" class="add-cart item_add" onclick="buy(6)">加入购物车</a>
+                        <a href="javascript:" class="add-cart item_add" onclick="cartinto(this,${requestScope.goodDetail.id})">加入购物车</a>
                     </div>
                 </div>
                 <div class="col-md-4 single-grid1">
                     <!-- <h2>商品分类</h2> -->
                     <ul>
-                        <li><a href="goods.html">经典系列</a></li>
-
-                        <li><a href="goods.html">法式系列</a></li>
-
-                        <li><a href="goods.html">儿童系列</a></li>
-
-                        <li><a href="goods.html">零食系列</a></li>
-
-                        <li><a href="goods.html">冰淇淋系列</a></li>
+                        <c:forEach items="${sessionScope.alltype}" var="type">
+                        <li><a href="/typegoogs?typeId=${type.id}">${type.name}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <div class="clearfix"> </div>

@@ -108,7 +108,9 @@ public class GoodServiceImpl implements IGoodService {
            for (MiniCart itemgood : miniCartList){
                //更新已存在商品数量
                if (itemgood.getGood().getId().equals(integer)){
-                   itemgood.setCount(itemgood.getCount()+1);
+                   if (itemgood.getCount()<=itemgood.getGood().getStock()){
+                       itemgood.setCount(itemgood.getCount()+1);
+                   }
                    break;
                }else {
                    //根据good_id查询商品

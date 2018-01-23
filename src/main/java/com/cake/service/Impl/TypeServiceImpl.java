@@ -7,6 +7,7 @@ import com.cake.uilt.Uilt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 @Service
 public class TypeServiceImpl implements ITypeService {
@@ -18,8 +19,14 @@ public class TypeServiceImpl implements ITypeService {
         return typeMapper.selectTpyeById(type_id);
     }
 
-    public String selectAllType() {
+    /***
+     * 商品类型的处理方法
+     * @param request
+     * @return
+     */
+    public String selectAllType(HttpServletRequest request) {
         List<Type> typeList = typeMapper.selectAllItemType();
+        request.getSession().setAttribute("alltype",typeList);
         return Uilt.getGsonToString(typeList);
     }
 
