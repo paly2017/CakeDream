@@ -32,7 +32,7 @@
                                     <div class="col-sm-12">
                                         <h4>商品分类</h4>
                                         <ul class="multi-column-dropdown">
-                                            <li id="typeli"><a class="list" href="goods.html"></a></li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -42,8 +42,8 @@
                     <li><a id="hotGood" href="/tops?type=2" >热销</a></li>
                     <li><a id="newGood" href="/tops?type=3" >新品</a></li>
 
-                    <li><a href="register.html" >注册</a></li>
-                    <li><a href="login.html" >登录</a></li>
+                    <li><a href="index/register.jsp" >注册</a></li>
+                    <li><a href="index/login.jsp" >登录</a></li>
 
 
                     <li><a href="../admin/login.html" target="_blank">后台管理</a></li>
