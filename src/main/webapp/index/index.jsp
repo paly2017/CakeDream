@@ -36,7 +36,7 @@
     <div class="container">
         <h2 class="hdng"><a href="/detail?goodId=${jingPinList[0].good.id}">${jingPinList[0].good.name}</a><span></span></h2>
         <p>今日精选推荐</p>
-        <a class="banner_a" href="cart.html" onclick="cartinto(this,${jingPinList[0].good.id})">立刻购买</a>
+        <a class="banner_a btn" onclick="cartinto(this,${jingPinList[0].good.id})">立刻购买</a>
         <div class="banner-text">
             <a href="/detail?goodId=${jingPinList[0].good.id}">
                 <img src="..//${jingPinList[0].good.cover}" alt="${jingPinList[0].good.name}" width="350" height="350">
@@ -61,13 +61,13 @@
             <!--一个蛋糕展示的div开始-->
             <c:forEach var="hot" items="${hotGoodList}">
                 <div class="col-md-4 gallery-grid glry-two">
-                    <a href="detail.action?goodid=14">
+                    <a href="/detail?goodId=${hot.good.id}">
                         <img src="..//${hot.good.cover}" class="img-responsive" alt="${hot.good.name}" width="350" height="350"/>
                     </a>
                     <div class="gallery-info galrr-info-two">
                         <p>
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            <a href="detail.action?goodid=14">查看详情</a>
+                            <a href="/detail?goodId=${hot.good.id}">查看详情</a>
                         </p>
                         <a class="shop" href="javascript:" onclick="cartinto(this,${hot.good.id})">立刻购买</a>
                         <div class="clearfix"> </div>
@@ -96,13 +96,13 @@
             <c:forEach var="newgood" items="${newGoodList}">
                 <%-- 一个新品推荐的div--%>
                 <div class="col-md-3 gallery-grid ">
-                    <a href="detail.action?goodid=13">
+                    <a href="/detail?goodId=${newgood.good.id}">
                         <img src="..//${newgood.good.cover}" class="img-responsive" alt="${newgood.good.name}"/>
                     </a>
                     <div class="gallery-info">
                         <p>
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            <a href="detail.action?goodid=13">查看详情</a>
+                            <a href="/detail?goodId=${newgood.good.id}">查看详情</a>
                         </p>
                         <a class="shop " href="javascript:" onclick="cartinto(this,newgood.good.id)">立刻购买</a>
                         <div class="clearfix"> </div>
