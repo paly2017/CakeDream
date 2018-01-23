@@ -34,12 +34,12 @@ public class ItemContorller 类中 public ModelAndView doGoodsPage方法
 6,goods.jsp 页面使用jstl以后，jq的飞入效果没有了
 css文件和js文件引入冲突
 7,Parameter 'integer jdbcType=INTEGER' not found. Available parameters are [arg2, arg1, arg0, param3, param1, param2]] with root cause
-解决方案：增加注解
+ 解决方案：增加注解
  List<Good> selectGoosPageByIdAndIndex(@Param("integer") Integer integer,
                                           @Param("index") Integer index,
                                           @Param("size") Integer size);
 
-8,AJAX发送POST请求遇见 POST http://localhost:8080/getgood 400 ()
+8、AJAX发送POST请求遇见 POST http://localhost:8080/getgood 400 ()
 9、异常Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException:
  nested exception is org.apache.ibatis.exceptions.PersistenceException:
  解决：检查实体类属性的类型是否和Mapper方法中传入的类型一致
@@ -58,3 +58,14 @@ css文件和js文件引入冲突
  14,迷你购物车，页面切换以后增加商品不能叠加问题，原因，service 业务逻辑漏洞导
  解决方案：修改mincartGoodSrevice方法；
  经验：尽可能的减少if else 嵌套 判断；
+ 15、异常产生：
+    当我们迭代一个ArrayList或者HashMap时，如果尝试对集合做一些修改操作（例如删除元素），
+    可能会抛出java.util.ConcurrentModificationException的异常。导致一次请求发送失败，报错500
+    异常原因
+    ArrayList的父类AbstarctList中有一个域modCount，每次对集合进行修改（增添元素，删除元素……）时
+    都会modCount++， 就会造成expectedModCount!=modCount，此时就会抛出java.util.ConcurrentModificationException异常
+   解决：
+   单线程：Itr中的也有一个remove方法，实质也是调用了ArrayList中的remove，但增加了expectedModCount = modCount;
+   保证了不会抛出java.util.ConcurrentModificationException异常。
+   多线程：1、迭代前加锁，解决了多线程问题，但还是不能进行迭代add、clear等操作
+           2、采用CopyOnWriteArrayList，解决了多线程问题，同时可以add、clear等操作

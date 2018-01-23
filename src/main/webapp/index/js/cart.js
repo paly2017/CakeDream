@@ -52,6 +52,7 @@
  * 购物车删除
  */
     function delet(goodid) {
+        console.log(goodid)
     $.ajax({
         type: "POST",
         url: "/deletcart",
