@@ -7,7 +7,7 @@
     function add(obj,goodid) {
             $.ajax({
                 type: "POST",
-                url: "/addcart",
+                url: "/getgood",
                 data: {
                     "goodid": goodid
                 },

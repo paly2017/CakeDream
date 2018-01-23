@@ -54,11 +54,14 @@ public class ReqAjax {
         return goodService.mincartGoodSrevice(session);
     }
 
-
-
-
-
     //加入购物车的方法
+
+    /***
+     * 次方法重复，徐佳丽要求保留
+     * @param goodId
+     * @param request
+     * @return
+     */
     @PostMapping("/addcart")
     public String addCart(@RequestParam("goodid") Integer goodId, HttpServletRequest request){
         System.out.println("增加获取参数"+goodId);
