@@ -74,27 +74,12 @@ public interface GoodMapper {
                                           @Param("size") Integer size);
 
 
-
-
-
     /****
      * 根据GoodId查询good
      * @param goodId
      * @return
      */
-   /* @Select(value = "SELECT id,name,cover,image1,image2,price,intro,stock,type_id FROM goods  WHERE id=#{goodId,jdbcType=INTEGER};")
-    @Results({
-            @Result(id = true,property = "id",column = "id"),
-            @Result(property = "name",column = "name") ,
-            @Result(property = "cover",column = "cover"),
-            @Result(property = "image1",column = "image1"),
-            @Result(property = "image2",column = "image2"),
-            @Result(property = "price",column = "price"),
-            @Result(property = "intro",column = "intro"),
-            @Result(property = "stock",column = "stock"),
-            @Result(property = "typeId",column = "type_id")
-    })
-    Good slectGoodsByGoodId(Integer goodId);*/
+
     @Select("SELECT * FROM goods WHERE id=#{goodId};;")
     @Results({
             @Result(id = true,property = "id",column = "id"),

@@ -1,11 +1,7 @@
 <html>
+<head>
+    <meta http-equiv="refresh" content="0;url=/index">
+</head>
 <body>
-<h2><a href="/index">wwww</a></h2>
-
-<h2><a href="/say">wwww</a></h2>
-
-
-<a href="detail?goodId=2">Detail Test</a>
-
 </body>
 </html>
