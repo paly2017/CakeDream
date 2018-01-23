@@ -100,7 +100,7 @@ public class ReqAjax {
             //找到该商品
             if(goodId==cart.getGood().getId()){
                 //判断商品数量大于0，减1
-                if(cart.getCount()>=1){
+                if(cart.getCount()>1){
                     cart.setCount(cart.getCount()-1);
                     statue= Uilt.getGsonToString(cart);
                 }else{
