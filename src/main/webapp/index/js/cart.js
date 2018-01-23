@@ -2,54 +2,70 @@
 /**
  * 加入购物车
  */
-function buy(goodid){
-	$.post("buy.action", {goodid:goodid}, function(data){
-		if(data=="ok"){
-			layer.msg("操作成功!", {time:800}, function(){
-				location.reload();
-			});
-		}else if(data=="login"){
-			alert("请登录后购买!");
-			location.href="login.jsp";
-		}else if(data=="empty"){
-			alert("库存不足!");
-			location.reload();
-		}else{
-			alert("请求失败!");
-		}
-	});
-}
+
+    //ajax请求--加入购物车
+    function add(goodid) {
+            $.ajax({
+                type: "POST",
+                url: "/addcart",
+                data: {
+                    "goodid": goodid
+                },
+                success: function (data) {
+                    if (data == "empty") {
+                        alert("库存不足")
+                    } else {
+                        //将json字符串转换成json对象
+                        var jsonCatr = jQuery.parseJSON(data);
+                        //然后改变属性显示
+                        $("#count").html("数量："+jsonCatr.count);
+                    }
+
+                }
+
+            })
+    }
+
 /**
  * 购物车减去
  */
-function lessen(goodid){
-	$.post("lessen.action", {goodid:goodid}, function(data){
-		if(data=="ok"){
-			layer.msg("操作成功!", {time:800}, function(){
-				location.href="cart.action";
-			});
-		}else if(data=="login"){
-			alert("请登录后操作!");
-			location.href="login.jsp";
-		}else{
-			alert("请求失败!");
-		}
-	});
+//ajax请求--加入购物车
+    function dec(goodid) {
+    $.ajax({
+        type: "POST",
+        url: "/deccart",
+        data: {
+            "goodid": goodid
+        },
+        success:function (data) {
+            if(data=="success"){
+                location.reload();  //重新刷新页面
+            }else{
+                //将json字符串转换成json对象
+                var jsonCatr = jQuery.parseJSON(data);
+                //然后改变属性显示
+                $("#count").html("数量："+jsonCatr.count);
+            }
+
+        }
+    })
 }
 /**
  * 购物车删除
  */
-function deletes(goodid){
-	$.post("delete.action", {goodid:goodid}, function(data){
-		if(data=="ok"){
-			layer.msg("删除成功!", {time:800}, function(){
-				location.href="cart.action";
-			});
-		}else if(data=="login"){
-			alert("请登录后操作!");
-			location.href="login.jsp";
-		}else{
-			alert("请求失败!");
-		}
-	});
-}
+    function delet(goodid) {
+    $.ajax({
+        type: "POST",
+        url: "/deletcart",
+        data: {
+            "goodid": goodid
+        },
+        success:function (data) {
+            if(data=="sussess"){
+                location.reload();  //重新刷新页面
+            }
+
+        }
+    })
+
+    }

@@ -64,7 +64,7 @@
             </div>
             <!--购物车图标-->
             <div class="header-right cart dropdown" id="cart">
-                <a href="cart.html">
+                <a href="/cart">
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"><span class="card_num" id="card_num">0</span></span>
                 </a>
                 <div class="dropdown-content">
