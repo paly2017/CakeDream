@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class OrderServiceImpl implements IOrderService {
         Long orderNumber = (Long) httpSession.getAttribute("orderNumber"); //订单号
         Integer allAmount = (Integer) httpSession.getAttribute("allAmount"); //商品总价
         String orderDate = (String) httpSession.getAttribute("orderDate"); //生成订单号时间
-        List<Order> orderList = null;
+        List<Order> orderList =  new ArrayList<Order>();
         for (MiniCart miniCart:
              miniCartList) {
             //创建order对象

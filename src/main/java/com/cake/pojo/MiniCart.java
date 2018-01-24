@@ -24,4 +24,12 @@ public class MiniCart {
     public void setCount(Integer count) {
         this.count = count;
     }
+
+    @Override
+    public String toString() {
+        return "MiniCart{" +
+                "good=" + good +
+                ", count=" + count +
+                '}';
+    }
 }

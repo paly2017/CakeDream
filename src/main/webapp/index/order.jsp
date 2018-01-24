@@ -8,6 +8,7 @@
 --%>
 <!--付款后的订单详情页面-->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>我的订单</title>
@@ -23,6 +24,7 @@
     <script src="index/js/header.js"></script>
     <script src="index/js/jquery.fly.min.js"></script>
     <script src="index/js/goods.js"></script>
+
 </head>
 <body>
 <!--引入头部-->
@@ -45,35 +47,36 @@
                 <th width="10%">操作</th>
             </tr>
             <%--循环遍历输出客户不同订单的信息--%>
-            <c:forEach var="minGoodsNum" items="minGoodsNum">
-            <c:forEach var="ordersList" items="orderList">
+
+            <c:forEach  items="${sessionScope.orderList}" var="order">
+                <c:forEach items="${sessionScope.miniCartList}" var="minGoodsNum" >
             <tr>
-                <td><p>${sessionScope.ordersList.id}</p></td>
-                <td><p>${sessionScope.ordersList.total}</p></td>
+                <td><p>${order.id}</p></td>
+                <td><p>${order.total}</p></td>
                 <td>
-                    <p>${minGoodsNum.good.name}(${minGoodsNum.good.name.price}) x ${minGoodsNum.count}</p>
+                    <p>这里${minGoodsNum.good.name}(${minGoodsNum.good.price}) x ${minGoodsNum.count}</p>
                 </td>
                 <td>
-                    <p>${sessionScope.ordersList.name}</p>
-                    <p>${sessionScope.ordersList.phone}</p>
-                    <p>${sessionScope.ordersList.address}</p>
+                    <p>${order.name}</p>
+                    <p>${order.phone}</p>
+                    <p>${order.address}</p>
                 </td>
                 <td>
                     <p>
-                        <span style="color:red;">${sessionScope.ordersList.status}</span>
+                        <span style="color:red;">${order.status}</span>
                     </p>
                 </td>
                 <td>
                     <p>
-                        ${sessionScope.ordersList.paytype}
+                        ${order.paytype}
                     </p>
                 </td>
-                <td><p>${sessionScope.ordersList.systime}</p></td>
+                <td><p>${order.systime}</p></td>
                 <td>
 
                 </td>
             </tr>
-            </c:forEach>
+                </c:forEach>
             </c:forEach>
         </table>
     </div>

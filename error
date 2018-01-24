@@ -78,4 +78,7 @@ css文件和js文件引入冲突
        data:{name:function(){
          return $("#name").val();
        }
+  18、com.cake.service.Impl.OrderServiceImpl.insertOrder（OrderServiceImpl.java:74）
+     	com.cake.contorllers.OrderController.jumpToOrderPayOk（OrderController.java:42）
+     	在创建集合的时候没有new出来新对象
 
