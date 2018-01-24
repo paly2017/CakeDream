@@ -148,17 +148,24 @@ public class GoodServiceImpl implements IGoodService {
        }
     }
 
-    public Double getTotalPrice(HttpServletRequest request) {
-        Double totalPrice = 0.0;
+    /****
+     * 计算购物车中商品总价钱
+     * @param request
+     * @return
+     */
+    public Integer getTotalPrice(HttpServletRequest request) {
+        Integer totalPrice = 0;
         List<MiniCart> miniCartList =
                 (List<MiniCart> )request.getSession().getAttribute("minGoodsNum");
         if (miniCartList==null){
-            return Double.valueOf("0");
+            return Integer.valueOf("0");
         }
         for (MiniCart miniCart : miniCartList){
-                
+            int price = miniCart.getGood().getPrice();
+            int count = miniCart.getCount();
+            totalPrice+=price*count;
         }
-        return null;
+        return totalPrice;
     }
 
     /**

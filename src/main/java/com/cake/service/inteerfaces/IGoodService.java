@@ -61,6 +61,6 @@ public interface IGoodService {
    */
     String mincartGoodSrevice(HttpSession session);
 
-    Double getTotalPrice(HttpServletRequest request);
+    Integer getTotalPrice(HttpServletRequest request);
 
 }
