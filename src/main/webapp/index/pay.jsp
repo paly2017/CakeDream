@@ -23,10 +23,17 @@
     <script src="index/js/goods.js"></script>
 </head>
 <body>
+
+
 <%--<head>--%>
 <jsp:include page="herder.jsp"/>
 <%--</head>--%>
-
+<style type="text/css">
+    body{
+        background-image: url(/PayPicture/background2.jpg);
+        background-size:cover;
+    }
+</style>
 <div class="cart-items">
     <div class="container">
         <h2>确认收货信息</h2>
@@ -60,7 +67,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
                 <a href="payOk?payType=1">
-                    <img src="G:/CakeDream/src/main/webapp/index/images/wechat.jpg" alt="微信支付">
+                    <img src="images/wechat.jpg" alt="微信支付">
                 </a>
             </div>
         </div>
@@ -74,20 +81,20 @@
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
                 <a href="payOk?payType=3">
-                    <img src="G:/CakeDream/src/main/webapp/index/images/offline.jpg" alt="货到付款">
+                    <img src="images/offline.jpg" alt="货到付款">
                 </a>
             </div>
         </div>
     </div>
 </div>
-<%--<script>
+<script>
     function dopay(paytype) {
         function dopay(paytype){
             $("#paytype").val(paytype);
             $("#payform").submit();
         }
     }
-</script>--%>
+</script>
 
 
 
