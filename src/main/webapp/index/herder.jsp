@@ -70,7 +70,7 @@
                 <div class="dropdown-content">
                     <form action="" method="">
                         <table class="table table-condensed" id="mincart">
-
+    
                         </table>
                         <div class="btn-group btn-success">
                             <div class="btn btn-success" style="float: left">总价：<span id="mypay"></span> </div>
