@@ -22,7 +22,7 @@
             <!--navbar-header-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html" class="active">首页</a></li>
+                    <li><a href="/index" class="active">首页</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle " data-toggle="dropdown" id="itemclass">商品分类<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-2">
@@ -32,7 +32,7 @@
                                     <div class="col-sm-12">
                                         <h4>商品分类</h4>
                                         <ul class="multi-column-dropdown">
-                                            <li id="typeli"><a class="list" href="goods.html"></a></li>
+                                            <li id="typeli"><a class="list" href=""></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -42,8 +42,8 @@
                     <li><a id="hotGood" href="/tops?type=2" >热销</a></li>
                     <li><a id="newGood" href="/tops?type=3" >新品</a></li>
 
-                    <li><a href="register.html" >注册</a></li>
-                    <li><a href="login.html" >登录</a></li>
+                    <li><a href="index/register.jsp" >注册</a></li>
+                    <li><a href="index/login.jsp" >登录</a></li>
 
 
                     <li><a href="../admin/login.html" target="_blank">后台管理</a></li>

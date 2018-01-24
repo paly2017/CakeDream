@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -36,9 +37,15 @@ public class ReqAjax {
     public String goodsType(HttpServletRequest request){
         return typeService.selectAllType(request);
     }
+
+    /***
+     * mini购物车增加
+     * @param goodID
+     * @param request
+     * @return
+     */
     @PostMapping("/getgood")
     public String getGood(@RequestParam("goodid")String goodID ,HttpServletRequest request){
-        System.out.println("goodID = [" + goodID + "], request = [" + request + "]");
         return  goodService.mincartGoodSrevice(Integer.parseInt(goodID),request);
     }
 
@@ -62,6 +69,11 @@ public class ReqAjax {
      * @param request
      * @return
      */
+
+
+
+
+    //加入购物车的方法--jelly
     @PostMapping("/addcart")
     public String addCart(@RequestParam("goodid") Integer goodId, HttpServletRequest request){
         System.out.println("增加获取参数"+goodId);
@@ -126,13 +138,25 @@ public class ReqAjax {
         HttpSession httpSession= request.getSession();
         //取出session的属性
         List<MiniCart>  cartList =(  List<MiniCart> ) httpSession.getAttribute("minGoodsNum");
-        //循环遍历集合
+
+
+        /*//循环遍历集合
         for (MiniCart cart:cartList) {
             //找到该商品
             if (goodId == cart.getGood().getId()) {
                 //在集合中移除
                 cartList.remove(cart);
             }
+        }*/
+
+        //迭代器循环遍历
+        Iterator<MiniCart> iter=cartList.iterator();
+        while(iter.hasNext()){
+            MiniCart cart=iter.next();
+            if(cart.getGood().getId()==goodId){
+                iter.remove();
+            }
+
         }
         /*直接返回页面*/
         return "sussess";

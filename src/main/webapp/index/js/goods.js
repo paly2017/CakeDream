@@ -79,11 +79,11 @@ function cartinto(obj,goodId) {
                 success:function (msg) {
                     var cartmsg = jQuery.parseJSON(msg);
                     var index=0;
-                   $("table").find("*").detach();
+                    $("table").empty();
                     cartmsg.forEach(function (value) {
                         $("#mincart").append(
                             "<tr> <td> <img src='../"+value.good.cover+" 'height='80' width='80'/> </td>"+
-                            "<td> <div>"+value.good.name+"</div> <div>价钱：<span class='spice'>"+value.good.price+"</span></div>"+
+                            "<td> <div>"+value.good.name+"</div> <div>价钱：<span class='spice'>"+parseFloat(value.good.price)*parseInt(value.count)+"</span></div>"+
                             "<div>数量：<span id='cake1'>"+value.count+"</span></div> <div>"+
                             "<button class='btn-success' type='button'onclick='cartsum(this)' >加</button>"+
                             " <button class='btn-success' type='button' onclick='cartsum(this)'>减</button> </div> </td> </tr>"+
@@ -102,13 +102,12 @@ function cartinto(obj,goodId) {
         url:"/newpageing",
         success:function (msg) {
             if (null!=msg){
-                $("table").find("*").detach();
                 var cartmsg = jQuery.parseJSON(msg);
                 var index=0;
                 cartmsg.forEach(function (value) {
                     $("#mincart").append(
                         "<tr> <td> <img src='../"+value.good.cover+" 'height='80' width='80'/> </td>"+
-                        "<td> <div>"+value.good.name+"</div> <div>价钱：<span class='spice'>"+value.good.price+"</span></div>"+
+                        "<td> <div>"+value.good.name+"</div> <div>价钱：<span class='spice'>"+parseFloat(value.good.price)*parseInt(value.count)+"</span></div>"+
                         "<div>数量：<span id='cake1'>"+value.count+"</span></div> <div>"+
                         "<button class='btn-success' type='button'onclick='cartsum(this)' >加</button>"+
                         " <button class='btn-success' type='button' onclick='cartsum(this)'>减</button> </div> </td> </tr>"+
@@ -123,7 +122,7 @@ function cartinto(obj,goodId) {
 
 
 
-function cartsum(object) {
+/**function cartsum(object) {
     $(document).ready(function () {
         if($(object).html()=="加"){
             var obj = $(object).parent().siblings().add();
@@ -157,4 +156,4 @@ function cartsum(object) {
         }
     })
 
-}
+}*/

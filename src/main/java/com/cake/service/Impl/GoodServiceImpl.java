@@ -90,10 +90,32 @@ public class GoodServiceImpl implements IGoodService {
      */
     public String mincartGoodSrevice(Integer integer, HttpServletRequest request) {
         MiniCart miniCart=null;
+        Integer oldgoodId=null;
         //从session中获取mini购物车数据
        List<MiniCart> miniCartList =
                (List<MiniCart>)request.getSession().getAttribute("minGoodsNum");
        //判断mini购物车数据中数据是否为空
+       if (null!=miniCartList){
+           //判断集合中购物车的good_id是否存在
+           for (MiniCart itemgood : miniCartList){
+               //更新已存在商品数量
+               if (itemgood.getGood().getId().equals(integer)){
+                   if (itemgood.getCount()<=itemgood.getGood().getStock()){
+                       itemgood.setCount(itemgood.getCount()+1);
+                       oldgoodId = itemgood.getGood().getId();
+                       break;
+                   }
+               }
+           }
+           if (null==oldgoodId){
+               Good good = goodMapper.slectGoodByGoodId(integer);
+               miniCart = new MiniCart();
+               miniCart.setGood(good);
+               miniCart.setCount(1);
+               miniCartList.add(miniCart);
+               request.getSession().setAttribute("minGoodsNum",miniCartList);
+           }
+       }
        if (null==miniCartList){
            miniCartList = new ArrayList<MiniCart>();
            Good good = goodMapper.slectGoodByGoodId(integer);
@@ -101,34 +123,12 @@ public class GoodServiceImpl implements IGoodService {
                miniCart = new MiniCart();
                miniCart.setGood(good);
                miniCart.setCount(1);
+               miniCartList.add(miniCart);
+               request.getSession().setAttribute("minGoodsNum",miniCartList);
+           }
+       }
 
-           }
-       }else {
-           //判断集合中购物车的good_id是否存在
-           for (MiniCart itemgood : miniCartList){
-               //更新已存在商品数量
-               if (itemgood.getGood().getId().equals(integer)){
-                   if (itemgood.getCount()<=itemgood.getGood().getStock()){
-                       itemgood.setCount(itemgood.getCount()+1);
-                   }
-                   break;
-               }else {
-                   //根据good_id查询商品
-                   Good good = goodMapper.slectGoodByGoodId(integer);
-                   if (null!=good){
-                       miniCart = new MiniCart();
-                       miniCart.setGood(good);
-                       miniCart.setCount(1);
-                       break;
-                   }
-               }
-           }
-       }
-       if (null!=miniCart){
-           miniCartList.add(miniCart);
-           request.getSession().setAttribute("minGoodsNum",miniCartList);
-       }
-        System.out.println("integer = "+Uilt.getGsonToString(miniCart));
+        System.out.println("integer = "+Uilt.getGsonToString(miniCartList));
         return Uilt.getGsonToString(miniCartList);
     }
 
@@ -144,7 +144,7 @@ public class GoodServiceImpl implements IGoodService {
            System.out.println("session = [" + miniCartList + "]");
            return  Uilt.getGsonToString(miniCartList);
        }else {
-           return null;
+           return "";
        }
     }
 

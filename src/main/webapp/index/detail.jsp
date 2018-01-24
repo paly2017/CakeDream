@@ -80,7 +80,7 @@
                     <!-- <h2>商品分类</h2> -->
                     <ul>
                         <c:forEach items="${sessionScope.alltype}" var="type">
-                        <li><a href="/typegoogs?typeId=${type.id}">${type.name}</a></li>
+                            <li><a href="/typegoogs?typeId=${type.id}">${type.name}</a></li>
                         </c:forEach>
                     </ul>
                 </div>
