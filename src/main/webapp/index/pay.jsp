@@ -60,28 +60,31 @@
             </div>
         </form>
 
-        <br><hr><br>
+        
 
         <h2>选择支付方式</h2>
         <h3>订单编号:${sessionScope.orderNumber }  支付金额: ${sessionScope.allAmount} </h3><br><br>
         <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <center style="font-size: 25px">微信支付</center>
             <div class="thumbnail">
                 <a href="payOk?payType=1">
-                    <img src="images/wechat.jpg" alt="微信支付">
+                    <img src="/PayPicture/WX.jpg" alt="微信支付">
                 </a>
             </div>
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <center style="font-size: 25px">支付宝支付</center>
             <div class="thumbnail">
                 <a href="payOk?payType=2">
-                    <img src="images/alipay.jpg" alt="支付宝支付">
+                    <img src="/PayPicture/ZFB.jpg" alt="支付宝支付">
                 </a>
             </div>
         </div>
         <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <center style="font-size: 25px">货到付款</center>
             <div class="thumbnail">
                 <a href="payOk?payType=3">
-                    <img src="images/offline.jpg" alt="货到付款">
+                    <img src="/PayPicture/HDFK.png" alt="货到付款">
                 </a>
             </div>
         </div>
