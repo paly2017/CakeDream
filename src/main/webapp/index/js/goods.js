@@ -156,4 +156,4 @@ function cartsum(object) {
         }
     })
 
-}*/
+}
