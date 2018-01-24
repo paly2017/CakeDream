@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @ResponseBody
-public class RegAjax {
+public class RegisterAjax {
     //注入UserServiceImpl实现类
     @Autowired
     private UserServiceImpl userServiceImpl;

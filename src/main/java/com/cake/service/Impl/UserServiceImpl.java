@@ -31,17 +31,19 @@ public class UserServiceImpl implements IUserService {
      */
     public User insertUser(String username,String password,String name,String phone,String address){
         User user=new User();
-        if(userMapper.insertUser(username,password,name,phone,address)>0){
-          user.setUsername(username);
-            try {
-                user.setPassword(UserUitl.encodeMD5(password));
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
+        try {
+            String pasw=UserUitl.encodeMD5(password);
+            if(userMapper.insertUser(username,password,name,phone,address)>0){
+                user.setUsername(username);
+                user.setPassword(pasw);
+                user.setName(name);
+                user.setPhone(phone);
+                user.setAddress(address);
             }
-            user.setName(name);
-          user.setPhone(phone);
-           user.setAddress(address);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
+
         return user;
     }
 

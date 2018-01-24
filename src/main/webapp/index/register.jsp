@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="index/css/header.css">
     <script src="index/js/header.js"></script>
 </head>
-
+<body>
 <%--引入头部--%>
     <jsp:include page="herder.jsp"/>
 

@@ -83,12 +83,13 @@
             </div>
 
             <div class="header-right login">
-                <a href="my.jsp">
+                <a href="/my">
                     <span class="glyphicon" aria-hidden="true">
+                        <span style="font-size: 18px"> ${sessionScope.loginUser.username}<span>
                     </span>
                 </a>
             </div>
-            <div class="clearfix">${sessionScope.loginUser.username}</div>
+            <div class="clearfix"></div>
         </div>
         <div class="clearfix" style="float: right"></div>
     </div>

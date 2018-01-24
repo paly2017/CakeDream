@@ -36,7 +36,8 @@ $().ready(function () {
                 required:true
             },
             phone:{
-                required:true
+                required:true,
+                phone:true
             },
             address:{
                 required:true
@@ -57,7 +58,8 @@ $().ready(function () {
                 required:"请输入收货人姓名！"
             },
             phone:{
-                required:"请输入电话！"
+                required:"请输入电话！",
+                phone:"电话号码格式错误！"
             },
             address:{
                 required:"请输入收货人地址！"
@@ -65,10 +67,16 @@ $().ready(function () {
         }
 
     });
-   /*//自定义用户名校验规则
-    jQuery.validator.addMethod("phone", function(value, element, param){
-           return "";
-    }*/
+   //自定义电话校验规则
+    jQuery.validator.addMethod("phone", function(value){
+        var reg ="^((1[3,8][0-9])|(14[5,7])|(15[^4\\D])|(166)|(17[3,5,6,8])|(19[8,9]))\\d{8}$";
+        if(reg.test(value) && value.length==11){
+            return true;
+        }else{
+            return false;
+        }
+
+    });
 
     /* //当用户名失去焦点时发送aJax请求
      $("#user").click(function () {
