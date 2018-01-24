@@ -88,7 +88,7 @@
                     </span>
                 </a>
             </div>
-            <div class="clearfix">${sessionScope.loginUser.username}<</div>
+            <div class="clearfix">${sessionScope.loginUser.username}</div>
         </div>
         <div class="clearfix" style="float: right"></div>
     </div>

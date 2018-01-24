@@ -47,11 +47,11 @@
                     <div class="clearfix"> </div>
                 </div>
                 <div class="register-but text-center">
-                    <input type="submit" value="提交" id="submitlogin" class="">
+                    <input type="submit" value="  提交" id="submitlogin" class="">
                     <div class="clearfix"> </div>
                 </div>
             </form>
-            <div class="clearfix"> </div>
+            <div class="clearfix">${requestScope.error}</div>
         </div>
     </div>
 </div>

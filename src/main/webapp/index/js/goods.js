@@ -81,12 +81,13 @@ function cartinto(obj,goodId) {
                     var index=0;
                     $("table").empty();
                     cartmsg.forEach(function (value) {
+                        var goodid = value.good.id
                         $("#mincart").append(
                             "<tr> <td> <img src='../"+value.good.cover+" 'height='80' width='80'/> </td>"+
                             "<td> <div>"+value.good.name+"</div> <div>价钱：<span class='spice'>"+parseFloat(value.good.price)*parseInt(value.count)+"</span></div>"+
                             "<div>数量：<span id='cake1'>"+value.count+"</span></div> <div>"+
-                            "<button class='btn-success' type='button'onclick='cartsum(this)' >加</button>"+
-                            " <button class='btn-success' type='button' onclick='cartsum(this)'>减</button> </div> </td> </tr>"+
+                            "<button class='btn-success' type='button'onclick='cartsum(this,"+goodid+")' >加</button>"+
+                            " <button class='btn-success' type='button' onclick='cartsum(this,"+goodid+")'>减</button> </div> </td> </tr>"+
                             "<tr> <td></td> <td></td></tr>");
                         index += parseInt(value.count);
                     });
@@ -105,55 +106,90 @@ function cartinto(obj,goodId) {
                 var cartmsg = jQuery.parseJSON(msg);
                 var index=0;
                 cartmsg.forEach(function (value) {
-                    $("#mincart").append(
-                        "<tr> <td> <img src='../"+value.good.cover+" 'height='80' width='80'/> </td>"+
-                        "<td> <div>"+value.good.name+"</div> <div>价钱：<span class='spice'>"+parseFloat(value.good.price)*parseInt(value.count)+"</span></div>"+
-                        "<div>数量：<span id='cake1'>"+value.count+"</span></div> <div>"+
-                        "<button class='btn-success' type='button'onclick='cartsum(this)' >加</button>"+
-                        " <button class='btn-success' type='button' onclick='cartsum(this)'>减</button> </div> </td> </tr>"+
-                        "<tr> <td></td> <td></td></tr>");
-                    index += parseInt(value.count);
+                    if (value!=""||value!=null){
+                        var goodid = value.good.id;
+                        $("#mincart").append(
+                            "<tr> <td> <img src='../"+value.good.cover+" 'height='80' width='80'/> </td>"+
+                            "<td> <div>"+value.good.name+"</div> <div>价钱：<span class='spice'>"+parseFloat(value.good.price)*parseInt(value.count)+"</span></div>"+
+                            "<div>数量：<span id='cake1'>"+value.count+"</span></div> <div>"+
+                            "<button class='btn-success' type='button'onclick='cartsum(this,"+goodid+")' >加</button>"+
+                            " <button class='btn-success' type='button' onclick='cartsum(this,"+goodid+")'>减</button> </div> </td> </tr>"+
+                            "<tr> <td></td> <td></td></tr>");
+                        index += parseInt(value.count);
+                    }
+                    $("#card_num").html(index);
                 });
-                $("#card_num").html(index);
             }
         }
     })
 })(window);
 
 
-
-function cartsum(object) {
+/****
+ * min购物车增加删除
+ * @param object
+ * @param goodid
+ */
+function cartsum(object,goodid) {
     $(document).ready(function () {
+
         if($(object).html()=="加"){
-            var obj = $(object).parent().siblings().add();
-            var num = obj.eq(2).find("span").html();
-            num = parseInt(num)+1;
-            obj.eq(2).find("span").html(num);
-            obj.eq(1).find("span").html(num*120 );
-            var s =$(".spice").add();
-            var pay=0;
-            for (var i=0;i<s.length;i++){
-                var ss =s.eq(i).html();
-                pay+=parseInt(ss);
-            }
-            $("#mypay").html(pay);
+            $.ajax({
+                type:"post",
+                url:"/addcart",
+                data:{goodid:goodid},
+                success:function (msg) {
+                    var pay=0;
+                    if (msg="success"){
+                        var obj = $(object).parent().siblings().add();
+                        var num = obj.eq(2).find("span").html();
+                        var price = obj.eq(1).find("span").html();
+                        var stock = $("stock").val();
+                        price = parseFloat(price)/parseInt(num);
+                        num = parseInt(num)+1;
+                            obj.eq(2).find("span").html(num);
+                            obj.eq(1).find("span").html(price*num);
+                            var s =$(".spice").add();
+                            for (var i=0;i<s.length;i++){
+                                var ss =s.eq(i).html();
+                                pay+=parseInt(ss);
+                            }
+                            $("#mypay").html(pay);
+                            var sunNo = $("#card_num").html();
+                            $("#card_num").html(parseInt(sunNo)+1);
+                    }
+                }
+            });
         }else {
-            var obj = $(object).parent().siblings().add();
-            var num = obj.eq(2).find("span").html();
-            num = parseInt(num)-1;
-            if (num<=0){
-                num=0;
-            }
-            obj.eq(2).find("span").html(num);
-            obj.eq(1).find("span").html(num*120 );
-            var s =$(".spice").add();
-            var pay=0;
-            for (var i=0;i<s.length;i++){
-                var ss =s.eq(i).html();
-                pay+=parseInt(ss);
-            }
-            $("#mypay").html(pay);
+            $.ajax({
+                type:"post",
+                url:"/deccart",
+                data:{goodid:goodid},
+                success:function (msg) {
+                    var pay=0;
+                    if (msg="success"){
+                        var obj = $(object).parent().siblings().add();
+                        var num = obj.eq(2).find("span").html();
+                        var price = obj.eq(1).find("span").html();
+                        price = parseFloat(price)/parseInt(num);
+                        num = parseInt(num)-1;
+                        if (num>=1){
+                            obj.eq(2).find("span").html(num);
+                            obj.eq(1).find("span").html(price*num);
+                            var s =$(".spice").add();
+                            for (var i=0;i<s.length;i++){
+                                var ss =s.eq(i).html();
+                                pay+=parseInt(ss);
+                            }
+                            $("#mypay").html(pay);
+                            var sunNo = $("#card_num").html();
+                            $("#card_num").html(parseInt(sunNo)-1);
+                        }else {
+                            alert("已经最小了，请进入购物车删除！！！")
+                        }
+                    }
+                }
+            });
         }
     })
-
 }

@@ -139,7 +139,6 @@ public class ReqAjax {
         //取出session的属性
         List<MiniCart>  cartList =(  List<MiniCart> ) httpSession.getAttribute("minGoodsNum");
 
-
         /*//循环遍历集合
         for (MiniCart cart:cartList) {
             //找到该商品

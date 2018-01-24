@@ -53,7 +53,18 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     public User doLogingService(String username, String password, HttpServletRequest request) {
-        return  userMapper.selectByNameAndPass(username,password);
+        try {
+            String  loginpassword = UserUitl.encodeMD5(password);
+            User loginuser=  userMapper.selectByNameAndPass(username,loginpassword);
+            if (null!=loginuser){
+                Cookie cookie = new Cookie("userNamekey",username);
+                System.out.println("cookie"+cookie.getName());
+            }
+            return loginuser;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /****

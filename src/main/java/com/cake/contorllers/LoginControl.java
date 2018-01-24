@@ -2,8 +2,6 @@ package com.cake.contorllers;
 
 import com.cake.pojo.User;
 import com.cake.service.Impl.UserServiceImpl;
-import com.cake.uilt.Uilt;
-import com.cake.uilt.UserUitl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +40,6 @@ public class LoginControl {
                                 @RequestParam("login_password")String password,
                                 HttpServletRequest request){
        User user =  userService.doLogingService(username,password,request);
-
        if (null==user){
            modelAndView.setViewName("index/login");
            modelAndView.addObject("error","用户名密码错误！！！");
