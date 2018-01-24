@@ -122,38 +122,3 @@ function cartinto(obj,goodId) {
 
 
 
-/**function cartsum(object) {
-    $(document).ready(function () {
-        if($(object).html()=="加"){
-            var obj = $(object).parent().siblings().add();
-            var num = obj.eq(2).find("span").html();
-            num = parseInt(num)+1;
-            obj.eq(2).find("span").html(num);
-            obj.eq(1).find("span").html(num*120 );
-            var s =$(".spice").add();
-            var pay=0;
-            for (var i=0;i<s.length;i++){
-                var ss =s.eq(i).html();
-                pay+=parseInt(ss);
-            }
-            $("#mypay").html(pay);
-        }else {
-            var obj = $(object).parent().siblings().add();
-            var num = obj.eq(2).find("span").html();
-            num = parseInt(num)-1;
-            if (num<=0){
-                num=0;
-            }
-            obj.eq(2).find("span").html(num);
-            obj.eq(1).find("span").html(num*120 );
-            var s =$(".spice").add();
-            var pay=0;
-            for (var i=0;i<s.length;i++){
-                var ss =s.eq(i).html();
-                pay+=parseInt(ss);
-            }
-            $("#mypay").html(pay);
-        }
-    })
-
-}*/
