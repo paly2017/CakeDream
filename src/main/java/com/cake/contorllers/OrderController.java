@@ -30,48 +30,17 @@ public class OrderController {
      */
     @RequestMapping("/pay")
     public String getOrderList(@RequestParam("userId")Integer userId,
-                                     HttpServletRequest request  ){
-        HttpSession httpSession = request.getSession();
-        //获取购物车商品集合
-        List<MiniCart> miniCartList = (List<MiniCart>) request.getSession().getAttribute("minGoodsNum");
-       //循环遍历集合 获取商品数量和总价
-        Integer allAmount = 0;
-        Integer goodNums = 0;
-        for (MiniCart miniCart:
-             miniCartList) {
-            goodNums = goodNums+miniCart.getCount();
-            //单个商品总价
-           Integer amount =  (miniCart.getGood().getPrice())*(miniCart.getCount());
-            //所有商品总价
-            allAmount=amount+allAmount;
-        }
-
-
+                               HttpSession httpSession   ){
         //调用根据用户id查询用户信息的方法
         User user = userService.getUserByUserId(userId);
-        //生成订单号时间
-        String orderDate = orderService.getOrderDate();
-        //生成随机订单号
-        Long orderNumber = orderService.getOrderNumber();
-
-
-        //订单号放入session
-        httpSession.setAttribute("orderNumber",orderNumber);
-        //用户对象放入session
-        httpSession.setAttribute("user",user);
-        //商品总价放入session
-        httpSession.setAttribute("allAmount",allAmount);
-        //商品总数放入session
-        httpSession.setAttribute("goodNums",goodNums);
-        //时间放入模型当中
-        httpSession.setAttribute("orderDate",orderDate);
+        orderService.getOrderListFunction(httpSession,user);
         //设置跳转的页面至支付页面
         return "index/pay";
     }
 
     @RequestMapping("/payOk")
-    public String jumpToOrderPayOk(HttpServletRequest request,@RequestParam("payType")Integer payType){
-        HttpSession httpSession = request.getSession();
+    public String jumpToOrderPayOk(HttpSession httpSession,@RequestParam("payType")Integer payType){
+
         //从session中获取相应的信息
         User user = (User) httpSession.getAttribute("user");//用户
         Long orderNumber = (Long) httpSession.getAttribute("orderNumber"); //订单号

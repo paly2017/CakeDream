@@ -1,15 +1,18 @@
 package com.cake.service.Impl;
 
 import com.cake.mapper.OrderMapper;
+import com.cake.pojo.MiniCart;
 import com.cake.pojo.Order;
 import com.cake.pojo.User;
 import com.cake.service.inteerfaces.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 生成订单时间
@@ -57,8 +60,39 @@ public class OrderServiceImpl implements IOrderService {
         return order;
     }
 
+    //对order数据对象进行获取并且封装值session当中
+    public HttpSession getOrderListFunction(HttpSession httpSession, User user) {
+        //获取购物车商品集合
+        List<MiniCart> miniCartList = (List<MiniCart>) httpSession.getAttribute("minGoodsNum");
+        //循环遍历集合 获取商品数量和总价
+        Integer allAmount = 0;
+        Integer goodNums = 0;
+        for (MiniCart miniCart:
+                miniCartList) {
+            goodNums = goodNums+miniCart.getCount();
+            //单个商品总价
+            Integer amount =  (miniCart.getGood().getPrice())*(miniCart.getCount());
+            //所有商品总价
+            allAmount=amount+allAmount;
+        }
 
+        //生成订单号时间
+        String orderDate = this.getOrderDate();
+        //生成随机订单号
+        Long orderNumber = this.getOrderNumber();
 
+        //订单号放入session
+        httpSession.setAttribute("orderNumber",orderNumber);
+        //用户对象放入session
+        httpSession.setAttribute("user",user);
+        //商品总价放入session
+        httpSession.setAttribute("allAmount",allAmount);
+        //商品总数放入session
+        httpSession.setAttribute("goodNums",goodNums);
+        //时间放入模型当中
+        httpSession.setAttribute("orderDate",orderDate);
+        return httpSession;
+    }
 
 
 }
