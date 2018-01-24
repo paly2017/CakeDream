@@ -27,13 +27,16 @@ public class UserServiceImpl implements IUserService {
     }
 
     /**
-     *给用户表插入数据实现类--返回受影响的行数
+     *给用户表插入数据实现类--返回一个用户类
      */
     public User insertUser(String username,String password,String name,String phone,String address){
+        //创建用户类
         User user=new User();
         try {
+            //密码用MD5，加密
             String pasw=UserUitl.encodeMD5(password);
             if(userMapper.insertUser(username,pasw,name,phone,address)>0){
+                //封装用户信息
                 user.setUsername(username);
                 user.setPassword(pasw);
                 user.setName(name);
@@ -45,6 +48,27 @@ public class UserServiceImpl implements IUserService {
         }
 
         return user;
+    }
+
+    /**
+     *  个人中心修改增加地址的方法
+     */
+    public Integer updataInfo(Integer id, String name, String phone, String address) {
+        //调用 userMapper借口实现类的方法
+       Integer i= userMapper.updataInfo(id,name, phone, address);
+        return i;
+    }
+    /**
+     * 根据密码查询用户信息
+     */
+    public User selectByPsw(String password) {
+        return userMapper.selectByPsw(password);
+    }
+    /**
+     *  修改密码--返回int受影响的行数
+     */
+    public Integer modefyPsw(Integer id, String password) {
+        return userMapper.modefyPsw(id,password);
     }
 
     /****

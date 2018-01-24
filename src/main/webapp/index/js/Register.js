@@ -75,7 +75,6 @@ $().ready(function () {
         }else{
             return false;
         }
-
     });
 
     /* //当用户名失去焦点时发送aJax请求
