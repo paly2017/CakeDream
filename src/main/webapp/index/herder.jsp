@@ -68,7 +68,7 @@
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"><span class="card_num" id="card_num">0</span></span>
                 </a>
                 <div class="dropdown-content">
-                    <form action="" method="">
+                    <form action="/pay" method="">
                         <table class="table table-condensed" id="mincart">
 
                         </table>

@@ -30,6 +30,10 @@ public class OrderController {
     @RequestMapping("/pay")
     public String getOrderList(HttpServletRequest httpServletRequest){
         HttpSession httpSession = httpServletRequest.getSession();
+        User user = (User) httpSession.getAttribute("loginUser");
+        if (null==user){
+            return "index/login";
+        }
         orderService.getOrderListFunction(httpSession);
         //设置跳转的页面至支付页面
         return "index/pay";
