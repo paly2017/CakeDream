@@ -2,10 +2,7 @@ package com.cake.mapper;
 
 
 import com.cake.pojo.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 @Mapper
@@ -13,9 +10,6 @@ import org.springframework.stereotype.Component;
 public interface UserMapper {
 
     int deleteByPrimaryKey(Integer id);
-
-
-
 
     int insert(User record);
 
@@ -36,6 +30,24 @@ public interface UserMapper {
             @Result(property = "adress",column = "adress")
     })
     User selectByPrimaryKey(Integer id);
+
+    /****
+     * 用户名密码
+     * @param username
+     * @param password
+     * @return
+     */
+    @Select("SELECT * FROM users WHERE username=#{username} AND password=#{password} ;")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "username",column = "username"),
+            @Result(property = "password",column = "password"),
+            @Result(property = "name",column = "name"),
+            @Result(property = "phone",column = "phone"),
+            @Result(property = "adress",column = "adress")
+    })
+    User selectByNameAndPass(@Param("username") String username,
+                             @Param("password") String password);
 
     int updateByPrimaryKeySelective(User record);
 

@@ -34,26 +34,27 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     public User doLogingService(String username, String password, HttpServletRequest request) {
-        try {
-            Cookie[] cookies =request.getCookies();
-            User loginUser = new User();
-            loginUser.setName(username);
-            loginUser.setPassword(UserUitl.encodeMD5(password));
-
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return  userMapper.selectByNameAndPass(username,password);
     }
 
+    /****
+     * 查询Cookies中用户名是否存在
+     * @param userName
+     * @param request
+     * @return
+     */
     public boolean doCookies(String userName , HttpServletRequest request) {
         try {
             Cookie[] cookies =request.getCookies();
-            String strUser = UserUitl.encodeMD5(userName);
+           if(null==cookies||cookies.length<1){
+               return false;
+           }
+           for (Cookie cookie : cookies){
 
+           }
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
         return false;
     }

@@ -10,21 +10,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.Cookie;
+
 import javax.servlet.http.HttpServletRequest;
-import java.security.NoSuchAlgorithmException;
+
 
 @Controller
 public class LoginControl {
     @Autowired
    private UserServiceImpl userService;
+
+    /***
+     * 处理用户登录方法
+     * @param modelAndView
+     * @param username
+     * @param password
+     * @param request
+     * @return
+     */
     @PostMapping("/login")
     public ModelAndView doLogin(ModelAndView modelAndView,
                                 @RequestParam("login_username")String username,
                                 @RequestParam("login_password")String password,
                                 HttpServletRequest request){
-
-        return null;
+       User user =  userService.doLogingService(username,password,request);
+       if (null==user){
+           modelAndView.setViewName("index/login");
+           modelAndView.addObject("error","用户名密码错误！！！");
+       }else {
+           modelAndView.setViewName("index");
+           modelAndView.addObject("loginUser",user);
+           request.getSession().setAttribute("loginUser",user);
+       }
+        return modelAndView;
     }
 
 }

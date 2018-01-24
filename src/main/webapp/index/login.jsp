@@ -30,7 +30,6 @@
 <div class="account">
     <div class="container">
         <div class="register">
-
             <!--登录页面-->
             <form id="lf" action="/login" method="post">
                 <div class="register-top-grid">
