@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 1
@@ -12,28 +13,27 @@
     <title>我的订单</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="layer/layer.js"></script>
-    <script type="text/javascript" src="js/cart.js"></script>
-    <link rel="stylesheet" href="css/header.css">
-    <script src="js/header.js"></script>
+    <link type="text/css" rel="stylesheet" href="index/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="index/css/style.css">
+    <script type="text/javascript" src="index/js/jquery.min.js"></script>
+    <script type="text/javascript" src="index/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="index/layer/layer.js"></script>
+    <script type="text/javascript" src="index/js/cart.js"></script>
+    <link rel="stylesheet" href="index/css/header.css">
+    <script src="index/js/header.js"></script>
     <script src="index/js/jquery.fly.min.js"></script>
     <script src="index/js/goods.js"></script>
 </head>
 <body>
 <!--引入头部-->
 <jsp:include page="herder.jsp"/>
+<%--</header>--%>
 
 <!--cart-items-->
 <div class="cart-items">
     <div class="container">
         <h2>我的订单</h2>
-
         <table class="table table-bordered table-hover">
-
             <tr>
                 <th width="10%">ID</th>
                 <th width="10%">总价</th>
@@ -44,32 +44,37 @@
                 <th width="10%">下单时间</th>
                 <th width="10%">操作</th>
             </tr>
-
+            <%--循环遍历输出客户不同订单的信息--%>
+            <c:forEach var="minGoodsNum" items="minGoodsNum">
+            <c:forEach var="ordersList" items="orderList">
             <tr>
-                <td><p>${requestScope.order.id}</p></td>
-                <td><p>${requestScope.order.total}</p></td>
+                <td><p>${sessionScope.ordersList.id}</p></td>
+                <td><p>${sessionScope.ordersList.total}</p></td>
                 <td>
-                    <p></p>
+                    <p>${minGoodsNum.good.name}(${minGoodsNum.good.name.price}) x ${minGoodsNum.count}</p>
                 </td>
                 <td>
-                    <p>${requestScope.order.name}</p>
-                    <p>${requestScope.order.phone}</p>
-                    <p>${requestScope.order.address}</p>
+                    <p>${sessionScope.ordersList.name}</p>
+                    <p>${sessionScope.ordersList.phone}</p>
+                    <p>${sessionScope.ordersList.address}</p>
                 </td>
                 <td>
                     <p>
-                        <span style="color:red;">${requestScope.order.status}</span>
+                        <span style="color:red;">${sessionScope.ordersList.status}</span>
                     </p>
                 </td>
                 <td>
                     <p>
-                        ${requestScope.order.paytype}
+                        ${sessionScope.ordersList.paytype}
                     </p>
                 </td>
-                <td><p>${requestScope.order.systime }</p></td>
+                <td><p>${sessionScope.ordersList.systime}</p></td>
                 <td>
+
                 </td>
             </tr>
+            </c:forEach>
+            </c:forEach>
         </table>
     </div>
 </div>
@@ -77,5 +82,6 @@
 
 <!--引入尾部-->
 <jsp:include page="footer.jsp"/>
+<%--</foot>--%>
 </body>
 </html>

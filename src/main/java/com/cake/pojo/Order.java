@@ -122,4 +122,20 @@ public class Order {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", total=" + total +
+                ", amount=" + amount +
+                ", status=" + status +
+                ", paytype=" + paytype +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", systime=" + systime +
+                ", userId=" + userId +
+                '}';
+    }
 }

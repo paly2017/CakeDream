@@ -24,36 +24,35 @@ public class OrderController {
     private OrderServiceImpl orderService;
 
     /**
-     * 获取页面的请求提交支付
-     * @param userId
-     * @return
+     * 购物车提交订单页面controller
+     * @return 跳转至支付页面
      */
     @RequestMapping("/pay")
-    public String getOrderList(@RequestParam("userId")Integer userId,
-                               HttpSession httpSession   ){
-        //调用根据用户id查询用户信息的方法
-        User user = userService.getUserByUserId(userId);
-        orderService.getOrderListFunction(httpSession,user);
+    public String getOrderList(HttpSession httpSession){
+        orderService.getOrderListFunction(httpSession);
         //设置跳转的页面至支付页面
         return "index/pay";
     }
 
     @RequestMapping("/payOk")
     public String jumpToOrderPayOk(HttpSession httpSession,@RequestParam("payType")Integer payType){
-
-        //从session中获取相应的信息
-        User user = (User) httpSession.getAttribute("user");//用户
-        Long orderNumber = (Long) httpSession.getAttribute("orderNumber"); //订单号
-        Integer allAmount = (Integer) httpSession.getAttribute("allAmount"); //商品总价
-        Integer goodNums = (Integer) httpSession.getAttribute("goodNums");//商品总数
-        String orderDate = (String) httpSession.getAttribute("orderDate"); //生成订单号时间
-        //调用方法
-        Order order = orderService.insertOrder(user,orderNumber,allAmount,goodNums,orderDate,payType);
-        httpSession.setAttribute("order",order);
+        //调用方法 获取一个order对象的集合
+        List<Order> orderList = orderService.insertOrder(httpSession,payType);
+        //获取数据库orders表中的最大id
+        Integer maxOrdersId = orderService.getMaxOrdersId();
+        httpSession.setAttribute("maxOrderId",maxOrdersId);
+        //将集合放入session中
+        httpSession.setAttribute("orderList",orderList);
+        //System.out.println("获取到的order最大的id："+maxOrdersId);
         return "index/payok";
     }
+    //从支付成功页面跳转至order.jsp页面
+    @RequestMapping("/order")
+    public String jumpToOrder(HttpSession httpSession){
 
-
-
+      /*  List<Order> orderList = (List<Order>) httpSession.getAttribute("orderList");*/
+        //System.out.print("获取session中的order对象是："+order.toString());
+        return "index/order";
+    }
 
 }

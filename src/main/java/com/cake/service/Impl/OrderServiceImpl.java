@@ -40,42 +40,62 @@ public class OrderServiceImpl implements IOrderService {
         return orderNumber;
     }
 
-    //组装order对象
-    public Order insertOrder(User user, Long orderNumber, Integer allAmount, Integer goodNums, String orderDate,Integer payType) {
-        //创建order对象
-        Order order = new Order();
-        //对order对象属性进行组装
-        order.setTotal(allAmount);
-        Timestamp timestamp = Timestamp.valueOf(orderDate);
-        order.setSystime(timestamp);//时间类型转换 String转换为Timestamp
-        order.setAmount(goodNums);
-        order.setPhone(user.getPhone());
-        order.setName(user.getName());
-        order.setUserId(user.getId());
-        order.setAddress(user.getAddress());
-        order.setPaytype(payType);//支付方法
-        order.setStatus(2);
-        //将对象放入数据库
-        orderMapper.insert(order);
-        return order;
+    //组装order对象,返回一个带有order对象的集合
+    public   List<Order> insertOrder(HttpSession httpSession,Integer payType) {
+        //获取session中存放的MiniCart集合
+        List<MiniCart> miniCartList = (List<MiniCart>) httpSession.getAttribute("minGoodsNum");
+        User user = (User) httpSession.getAttribute("loginUser");
+        //从session中获取相应的信息
+        Long orderNumber = (Long) httpSession.getAttribute("orderNumber"); //订单号
+        Integer allAmount = (Integer) httpSession.getAttribute("allAmount"); //商品总价
+        String orderDate = (String) httpSession.getAttribute("orderDate"); //生成订单号时间
+        List<Order> orderList = null;
+        for (MiniCart miniCart:
+             miniCartList) {
+            //创建order对象
+            Order order = new Order();
+            //对order对象属性进行组装
+            order.setTotal(miniCart.getCount()*miniCart.getGood().getPrice());//单个商品总价
+            Timestamp timestamp = Timestamp.valueOf(orderDate);
+            order.setSystime(timestamp);//时间类型转换 String转换为Timestamp
+            order.setAmount(miniCart.getCount());// 单件商品数量
+            order.setPhone(user.getPhone());//收货人电话
+            order.setName(user.getName());//收货人姓名
+            order.setUserId(user.getId());//用户id
+            order.setAddress(user.getAddress());//收货地址
+            order.setPaytype(payType);//支付方法
+            order.setStatus(2);
+            //将对象放入数据库
+            orderMapper.insert(order);
+            //查询最大id
+            order.setId(orderMapper.searchMaxId());
+            //将对象添加进入集合
+            orderList.add(order);
+        }
+        return orderList;//返回order对象集合
     }
 
-    //对order数据对象进行获取并且封装值session当中
-    public HttpSession getOrderListFunction(HttpSession httpSession, User user) {
+
+    //获取订单的总价，支付时间、订单编号
+    public HttpSession getOrderListFunction(HttpSession httpSession) {
         //获取购物车商品集合
         List<MiniCart> miniCartList = (List<MiniCart>) httpSession.getAttribute("minGoodsNum");
+     /*   User user = (User) httpSession.getAttribute("loginUser");*/
         //循环遍历集合 获取商品数量和总价
         Integer allAmount = 0;
         Integer goodNums = 0;
+        Integer amount = 0;
         for (MiniCart miniCart:
                 miniCartList) {
+            //获取单个商品总数
             goodNums = goodNums+miniCart.getCount();
             //单个商品总价
-            Integer amount =  (miniCart.getGood().getPrice())*(miniCart.getCount());
+            amount =  (miniCart.getGood().getPrice())*(miniCart.getCount());
             //所有商品总价
             allAmount=amount+allAmount;
+           //获取单个商品名称
+            miniCart.getGood().getName();
         }
-
         //生成订单号时间
         String orderDate = this.getOrderDate();
         //生成随机订单号
@@ -83,16 +103,27 @@ public class OrderServiceImpl implements IOrderService {
 
         //订单号放入session
         httpSession.setAttribute("orderNumber",orderNumber);
-        //用户对象放入session
-        httpSession.setAttribute("user",user);
-        //商品总价放入session
+        //所有商品总价放入session
         httpSession.setAttribute("allAmount",allAmount);
-        //商品总数放入session
-        httpSession.setAttribute("goodNums",goodNums);
         //时间放入模型当中
         httpSession.setAttribute("orderDate",orderDate);
+       /* //将用户对象放进session当中
+        httpSession.setAttribute("user",user);*/
         return httpSession;
     }
+
+    /**
+     * 获取订单最大id
+     * @return
+     */
+    public Integer getMaxOrdersId() {
+
+        Integer maxId = orderMapper.searchMaxId();
+        return maxId;
+    }
+
+
+
 
 
 }

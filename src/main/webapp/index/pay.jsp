@@ -36,19 +36,19 @@
             <div class="row">
                 <label class="control-label col-md-1">收货人</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="order.name" value="${sessionScope.user.name}" style="height:auto;padding:10px;" placeholder="输入收货人" required="required"><br>
+                    <input type="text" class="form-control" name="order.name" value="${sessionScope.loginUser.name}" style="height:auto;padding:10px;" placeholder="输入收货人" required="required"><br>
                 </div>
             </div>
             <div class="row">
                 <label class="control-label col-md-1">收货电话</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="order.phone" value="${sessionScope.user.phone }" style="height:auto;padding:10px;" placeholder="输入收货电话" required="required"><br>
+                    <input type="text" class="form-control" name="order.phone" value="${sessionScope.loginUser.phone }" style="height:auto;padding:10px;" placeholder="输入收货电话" required="required"><br>
                 </div>
             </div>
             <div class="row">
                 <label class="control-label col-md-1">收货地址</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="order.address" value="${sessionScope.user.address }" style="height:auto;padding:10px;" placeholder="输入收货地址" required="required"><br>
+                    <input type="text" class="form-control" name="order.address" value="${sessionScope.loginUser.address }" style="height:auto;padding:10px;" placeholder="输入收货地址" required="required"><br>
                 </div>
             </div>
         </form>
@@ -60,7 +60,7 @@
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
                 <a href="payOk?payType=1">
-                    <img src="images/wechat.jpg" alt="微信支付">
+                    <img src="G:/CakeDream/src/main/webapp/index/images/wechat.jpg" alt="微信支付">
                 </a>
             </div>
         </div>
@@ -74,20 +74,20 @@
         <div class="col-sm-6 col-md-4 col-lg-3 ">
             <div class="thumbnail">
                 <a href="payOk?payType=3">
-                    <img src="images/offline.jpg" alt="货到付款">
+                    <img src="G:/CakeDream/src/main/webapp/index/images/offline.jpg" alt="货到付款">
                 </a>
             </div>
         </div>
     </div>
 </div>
-<script>
+<%--<script>
     function dopay(paytype) {
         function dopay(paytype){
             $("#paytype").val(paytype);
             $("#payform").submit();
         }
     }
-</script>
+</script>--%>
 
 
 
