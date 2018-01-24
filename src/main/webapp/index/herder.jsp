@@ -46,7 +46,7 @@
                     <li><a href="/sendlogin" >登录</a></li>
 
 
-                    <li><a href="../admin/login.jsp" target="_blank">后台管理</a></li>
+                    <li><a href="/goadmin" target="_blank">后台管理</a></li>
                 </ul>
                 <!--/.navbar-collapse-->
             </div>

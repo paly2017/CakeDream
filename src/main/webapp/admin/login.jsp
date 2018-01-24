@@ -12,11 +12,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="admin/css/bootstrap.css">
 </head>
 
 <!-- 设置背景图片 -->
-<body style="background-image:url(img/bg.jpg);background-size:100%;">
+<body style="background-image:url(admin/img/bg.jpg);background-size:100%;">
 
 <div class="container">
 
