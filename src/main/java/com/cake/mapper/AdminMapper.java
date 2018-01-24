@@ -60,4 +60,19 @@ public interface AdminMapper {
      * @return
      */
     int updateByPrimaryKey(Admin record);
+
+    /***
+     * 验证用户登录方法
+     * @param username
+     * @param password
+     * @return
+     */
+    @Select(value = "select id, username, password from admins where username=#{username} and password=#{password}")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "username",column = "username") ,
+            @Result(property = "password",column = "password")
+    })
+    Admin selectCheck(@Param("username") String username,
+                      @Param("password") String password);
 }

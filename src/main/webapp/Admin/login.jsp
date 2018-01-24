@@ -22,7 +22,7 @@
 
     <div class="alert alert-danger text-center"></div>
 
-    <form class="form-horizontal" style="margin-top:15%;" action="login.action">
+    <form class="form-horizontal" style="margin-top:15%;" action="/adminlogin" method="post">
         <h2 class="text-center">登录后台</h2>
         <div class="form-group">
             <div class="col-md-4 col-md-offset-4">
