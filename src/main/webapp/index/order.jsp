@@ -48,34 +48,36 @@
             </tr>
             <%--循环遍历输出客户不同订单的信息--%>
 
-            <c:forEach  items="${sessionScope.orderList}" var="order">
-                <c:forEach items="${sessionScope.miniCartList}" var="minGoodsNum" >
-            <tr>
-                <td><p>${order.id}</p></td>
-                <td><p>${order.total}</p></td>
-                <td>
-                    <p>这里${minGoodsNum.good.name}(${minGoodsNum.good.price}) x ${minGoodsNum.count}</p>
-                </td>
-                <td>
-                    <p>${order.name}</p>
-                    <p>${order.phone}</p>
-                    <p>${order.address}</p>
-                </td>
-                <td>
-                    <p>
-                        <span style="color:red;">${order.status}</span>
-                    </p>
-                </td>
-                <td>
-                    <p>
-                        ${order.paytype}
-                    </p>
-                </td>
-                <td><p>${order.systime}</p></td>
-                <td>
-
-                </td>
-            </tr>
+            <c:forEach  items="${sessionScope.orderList}" var="order" varStatus="outer">
+                <c:forEach items="${sessionScope.miniCartList}" var="minGoodsNum"  varStatus="inner">
+                    <tr>
+                        <%--判断两次循环的下标是否相等，相等的时候执行本次循环--%>
+                        <c:if test="${outer.index==inner.index}">
+                        <td><p>${order.id}</p></td>
+                        <td><p>${order.total}</p></td>
+                        <td>
+                            <p>${minGoodsNum.good.name}(${minGoodsNum.good.price}) x ${minGoodsNum.count}</p>
+                        </td>
+                        <td>
+                            <p>${order.name}</p>
+                            <p>${order.phone}</p>
+                            <p>${order.address}</p>
+                        </td>
+                        <td>
+                            <p>
+                                <span style="color:red;">${order.status}</span>
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                ${order.paytype}
+                            </p>
+                        </td>
+                        <td><p>${order.systime}</p></td>
+                        <td>
+                        </td>
+                        </c:if>
+                    </tr>
                 </c:forEach>
             </c:forEach>
         </table>

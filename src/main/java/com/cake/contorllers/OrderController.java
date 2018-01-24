@@ -55,16 +55,19 @@ public class OrderController {
     //从支付成功页面跳转至order.jsp页面
     @RequestMapping("/order")
     public String jumpToOrder(HttpServletRequest httpServletRequest){
-        HttpSession httpSession = httpServletRequest .getSession();
+             HttpSession httpSession =
+                             httpSession = httpServletRequest .getSession();
 
-       List<Order> orderList = (List<Order>) httpSession.getAttribute("orderList");
-       List<MiniCart> miniCartList = (List<MiniCart>)httpSession.getAttribute("minGoodsNum");
-      /* System.out.println("取出来的order集合"+orderList.toString());
-        System.out.println("购物车集合"+miniCartList.toString());*/
-       httpSession.setAttribute("orderList",orderList);
-       httpSession.setAttribute("miniCartList",miniCartList);
-        //System.out.print("获取session中的order对象是："+order.toString());
-        return "index/order";
+            List<Order> orderList = (List<Order>) httpSession.getAttribute("orderList");
+            List<MiniCart> miniCartList = (List<MiniCart>)httpSession.getAttribute("minGoodsNum");
+            /* System.out.println("取出来的order集合"+orderList.toString());
+            System.out.println("购物车集合"+miniCartList.toString());*/
+            httpSession.setAttribute("orderList",orderList);
+            httpSession.setAttribute("miniCartList",miniCartList);
+
+            //System.out.print("获取session中的order对象是："+order.toString());
+            return "index/order";
+
     }
 
 }
