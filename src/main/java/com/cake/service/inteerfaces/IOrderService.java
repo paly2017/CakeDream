@@ -15,7 +15,6 @@ public interface IOrderService {
     long getOrderNumber();
 
 
-
     /**
      *
      * @param payType   支付方法
@@ -26,7 +25,7 @@ public interface IOrderService {
 
 
     //获取订单的总价，支付时间、订单编号
-    HttpSession getOrderListFunction(HttpSession httpSession);
+    void getOrderListFunction(HttpSession httpSession);
 
     /**
      * 获取orders表格中的最大id

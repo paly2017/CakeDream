@@ -22,6 +22,7 @@ import java.util.List;
 public class OrderServiceImpl implements IOrderService {
     @Autowired
     private OrderMapper orderMapper;
+
     public String getOrderDate() {
         //创建时间对象
         Date date = new Date();
@@ -77,7 +78,7 @@ public class OrderServiceImpl implements IOrderService {
 
 
     //获取订单的总价，支付时间、订单编号
-    public HttpSession getOrderListFunction(HttpSession httpSession) {
+    public void getOrderListFunction(HttpSession httpSession) {
         //获取购物车商品集合
         List<MiniCart> miniCartList = (List<MiniCart>) httpSession.getAttribute("minGoodsNum");
      /*   User user = (User) httpSession.getAttribute("loginUser");*/
@@ -93,8 +94,6 @@ public class OrderServiceImpl implements IOrderService {
             amount =  (miniCart.getGood().getPrice())*(miniCart.getCount());
             //所有商品总价
             allAmount=amount+allAmount;
-           //获取单个商品名称
-            miniCart.getGood().getName();
         }
         //生成订单号时间
         String orderDate = this.getOrderDate();
@@ -109,7 +108,7 @@ public class OrderServiceImpl implements IOrderService {
         httpSession.setAttribute("orderDate",orderDate);
        /* //将用户对象放进session当中
         httpSession.setAttribute("user",user);*/
-        return httpSession;
+
     }
 
     /**

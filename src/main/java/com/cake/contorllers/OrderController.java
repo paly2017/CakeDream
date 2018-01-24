@@ -28,14 +28,16 @@ public class OrderController {
      * @return 跳转至支付页面
      */
     @RequestMapping("/pay")
-    public String getOrderList(HttpSession httpSession){
+    public String getOrderList(HttpServletRequest httpServletRequest){
+        HttpSession httpSession = httpServletRequest.getSession();
         orderService.getOrderListFunction(httpSession);
         //设置跳转的页面至支付页面
         return "index/pay";
     }
 
     @RequestMapping("/payOk")
-    public String jumpToOrderPayOk(HttpSession httpSession,@RequestParam("payType")Integer payType){
+    public String jumpToOrderPayOk(HttpServletRequest httpServletRequest,@RequestParam("payType")Integer payType){
+        HttpSession httpSession = httpServletRequest.getSession();
         //调用方法 获取一个order对象的集合
         List<Order> orderList = orderService.insertOrder(httpSession,payType);
         //获取数据库orders表中的最大id
@@ -48,7 +50,7 @@ public class OrderController {
     }
     //从支付成功页面跳转至order.jsp页面
     @RequestMapping("/order")
-    public String jumpToOrder(HttpSession httpSession){
+    public String jumpToOrder(){
 
       /*  List<Order> orderList = (List<Order>) httpSession.getAttribute("orderList");*/
         //System.out.print("获取session中的order对象是："+order.toString());
