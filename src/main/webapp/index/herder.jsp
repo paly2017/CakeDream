@@ -43,7 +43,7 @@
                     <li><a id="newGood" href="/tops?type=3" >新品</a></li>
 
                     <li><a href="index/register.jsp" >注册</a></li>
-                    <li><a href="index/login.jsp" >登录</a></li>
+                    <li><a href="/sendlogin" >登录</a></li>
 
 
                     <li><a href="../admin/login.html" target="_blank">后台管理</a></li>
@@ -70,7 +70,7 @@
                 <div class="dropdown-content">
                     <form action="" method="">
                         <table class="table table-condensed" id="mincart">
-    
+
                         </table>
                         <div class="btn-group btn-success">
                             <div class="btn btn-success" style="float: left">总价：<span id="mypay"></span> </div>
@@ -83,12 +83,12 @@
             </div>
 
             <div class="header-right login">
-                <a href="my.html">
+                <a href="my.jsp">
                     <span class="glyphicon" aria-hidden="true">
                     </span>
                 </a>
             </div>
-            <div class="clearfix">${sessionScope.loginUser.username}</div>
+            <div class="clearfix">${sessionScope.loginUser.username}<</div>
         </div>
         <div class="clearfix" style="float: right"></div>
     </div>

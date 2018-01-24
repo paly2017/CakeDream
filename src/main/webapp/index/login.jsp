@@ -10,20 +10,20 @@
 <head>
     <title>用户登录</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/header.css">
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/jsp; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="index/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="index/css/style.css">
+    <link type="text/css" rel="stylesheet" href="index/css/header.css">
+    <script type="text/javascript" src="index/js/bootstrap.min.js"></script>
     <!--validate，注意包的引入-->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script src="js/additional-methods.js"></script>
-    <script src="js/jquery.validate.js"></script>
-    <script src="js/messages_zh.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/login.js"></script>
+    <script type="text/javascript" src="index/js/jquery.min.js"></script>
+    <script src="index/js/additional-methods.js"></script>
+    <script src="index/js/jquery.validate.js"></script>
+    <script src="index/js/messages_zh.js"></script>
+    <script src="index/js/jquery.validate.min.js"></script>
+    <script src="/js/login.js"></script>
     <script type="text/javascript" src="index/js/header.js"></script>
-    <script src="js/goods.js"></script>
+    <script src="index/js/goods.js"></script>
 </head>
 <body>
 <jsp:include page="herder.jsp"/>

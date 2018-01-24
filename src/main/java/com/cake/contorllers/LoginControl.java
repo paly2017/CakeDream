@@ -7,6 +7,7 @@ import com.cake.uilt.UserUitl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,6 +20,14 @@ public class LoginControl {
     @Autowired
    private UserServiceImpl userService;
 
+    /***
+     * NND登录页面跳转
+     * @return
+     */
+    @RequestMapping("/sendlogin")
+    public String sendLogin(){
+        return "index/login";
+    }
     /***
      * 处理用户登录方法
      * @param modelAndView
@@ -33,12 +42,12 @@ public class LoginControl {
                                 @RequestParam("login_password")String password,
                                 HttpServletRequest request){
        User user =  userService.doLogingService(username,password,request);
+
        if (null==user){
            modelAndView.setViewName("index/login");
            modelAndView.addObject("error","用户名密码错误！！！");
        }else {
            modelAndView.setViewName("index");
-           modelAndView.addObject("loginUser",user);
            request.getSession().setAttribute("loginUser",user);
        }
         return modelAndView;
