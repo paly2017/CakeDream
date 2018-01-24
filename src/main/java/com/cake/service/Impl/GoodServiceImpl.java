@@ -148,6 +148,19 @@ public class GoodServiceImpl implements IGoodService {
        }
     }
 
+    public Double getTotalPrice(HttpServletRequest request) {
+        Double totalPrice = 0.0;
+        List<MiniCart> miniCartList =
+                (List<MiniCart> )request.getSession().getAttribute("minGoodsNum");
+        if (miniCartList==null){
+            return Double.valueOf("0");
+        }
+        for (MiniCart miniCart : miniCartList){
+                
+        }
+        return null;
+    }
+
     /**
      * 根据商品id查询商品
      * @param goodID  商品id

@@ -46,8 +46,21 @@ public interface IGoodService {
      */
     String getOneGood(List<Integer> goodID);
 
+  /****
+   * 处理miniCart(立即购买，和加入购物车功能)
+   * @param integer
+   * @param request
+   * @return
+   */
     String mincartGoodSrevice(Integer integer, HttpServletRequest request);
 
-  String mincartGoodSrevice(HttpSession session);
+  /***
+   * 页面刷新时，更新mini购物车信息
+   * @param session
+   * @return
+   */
+    String mincartGoodSrevice(HttpSession session);
+
+    Double getTotalPrice(HttpServletRequest request);
 
 }

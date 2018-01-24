@@ -64,14 +64,11 @@ public class ReqAjax {
     //加入购物车的方法
 
     /***
-     * 次方法重复，徐佳丽要求保留
+     * 页面刷新时，更新mini购物车信息
      * @param goodId
      * @param request
      * @return
      */
-
-
-
 
     //加入购物车的方法--jelly
     @PostMapping("/addcart")
