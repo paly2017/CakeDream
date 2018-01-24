@@ -33,7 +33,7 @@ public class UserServiceImpl implements IUserService {
         User user=new User();
         try {
             String pasw=UserUitl.encodeMD5(password);
-            if(userMapper.insertUser(username,password,name,phone,address)>0){
+            if(userMapper.insertUser(username,pasw,name,phone,address)>0){
                 user.setUsername(username);
                 user.setPassword(pasw);
                 user.setName(name);
