@@ -26,6 +26,25 @@ public class UserServiceImpl implements IUserService {
         return user;
     }
 
+    /**
+     *给用户表插入数据实现类--返回受影响的行数
+     */
+    public User insertUser(String username,String password,String name,String phone,String address){
+        User user=new User();
+        if(userMapper.insertUser(username,password,name,phone,address)>0){
+          user.setUsername(username);
+            try {
+                user.setPassword(UserUitl.encodeMD5(password));
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+            user.setName(name);
+          user.setPhone(phone);
+           user.setAddress(address);
+        }
+        return user;
+    }
+
     /****
      * 用户登录验证service
      * @param username
@@ -57,5 +76,16 @@ public class UserServiceImpl implements IUserService {
             return false;
         }
         return false;
+    }
+
+
+
+    //用户注册处理实现类--判断用户名不重复
+    //用户名判断处理接口
+    public User selectUserByUsername(String username){
+        //去数据库查询该用户
+        User user = userMapper.selectUserByUserName(username);
+        //返回
+        return user;
     }
 }

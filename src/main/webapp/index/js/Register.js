@@ -1,8 +1,3 @@
-$.validator.setDefaults({
-    submitHandler: function(form) {
-        alert("提交事件!");
-    }
-});
 
 /*
  登录注册的表单验证--validate
@@ -22,7 +17,16 @@ $().ready(function () {
         rules:{
             username:{
                 required:true,
-                rangelength:[4,10]
+                rangelength:[4,10],
+                remote: {
+                    type: "POST",
+                    url: "/deal",     //后台处理程序
+                    data: {                     //要传递的数据
+                        "username": function () {
+                            return $("#user").val();
+                        }
+                    }
+                }
             },
             password:{
                 required:true,
@@ -42,7 +46,8 @@ $().ready(function () {
         messages:{
             username:{
                 required:"请输入用户名！",
-                rangelength:"用户名长度在 4-10 之间！"
+                rangelength:"用户名长度在 4-10 之间！",
+                remote:$.validator.format("用户名已存在！")
             },
             password:{
                 required:"请输入密码！",
@@ -60,7 +65,33 @@ $().ready(function () {
         }
 
     });
+   /*//自定义用户名校验规则
+    jQuery.validator.addMethod("phone", function(value, element, param){
+           return "";
+    }*/
 
-
-
+    /* //当用户名失去焦点时发送aJax请求
+     $("#user").click(function () {
+         alert("进入js")
+         $.ajax({
+             type:"post",
+             url:"/deal",
+             data:{
+                 "username":$(this).val()
+             },
+             success:function (user) {
+                 var obj=  jQuery.parseJSON(user);
+                 if(obj==null){
+                     $(this).html(obj.username);
+                 }else{
+                     $(this).html("");
+                     $("#uspan").html("用户名已存在！")
+                 }
+             }
+         })
+     })/register = anon
+     function test() {
+         alert("这是一个测试")
+     }*/
 });
+

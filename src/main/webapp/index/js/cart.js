@@ -19,6 +19,7 @@
                         var jsonCart = jQuery.parseJSON(data);
                         //然后改变属性显示
                         $(obj).siblings("h3").eq(2).find("span").html("数量:"+jsonCart.count);
+                        location.reload();  //重新刷新页面
                     }
                 }
             })
@@ -43,6 +44,7 @@
                 var jsonCatr = jQuery.parseJSON(data);
                 //然后改变属性显示
                 $(obj).siblings("h3").eq(2).find("span").html("数量:"+jsonCatr.count);
+                location.reload();  //重新刷新页面
             }
 
         }

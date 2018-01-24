@@ -42,7 +42,7 @@
                     <li><a id="hotGood" href="/tops?type=2" >热销</a></li>
                     <li><a id="newGood" href="/tops?type=3" >新品</a></li>
 
-                    <li><a href="index/register.jsp" >注册</a></li>
+                    <li><a href="/reg" >注册</a></li>
                     <li><a href="/sendlogin" >登录</a></li>
 
 

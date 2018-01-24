@@ -69,3 +69,13 @@ css文件和js文件引入冲突
    保证了不会抛出java.util.ConcurrentModificationException异常。
    多线程：1、迭代前加锁，解决了多线程问题，但还是不能进行迭代add、clear等操作
            2、采用CopyOnWriteArrayList，解决了多线程问题，同时可以add、clear等操作
+   16、控制台异常
+   Uncaught Error: Bootstrap's JavaScript requires jQuery bootstrap.js:8 at bootstrap.js:8
+   问题原因：bootstrap加载的顺序有问题，必须先引用jquery.min.js文件，然后再引用botstrap的js。
+  17、每次刷新页面后第一次的验证有效
+    解决：data:{name:$("#name").val()}
+       这里取到的是静态值 要改成
+       data:{name:function(){
+         return $("#name").val();
+       }
+

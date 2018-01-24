@@ -11,7 +11,36 @@ public interface UserMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(User record);
+    /**
+     * 将一个用户保存到数据库--插入数据库
+     * @return
+     */
+
+    @Insert("INSERT INTO users(username,`password`,`name`,phone,address) VALUES (#{username},#{password},#{name},#{phone},#{address})")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "username",column = "username"),
+            @Result(property = "password",column = "password"),
+            @Result(property = "name",column = "name"),
+            @Result(property = "phone",column = "phone"),
+            @Result(property = "address",column = "address")
+    })
+    Integer insertUser( @Param("username") String username,@Param("password")String password,@Param("name")String name,@Param("phone")String phone,@Param("address")String address);
+
+
+    //根据用户名在数据库查询用户对象
+    @Select("SELECT * FROM users WHERE username=#{username};")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "username",column = "username"),
+            @Result(property = "password",column = "password"),
+            @Result(property = "name",column = "name"),
+            @Result(property = "phone",column = "phone"),
+            @Result(property = "address",column = "address")
+    })
+    User selectUserByUserName(String username );
+
+
 
     int insertSelective(User record);
 

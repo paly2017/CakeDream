@@ -18,7 +18,7 @@ public interface TopMapper {
             @Result(property = "type",column = "type"),
             @Result(property = "goodId",column = "good_id")
     })
-    public List<Top> selectTopListByType(Integer type);
+    public List<Top> selectTopListByType(@Param("type") Integer type);
 
    //根据商品类型，起始下标、及页面容量 进行分页查询--jelly
     @Select("SELECT * FROM tops WHERE `type`=#{type} LIMIT #{fromIndex},#{pageSize};")
