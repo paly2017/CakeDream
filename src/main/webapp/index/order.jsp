@@ -54,27 +54,27 @@
                     <tr>
                         <%--判断两次循环的下标是否相等，相等的时候执行本次循环--%>
                         <c:if test="${outer.index==inner.index&&inner.index==center.index}">
-                        <td><p>${order.id}</p></td>
-                        <td><p>${order.total}</p></td>
+                        <td><p align="cerent">${order.id}</p></td>
+                        <td><p align="cerent">${order.total}</p></td>
                         <td>
-                            <p>商品名称：${good.name}<br>单价${good.price} <br>数量 ${item.amount}</p>
+                            <p align="cerent">商品名称：${good.name}<br>单价:${good.price} <br>数量" ${item.amount}</p>
                         </td>
                         <td>
-                            <p>${order.name}</p>
-                            <p>${order.phone}</p>
-                            <p>${order.address}</p>
+                            <p align="cerent">${order.name}</p>
+                            <p align="cerent">${order.phone}</p>
+                            <p align="cerent">${order.address}</p>
                         </td>
                         <td>
                             <p>
-                                <span style="color:red;">${order.status}</span>
+                                <span style="color:red;" align="cerent">${order.status}</span>
                             </p>
                         </td>
                         <td>
-                            <p>
+                            <p align="cerent">
                                 ${order.paytype}
                             </p>
                         </td>
-                        <td><p>${order.systime}</p></td>
+                        <td><p align="cerent">${order.systime}</p></td>
                         <td>
                         </td>
                         </c:if>

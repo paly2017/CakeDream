@@ -46,7 +46,7 @@ public class OrderController {
         HttpSession httpSession = httpServletRequest.getSession();
         //调用方法 获取一个order对象的集合
        orderService.insertOrder(httpSession,payType);
-       System.out.println("订单信息插入数据库成功");
+      // System.out.println("订单信息插入数据库成功");
        //清空购物车session
         httpSession.removeAttribute("minGoodsNum");
         return "index/payok";
@@ -61,7 +61,7 @@ public class OrderController {
             List<Order> orderList = (List<Order>) httpSession.getAttribute("orderList");
             List<Item> itemList = (List<Item>)httpSession.getAttribute("itemList");
             List<Good> goodList =(List<Good>) httpSession.getAttribute("goodList");
-            System.out.println("即将跳转至订单详情页面");
+            //System.out.println("即将跳转至订单详情页面");
             //集合仿佛session当中
             httpSession.setAttribute("orderList",orderList);
             httpSession.setAttribute("itemList",itemList);

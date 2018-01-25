@@ -61,11 +61,11 @@ public class OrderServiceImpl implements IOrderService {
     public void insertOrder(HttpSession httpSession,Integer payType) {
         //获取Order       item      good对象的集合
         List<Order> orderList =  this.packagingOrder(httpSession,payType);
-        System.out.println("获取到的order集合"+orderList.toString());
+        //System.out.println("获取到的order集合"+orderList.toString());
         List<Item> itemList = itemService.packagingItem(httpSession);
-        System.out.println("获取到的item集合"+itemList.toString());
+        //System.out.println("获取到的item集合"+itemList.toString());
         List<Good> goodList = goodService.packagingGood(httpSession);
-        System.out.println("获取到的good集合"+goodList.toString());
+        //System.out.println("获取到的good集合"+goodList.toString());
 
         //将item     order       good集合放入session中
         httpSession.setAttribute("itemList",itemList);
@@ -120,9 +120,9 @@ public class OrderServiceImpl implements IOrderService {
     public List<Order> packagingOrder(HttpSession httpSession, Integer payType) {
         //获取session中存放的MiniCart集合
         List<MiniCart> miniCartList = (List<MiniCart>) httpSession.getAttribute("minGoodsNum");
-        System.out.println("获取到的购物车集合"+miniCartList.toString());
+        //System.out.println("获取到的购物车集合"+miniCartList.toString());
         User user = (User) httpSession.getAttribute("loginUser");
-        System.out.println("获取到的用户登录信息"+user.toString());
+        //System.out.println("获取到的用户登录信息"+user.toString());
         //从session中获取相应的信息
         String orderNumber = (String) httpSession.getAttribute("orderNumber"); //订单号
         String orderDate = (String) httpSession.getAttribute("orderDate"); //生成订单号时间
@@ -145,7 +145,7 @@ public class OrderServiceImpl implements IOrderService {
             order.setOrderNo(orderNumber);//订单编号
             //将对象放入数据库
             Integer rollBack = orderMapper.insert(order);
-            System.out.println("插入order表格被影响的行数是"+rollBack);
+            //System.out.println("插入order表格被影响的行数是"+rollBack);
             //查询最大id
             order.setId(orderMapper.searchMaxId());
             orderList.add(order);
