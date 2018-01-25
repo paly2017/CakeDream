@@ -39,8 +39,9 @@ public class AdminControl {
         adminUser.setPassword(password);
         try {
             if (adminService.AdminCheckLogin(adminUser,request)){
-                modelAndView.setViewName("admin/index");}
+                modelAndView.setViewName("admin/index");
                 return modelAndView;
+            }
         } catch (NoSuchAlgorithmException e) {
             modelAndView.setViewName("admin/login");
             e.printStackTrace();
