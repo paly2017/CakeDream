@@ -26,7 +26,27 @@ public class Order {
 
     private Integer userId;//下单用户
 
-    public Order(Integer id, Integer total, Integer amount, Integer status, Integer paytype, String name, String phone, String address, Date systime, Integer userId) {
+    private String orderNo;//订单号
+
+    private int goodId;//商品id
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public int getGoodId() {
+        return goodId;
+    }
+
+    public void setGoodId(int goodId) {
+        this.goodId = goodId;
+    }
+
+    public Order(Integer id, Integer total, Integer amount, Integer status, Integer paytype, String name, String phone, String address, Date systime, Integer userId, String orderNo, int goodId) {
         this.id = id;
         this.total = total;
         this.amount = amount;
@@ -37,6 +57,8 @@ public class Order {
         this.address = address;
         this.systime = systime;
         this.userId = userId;
+        this.orderNo = orderNo;
+        this.goodId = goodId;
     }
 
     public Order() {

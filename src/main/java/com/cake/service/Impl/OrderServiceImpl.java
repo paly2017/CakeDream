@@ -36,9 +36,11 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     //生成随机订单号
-    public long getOrderNumber() {
+    public String getOrderNumber() {
         //调用方法获取一个当前时间毫秒数的long型数字
-        long orderNumber =  System.currentTimeMillis();
+        long orderNum =  System.currentTimeMillis();
+        //将long类型的订单编号修改为字符串类型
+        String orderNumber =  Long.toString(orderNum);
         return orderNumber;
     }
 
@@ -48,7 +50,7 @@ public class OrderServiceImpl implements IOrderService {
         List<MiniCart> miniCartList = (List<MiniCart>) httpSession.getAttribute("minGoodsNum");
         User user = (User) httpSession.getAttribute("loginUser");
         //从session中获取相应的信息
-        Long orderNumber = (Long) httpSession.getAttribute("orderNumber"); //订单号
+        String orderNumber = (String) httpSession.getAttribute("orderNumber"); //订单号
         Integer allAmount = (Integer) httpSession.getAttribute("allAmount"); //商品总价
         String orderDate = (String) httpSession.getAttribute("orderDate"); //生成订单号时间
         List<Order> orderList =  new ArrayList<Order>();
@@ -67,6 +69,8 @@ public class OrderServiceImpl implements IOrderService {
             order.setAddress(user.getAddress());//收货地址
             order.setPaytype(payType);//支付方法
             order.setStatus(2);
+            order.setGoodId(miniCart.getGood().getId());
+            order.setOrderNo(orderNumber);
             //将对象放入数据库
             orderMapper.insert(order);
             //查询最大id
@@ -99,7 +103,7 @@ public class OrderServiceImpl implements IOrderService {
         //生成订单号时间
         String orderDate = this.getOrderDate();
         //生成随机订单号
-        Long orderNumber = this.getOrderNumber();
+        String orderNumber = this.getOrderNumber();
 
         //订单号放入session
         httpSession.setAttribute("orderNumber",orderNumber);
