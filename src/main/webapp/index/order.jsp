@@ -53,7 +53,7 @@
                     <c:forEach items="${sessionScope.goodList}" var="good" varStatus="center">
                     <tr>
                         <%--判断两次循环的下标是否相等，相等的时候执行本次循环--%>
-                        <c:if test="${outer.index==inner.index==center.index}">
+                        <c:if test="${outer.index==inner.index&&inner.index==center.index}">
                         <td><p>${order.id}</p></td>
                         <td><p>${order.total}</p></td>
                         <td>
