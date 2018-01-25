@@ -37,16 +37,9 @@ public class TopControl {
         List<Top> hotGood =topServiceImpl.selectTopListByType(2);
         //新品推荐
         List<Top> newGood =topServiceImpl.selectTopListByType(3);
-        //循环便利精品推荐，获得商品放入Top
-        List<Top> jingPinList =foreach(jingPin);
-       //循环便利热销商品
-        List<Top> hotGoodList =foreach(hotGood);
-        //循环便利新品推荐
-        List<Top> newGoodList =foreach(newGood);
-
-        modelAndView.addObject("jingPinList",jingPinList);
-        modelAndView.addObject("hotGoodList",hotGoodList);
-        modelAndView.addObject("newGoodList",newGoodList);
+        modelAndView.addObject("jingPinList",jingPin);
+        modelAndView.addObject("hotGoodList",hotGood);
+        modelAndView.addObject("newGoodList",newGood);
         modelAndView.setViewName("index/index");
         return modelAndView;
     }
@@ -77,9 +70,8 @@ public class TopControl {
         //分页查询，得到分页查询的集合
         List<Top> limit =topServiceImpl.selectByLimit(type,fromIndex,pageSize);
         //循环便利，将商品加入集合
-        List<Top> limitList =foreach(limit);
         //将数据和页面放入ModelAndView
-        modelAndView.addObject("limitList",limitList);
+        modelAndView.addObject("limitList",limit);
         //将页数也要放入ModelAndView
         modelAndView.addObject("pageNum",pageNum);
         modelAndView.addObject("pageCount",pageCount);
@@ -88,16 +80,4 @@ public class TopControl {
         return modelAndView;
     }
 
-    //商品推荐表--循环遍历，查出商品加Top，返回集合
-    public  List<Top> foreach(List<Top> list){
-        for (Top top:list) {
-            //查出来一个商品
-            Good good =goodServiceImpl.slectGoodByGoodId(top.getGoodId());
-            //根据商品的type_id查出来一个Type
-            Type type=typeServiceImpl.selectTpyeById(good.getTypeId());
-            top.setGood(good);
-            top.setGoodType(type);
-        }
-        return list;
-    }
 }

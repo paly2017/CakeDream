@@ -79,6 +79,7 @@ $(document).ready(function () {
                     alert("密码修改成功！")
                 }else{
                     alert("密码修改失败！")
+                    location.reload();  //重新刷新页面
                 }
             }
         })

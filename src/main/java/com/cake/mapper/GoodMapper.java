@@ -95,7 +95,4 @@ public interface GoodMapper {
     Good slectGoodsByGoodId(Integer goodId);
 
 
-   /* *//*搜索模糊查询方法*//*
-    @Select("SELECT * FROM goods WHERE `name` LIKE \"%花园%\";")
-    public List<Good> selectByName();*/
 }
