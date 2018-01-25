@@ -84,3 +84,11 @@ css文件和js文件引入冲突
   19、控制台异常：500：MySQLIntegrityConstraintViolationException: Duplicate entry &#39;4&#39;
         for key &#39;PRIMARY&#39;
         原因：试图在数据库插入主键，id
+  20、 Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException:
+  nested exception is org.apache.ibatis.type.TypeException: Could not set parameters for mapping:
+  ParameterMapping{property='phone', mode=IN, javaType=class java.lang.String, jdbcType=null, numericScale=null,
+  resultMapId='null', jdbcTypeName='null', expression='null'}. Cause: org.apache.ibatis.type.TypeException:
+  Error setting non null for parameter #6 with JdbcType null . Try setting a different JdbcType for this parameter
+  or a different configuration property. Cause: java.sql.SQLException: Parameter index out of range (6 > number of parameters,which is 5).
+    原因：在使用注解时
+    解决方案：
