@@ -24,14 +24,6 @@ public class ItemContorller {
         if (null==orderManagers){
            return modelAndView;
         }
-        int count=0;
-        for (OrderManager order:orderManagers){
-            ++count;
-            if (count> Uilt.AdminpageSize){
-                break;
-            }
-
-        }
         return modelAndView;
     }
 }

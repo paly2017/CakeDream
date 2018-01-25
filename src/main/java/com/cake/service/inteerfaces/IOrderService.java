@@ -2,6 +2,7 @@ package com.cake.service.inteerfaces;
 
 import com.cake.pojo.MiniCart;
 import com.cake.pojo.Order;
+import com.cake.pojo.OrderManager;
 import com.cake.pojo.User;
 
 import javax.servlet.http.HttpSession;
@@ -13,8 +14,6 @@ public interface IOrderService {
     String getOrderDate();
     //生成一个随机订单号
     String getOrderNumber();
-
-
     /**
      *
      * @param payType   支付方法
@@ -40,5 +39,7 @@ public interface IOrderService {
      * @return  一个组装好的order对象
      */
     List<Order> packagingOrder(HttpSession httpSession,Integer payType);
+
+    List<OrderManager> showOrderList(List<OrderManager> managerList,Integer index);
 
 }
