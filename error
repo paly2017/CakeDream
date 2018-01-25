@@ -93,7 +93,10 @@ css文件和js文件引入冲突
     原因：在mapper映射类里面使用注解时书写格式有误
     解决方案：使用正确的注解格式
 
- 20.使用sql 查询总数是 org.springframework.jdbc.UncategorizedSQLException: Error attempting to get column 'id' from result set. Cause: java.sql.SQLException:
+ 21.使用sql 查询总数是 org.springframework.jdbc.UncategorizedSQLException: Error attempting to get column 'id' from result set. Cause: java.sql.SQLException:
   Column 'id' not found.org.springframework.jdbc.UncategorizedSQLException: Error attempting to get column 'id' from result set. Cause: java.sql.SQLException: Column 'id' not found.
   原因：是count()函数没有加别名， @Select(value = "SELECT count(id) FROM items WHERE 1=1;")
   解决：@Select(value = "SELECT count(id) AS id FROM items WHERE 1=1;")
+
+  22.HTTP Status 500 - /admin/order_list.jsp (line: 38, column: 4) According to TLD or attribute directive in tag file,
+  attribute items does not accept any expressions
