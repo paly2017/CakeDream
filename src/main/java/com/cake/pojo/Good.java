@@ -19,6 +19,10 @@ public class Good {
 
     private Integer typeId;
 
+    private Top top;//根据商品id，查出它是什么推荐是用
+
+    private Type type;//根据用户type_id查询商品类型
+
     public Good(Integer id, String name, String cover, String image1, String image2, Integer price, String intro, Integer stock, Integer typeId) {
         this.id = id;
         this.name = name;
@@ -106,4 +110,20 @@ public class Good {
     public void setTypeId(Integer typeId) {
         this.typeId = typeId;
     }
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Top getTop() {
+        return top;
+    }
+
+    public void setTop(Top top) {
+        this.top = top;
+    }
+
 }

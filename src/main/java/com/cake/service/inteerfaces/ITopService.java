@@ -14,8 +14,18 @@ public interface ITopService {
    /* List<Top> oneShow(Integer type,Integer pageNum);*/
     //循环遍历，根据商品id查出商品，，根据商品type_id查出商品类型名称
     List<Top> foreach(List<Top> list);
-    //查询所有推荐商品--还没有用
-    List<Top> selectAllTaops ();
-
+    //查询商品id查询推荐
+    Top selectTopByGoodId (Integer good_id);
+    /**
+     * 通过商品id，更改商品的推荐属性type，1、条幅  2、热销  3、新品
+     */
+    //移出条幅----根据商品id，在tops表中删除该字段
+    //移出热销
+    //移除新品
+    Integer removeTops(Integer good_id);
+//加入条幅--在tops表中插入 good_id  type字段--id自动生成,type:1、条幅  2、热销  3、新品
+    //加入热销
+    //加入新品
+Integer addTops(Integer type,Integer good_id);
 
 }

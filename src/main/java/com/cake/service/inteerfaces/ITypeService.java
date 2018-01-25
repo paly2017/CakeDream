@@ -21,6 +21,9 @@ public interface ITypeService {
      */
     Type findTypeByTypeId(Integer typeId);
 
+   /* //根据用户type_id查询商品类型
+    Type selectTypeByGoodId();*/
+
 
 
 }

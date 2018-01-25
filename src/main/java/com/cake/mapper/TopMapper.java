@@ -29,18 +29,42 @@ public interface TopMapper {
     })
      List<Top> selectByLimit(@Param("type") Integer type, @Param("fromIndex") Integer fromIndex, @Param("pageSize") Integer pageSize);
 
-    /**
-     * 还没有用
-     * @return
-     */
-    //查询所有推荐商品
-    @Select("SELECT * FROM tops;")
+
+    //查询商品id查询推荐
+    @Select("SELECT * FROM tops WHERE good_id=#{good_id}")
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "type",column = "type"),
             @Result(property = "goodId",column = "good_id")
     })
-    List<Top> selectAllTaops ();
+    Top selectTopByGoodId (Integer good_id);
+ /**
+  * 通过商品id，更改商品的推荐属性type，1、条幅  2、热销  3、新品
+  */
+    //移出条幅----根据商品id，在tops表中删除该字段
+    //移出热销
+    //移除新品
+    @Delete("DELETE * FROM tops WHERE good_id=#{good_id}")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "type",column = "type"),
+            @Result(property = "goodId",column = "good_id")
+    })
+    Integer removeTops(@Param("good_id") Integer good_id);
+
+    //加入条幅--在tops表中插入 good_id  type字段--id自动生成,type:1、条幅  2、热销  3、新品
+    //加入热销
+    //加入新品
+
+    @Insert("INSERT INTO tops(`type`,good_id) VALUES('#{type}','#{good_id}');")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "type",column = "type"),
+            @Result(property = "goodId",column = "good_id")
+    })
+    Integer addTops(@Param("type")Integer type,@Param("good_id")Integer good_id);
+
+    //
 
 
     //满哥

@@ -27,6 +27,18 @@ function goTop(type,obj) {
             }
 
         });
+
+        $(document).ready(function () {
+            $(".remove").click(function () {
+                $.ajax({
+                    type:"post",
+                    url:"/remove",
+                    data:{
+                        "good_id":
+                    }
+                })
+            });
+        });
 }
 
 
