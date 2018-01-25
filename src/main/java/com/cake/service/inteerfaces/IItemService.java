@@ -5,6 +5,10 @@ import com.cake.pojo.Item;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+import com.cake.pojo.OrderManager;
+
+import java.util.List;
+
 public interface IItemService {
     //数据库给items表格添加数据
     Integer insertItem(Item item);
@@ -13,4 +17,6 @@ public interface IItemService {
     List<Item> packagingItem(HttpSession httpSession);
 
 
+
+    List<OrderManager> orderManger();
 }

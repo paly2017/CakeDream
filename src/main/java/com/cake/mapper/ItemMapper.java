@@ -2,10 +2,10 @@ package com.cake.mapper;
 
 
 import com.cake.pojo.Item;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Mapper
 @Component
@@ -24,4 +24,13 @@ public interface ItemMapper {
     int updateByPrimaryKeySelective(Item record);
 
     int updateByPrimaryKey(Item record);
+    @Select(value = "SELECT * FROM items WHERE 1=1 ORDER BY id ;")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "price",column = "price"),
+            @Result(property = "amount",column = "amount"),
+            @Result(property = "orderId",column = "order_id"),
+            @Result(property = "goodId",column = "good_id")
+    })
+    List<Item> seleItems();
 }
