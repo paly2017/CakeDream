@@ -17,7 +17,7 @@ public interface OrderMapper {
      * @return  返回被影响行数
      */
     @Insert({"INSERT INTO orders(total,amount,status,paytype,name,phone,address,systime,user_id) VALUES " +
-            "(${total},${amount},${status},${paytype},'${name}','${phone}','${address}','${systime}',${userId});"})
+            "(${total},${amount},${status},${paytype},'${name}','${phone}','${address}','${systime}',${userId},${goodNo},${goodId});"})
     int insert(Order order);
 
     int insertSelective(Order record);

@@ -1,0 +1,15 @@
+1、System.currentTimeMillis();获取一个当前时间毫秒数的long型数字。一般可以用来做订单号
+
+2、String 类型时间转换为数据库Timestamp类型
+Timestamp timestamp = Timestamp.valueOf(orderDate);
+        order.setSystime(timestamp);//时间类型转换 String转换为Timestamp
+
+3、EL表达式foreach双重嵌套循环，使外层循环和内层循环同步执行，每次执行一席
+
+	  <c:forEach  items="${sessionScope.orderList}" var="order" varStatus="outer">
+                <c:forEach items="${sessionScope.miniCartList}" var="minGoodsNum"  varStatus="inner">
+			<%--判断两次循环的下标是否相等，相等的时候执行本次循环--%>
+                        <c:if test="${outer.index==inner.index}">
+			</c:if>
+                </c:forEach>
+           </c:forEach>
