@@ -78,10 +78,9 @@ css文件和js文件引入冲突
        data:{name:function(){
          return $("#name").val();
        }
-       18、控制台异常：500：MySQLIntegrityConstraintViolationException: Duplicate entry &#39;4&#39;
-        for key &#39;PRIMARY&#39;
-        原因：试图在数据库插入主键，id
   18、com.cake.service.Impl.OrderServiceImpl.insertOrder（OrderServiceImpl.java:74）
      	com.cake.contorllers.OrderController.jumpToOrderPayOk（OrderController.java:42）
      	在创建集合的时候没有new出来新对象
-
+  19、控制台异常：500：MySQLIntegrityConstraintViolationException: Duplicate entry &#39;4&#39;
+        for key &#39;PRIMARY&#39;
+        原因：试图在数据库插入主键，id

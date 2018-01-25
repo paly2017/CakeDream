@@ -1,3 +1,6 @@
 1、cart.jsp页面需要循环购物车里面的商品 商品id和商品名称等有关信息需要继续完善
 2、 Timestamp timestamp = Timestamp.valueOf(orderDate);
           order.setSystime(timestamp);//时间类型转换 String转换为Timestamp
+3，orders表中增加
+ALTER TABLE orders ADD order_NO VARCHAR(64) AFTER user_id;
+ALTER TABLE  orders ADD good_id INT(32) AFTER  order_NO;
