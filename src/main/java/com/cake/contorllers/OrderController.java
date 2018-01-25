@@ -48,7 +48,7 @@ public class OrderController {
        orderService.insertOrder(httpSession,payType);
        System.out.println("订单信息插入数据库成功");
        //清空购物车session
-        //httpSession.removeAttribute("minGoodsNum");
+        httpSession.removeAttribute("minGoodsNum");
         return "index/payok";
     }
 

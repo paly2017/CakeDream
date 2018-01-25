@@ -90,5 +90,5 @@ css文件和js文件引入冲突
   resultMapId='null', jdbcTypeName='null', expression='null'}. Cause: org.apache.ibatis.type.TypeException:
   Error setting non null for parameter #6 with JdbcType null . Try setting a different JdbcType for this parameter
   or a different configuration property. Cause: java.sql.SQLException: Parameter index out of range (6 > number of parameters,which is 5).
-    原因：在使用注解时
-    解决方案：
+    原因：在mapper映射类里面使用注解时书写格式有误
+    解决方案：使用正确的注解格式
