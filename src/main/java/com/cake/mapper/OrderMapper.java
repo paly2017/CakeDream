@@ -10,15 +10,16 @@ import org.springframework.stereotype.Component;
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer id);
 
-
     /**
      * 数据库插入Order对象
      * @param order  对象
      * @return  返回被影响行数
+     * @author Philip
+     * @Insert({"INSERT INTO orders(total,amount,status,paytype,name,phone,address,systime,user_id,order_NO) VALUES (#{total},#{amount},#{status},#{paytype},'#{name}','#{phone}','#{address}','#{systime}',#{userId},'#{orderNo}');"})
      */
-    @Insert({"INSERT INTO orders(total,amount,status,paytype,name,phone,address,systime,user_id) VALUES " +
-            "(${total},${amount},${status},${paytype},'${name}','${phone}','${address}','${systime}',${userId},${goodNo},${goodId});"})
-    int insert(Order order);
+    @Insert(" INSERT INTO orders(total,amount,status,paytype,name, phone, address,systime, user_id, order_NO ) " +
+            "VALUES (#{total},#{amount},#{status},#{paytype},#{name},#{phone},#{address},#{systime},#{userId},#{orderNo});")
+    Integer insert(Order order);
 
     int insertSelective(Order record);
 

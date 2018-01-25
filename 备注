@@ -4,3 +4,4 @@
 3，orders表中增加
 ALTER TABLE orders ADD order_NO VARCHAR(64) AFTER user_id;
 ALTER TABLE  orders ADD good_id INT(32) AFTER  order_NO;
+ALTER TABLE orders DROP COLUMN good_id;

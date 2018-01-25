@@ -49,14 +49,15 @@
             <%--循环遍历输出客户不同订单的信息--%>
 
             <c:forEach  items="${sessionScope.orderList}" var="order" varStatus="outer">
-                <c:forEach items="${sessionScope.miniCartList}" var="minGoodsNum"  varStatus="inner">
+                <c:forEach items="${sessionScope.itemList}" var="item"  varStatus="inner">
+                    <c:forEach items="${sessionScope.goodList}" var="good" varStatus="center">
                     <tr>
                         <%--判断两次循环的下标是否相等，相等的时候执行本次循环--%>
-                        <c:if test="${outer.index==inner.index}">
+                        <c:if test="${outer.index==inner.index==center.index}">
                         <td><p>${order.id}</p></td>
                         <td><p>${order.total}</p></td>
                         <td>
-                            <p>${minGoodsNum.good.name}(${minGoodsNum.good.price}) x ${minGoodsNum.count}</p>
+                            <p>商品名称：${good.name}<br>单价${good.price} <br>数量 ${item.amount}</p>
                         </td>
                         <td>
                             <p>${order.name}</p>
@@ -78,6 +79,7 @@
                         </td>
                         </c:if>
                     </tr>
+                    </c:forEach>
                 </c:forEach>
             </c:forEach>
         </table>

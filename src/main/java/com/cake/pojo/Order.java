@@ -28,7 +28,7 @@ public class Order {
 
     private String orderNo;//订单号
 
-    private int goodId;//商品id
+
 
     public String getOrderNo() {
         return orderNo;
@@ -38,15 +38,9 @@ public class Order {
         this.orderNo = orderNo;
     }
 
-    public int getGoodId() {
-        return goodId;
-    }
 
-    public void setGoodId(int goodId) {
-        this.goodId = goodId;
-    }
 
-    public Order(Integer id, Integer total, Integer amount, Integer status, Integer paytype, String name, String phone, String address, Date systime, Integer userId, String orderNo, int goodId) {
+    public Order(Integer id, Integer total, Integer amount, Integer status, Integer paytype, String name, String phone, String address, Date systime, Integer userId, String orderNo) {
         this.id = id;
         this.total = total;
         this.amount = amount;
@@ -58,7 +52,7 @@ public class Order {
         this.systime = systime;
         this.userId = userId;
         this.orderNo = orderNo;
-        this.goodId = goodId;
+
     }
 
     public Order() {
