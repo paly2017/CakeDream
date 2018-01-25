@@ -26,6 +26,7 @@ public class ItemContorller {
         if (null==orderManagers){
            return modelAndView;
         }
+        modelAndView.addObject("adminorder",orderManagers);
         return modelAndView;
     }
 }
