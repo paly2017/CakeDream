@@ -14,7 +14,6 @@
     <script src="index/js/bootstrap.min.js"></script>
     <script src="index/js/jquery.min.js"></script>
     <!-- validate插件-->
-
     <script src="index/js/jquery.validate.js"></script>
     <script src="index/js/additional-methods.js"></script>
     <script src="index/js/jquery.validate.min.js"></script>

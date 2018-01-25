@@ -51,7 +51,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     /**
-     *  个人中心修改增加地址的方法
+     *  个人中心修改地址的方法
      */
     public Integer updataInfo(Integer id, String name, String phone, String address) {
         //调用 userMapper借口实现类的方法
