@@ -9,7 +9,7 @@ import java.util.Map;
 public interface IGoodService {
 
     //根据商品 id,查询一个对应的good--jelly
-  public Good slectGoodByGoodId(Integer good_id);
+   Good slectGoodByGoodId(Integer good_id);
     /***
      * 根据类型id,查询对应的goods
      * @param integer
@@ -62,5 +62,12 @@ public interface IGoodService {
     String mincartGoodSrevice(HttpSession session);
 
     Integer getTotalPrice(HttpServletRequest request);
+
+  /**
+   * 获取当前插入购物车的所有商品名称 用于在页面显示
+   * @param httpSession
+   * @return good集合
+   */
+  List<Good> packagingGood(HttpSession httpSession);
 
 }

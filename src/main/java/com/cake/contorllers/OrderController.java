@@ -1,8 +1,7 @@
 package com.cake.contorllers;
 
-import com.cake.pojo.MiniCart;
-import com.cake.pojo.Order;
-import com.cake.pojo.User;
+import com.cake.pojo.*;
+import com.cake.service.Impl.ItemServiceImpl;
 import com.cake.service.Impl.OrderServiceImpl;
 import com.cake.service.Impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +21,13 @@ public class OrderController {
     private UserServiceImpl userService;
     @Autowired
     private OrderServiceImpl orderService;
+    @Autowired
+    private ItemServiceImpl itemService;
 
     /**
      * 购物车提交订单页面controller
      * @return 跳转至支付页面
+     * @author Philip
      */
     @RequestMapping("/pay")
     public String getOrderList(HttpServletRequest httpServletRequest){
@@ -38,34 +40,34 @@ public class OrderController {
         //设置跳转的页面至支付页面
         return "index/pay";
     }
-
+//从支付页面跳转至页面成功，准备显示订单详情
     @RequestMapping("/payOk")
     public String jumpToOrderPayOk(HttpServletRequest httpServletRequest,@RequestParam("payType")Integer payType){
         HttpSession httpSession = httpServletRequest.getSession();
         //调用方法 获取一个order对象的集合
-        List<Order> orderList = orderService.insertOrder(httpSession,payType);
-        //获取数据库orders表中的最大id
-        Integer maxOrdersId = orderService.getMaxOrdersId();
-        httpSession.setAttribute("maxOrderId",maxOrdersId);
-        //将集合放入session中
-        httpSession.setAttribute("orderList",orderList);
-        //System.out.println("获取到的order最大的id："+maxOrdersId);
+       orderService.insertOrder(httpSession,payType);
+       System.out.println("订单信息插入数据库成功");
+       //清空购物车session
+        //httpSession.removeAttribute("minGoodsNum");
         return "index/payok";
     }
+
     //从支付成功页面跳转至order.jsp页面
     @RequestMapping("/order")
     public String jumpToOrder(HttpServletRequest httpServletRequest){
              HttpSession httpSession =
                              httpSession = httpServletRequest .getSession();
-
+            //session当中获取所需集合
             List<Order> orderList = (List<Order>) httpSession.getAttribute("orderList");
-            List<MiniCart> miniCartList = (List<MiniCart>)httpSession.getAttribute("minGoodsNum");
-            /* System.out.println("取出来的order集合"+orderList.toString());
-            System.out.println("购物车集合"+miniCartList.toString());*/
+            List<Item> itemList = (List<Item>)httpSession.getAttribute("itemList");
+            List<Good> goodList =(List<Good>) httpSession.getAttribute("goodList");
+            System.out.println("即将跳转至订单详情页面");
+            //集合仿佛session当中
             httpSession.setAttribute("orderList",orderList);
-            httpSession.setAttribute("miniCartList",miniCartList);
+            httpSession.setAttribute("itemList",itemList);
+            httpSession.setAttribute("goodList",goodList);
 
-            //System.out.print("获取session中的order对象是："+order.toString());
+        //System.out.print("获取session中的order对象是："+order.toString());
             return "index/order";
 
     }

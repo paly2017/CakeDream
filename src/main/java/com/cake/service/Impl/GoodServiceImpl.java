@@ -23,7 +23,6 @@ public class GoodServiceImpl implements IGoodService {
 
     private Map<String,List<Good>> stringGoodMap;
 
-
     //根据 商品 id 查询一个商品--jelly
     public Good slectGoodByGoodId(Integer good_id) {
         return goodMapper.slectGoodByGoodId(good_id);
@@ -166,6 +165,23 @@ public class GoodServiceImpl implements IGoodService {
             totalPrice+=price*count;
         }
         return totalPrice;
+    }
+
+    /**
+     * 根据商品id获取一系列商品集合
+     * @param httpSession
+     * @return
+     * @author Philip
+     */
+    public List<Good> packagingGood(HttpSession httpSession) {
+        //获取session中存放的MiniCart集合
+        List<MiniCart> miniCartList = (List<MiniCart>) httpSession.getAttribute("minGoodsNum");
+        List<Good> goodList = new ArrayList<Good>();
+        for (MiniCart miniCart:
+                miniCartList) {
+            goodList.add(this.slectGoodByGoodId(miniCart.getGood().getId()));
+        }
+        return goodList;
     }
 
     /**

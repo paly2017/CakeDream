@@ -21,7 +21,7 @@ public interface IOrderService {
      * @return
      */
     //组装order对象 需要传参
-    List<Order> insertOrder(HttpSession httpSession,Integer payType );
+    void insertOrder(HttpSession httpSession,Integer payType );
 
 
     //获取订单的总价，支付时间、订单编号
@@ -32,5 +32,13 @@ public interface IOrderService {
      * @return
      */
     Integer getMaxOrdersId();
+
+    /**
+     * 从session中获取购物车信息，进行对order对象属性进行封装
+     * @param httpSession
+     * @param payType  支付方法
+     * @return  一个组装好的order对象
+     */
+    List<Order> packagingOrder(HttpSession httpSession,Integer payType);
 
 }
