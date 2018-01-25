@@ -8,6 +8,7 @@ import com.cake.pojo.*;
 import com.cake.pojo.Item;
 import com.cake.pojo.MiniCart;
 import com.cake.service.inteerfaces.IItemService;
+import com.cake.uilt.Uilt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +32,16 @@ public class ItemServiceImpl implements IItemService {
      * OrderManager 对象，存入集合中，返回该集合
      * @return
      */
-    public List<OrderManager> orderManger() {
-        List<Item> itemList = itemMapper.seleItems();
+    public List<OrderManager> orderManger(Integer pageindex) {
+        if (null==pageindex){pageindex=0;}
+        //获取数据库item的数量
+        int itemCount= itemMapper.getCount();
+        if (itemCount==0){
+            return null;
+        }
+        //计算分页显示数据的起始下标
+        Uilt.getPageNum(pageindex,itemCount);
+        List<Item> itemList = itemMapper.seleItems(Uilt.startSize,Uilt.AdminpageSize);
         if (null==itemList){
             return null;
         }

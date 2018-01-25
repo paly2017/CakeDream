@@ -153,9 +153,5 @@ public class OrderServiceImpl implements IOrderService {
         return orderList;
     }
 
-    public List<OrderManager> showOrderList(List<OrderManager> managerList, Integer index) {
-        if (null==managerList){};
-        return null;
-    }
 
 }

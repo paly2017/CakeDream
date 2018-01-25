@@ -92,3 +92,8 @@ css文件和js文件引入冲突
   or a different configuration property. Cause: java.sql.SQLException: Parameter index out of range (6 > number of parameters,which is 5).
     原因：在mapper映射类里面使用注解时书写格式有误
     解决方案：使用正确的注解格式
+
+ 20.使用sql 查询总数是 org.springframework.jdbc.UncategorizedSQLException: Error attempting to get column 'id' from result set. Cause: java.sql.SQLException:
+  Column 'id' not found.org.springframework.jdbc.UncategorizedSQLException: Error attempting to get column 'id' from result set. Cause: java.sql.SQLException: Column 'id' not found.
+  原因：是count()函数没有加别名， @Select(value = "SELECT count(id) FROM items WHERE 1=1;")
+  解决：@Select(value = "SELECT count(id) AS id FROM items WHERE 1=1;")

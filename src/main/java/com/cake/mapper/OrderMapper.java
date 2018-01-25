@@ -42,7 +42,7 @@ public interface OrderMapper {
             @Result(property = "userId",column = "user_id"),
             @Result(property = "orderNo",column = "order_No")
     })
-    Order selectByPrimaryKey(Integer id);
+    Order selectByPrimaryKey(@Param("id") Integer id);
 
     int updateByPrimaryKeySelective(Order record);
 

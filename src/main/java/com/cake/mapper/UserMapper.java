@@ -93,7 +93,7 @@ public interface UserMapper {
             @Result(property = "phone",column = "phone"),
             @Result(property = "adress",column = "adress")
     })
-    User selectByPrimaryKey(Integer id);
+    User selectByPrimaryKey(@Param("userId") Integer id);
 
     /****
      * 用户名密码

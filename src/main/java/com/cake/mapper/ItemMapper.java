@@ -32,5 +32,19 @@ public interface ItemMapper {
             @Result(property = "orderId",column = "order_id"),
             @Result(property = "goodId",column = "good_id")
     })
-    List<Item> seleItems();
+    List<Item> seleItems(Integer pageIndex,Integer pageSize);
+
+    /****
+     * 查询数据库中数据条数
+     * @return
+     */
+    @Select(value = "SELECT count(id) AS id FROM items WHERE 1=1;")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "price",column = "price"),
+            @Result(property = "amount",column = "amount"),
+            @Result(property = "orderId",column = "order_id"),
+            @Result(property = "goodId",column = "good_id")
+    })
+    int getCount();
 }

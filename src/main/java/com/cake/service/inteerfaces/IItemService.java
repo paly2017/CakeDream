@@ -17,6 +17,10 @@ public interface IItemService {
     List<Item> packagingItem(HttpSession httpSession);
 
 
-
-    List<OrderManager> orderManger();
+    /****
+     * 订单分页查询
+     * @param pageIndex
+     * @return
+     */
+    List<OrderManager> orderManger(Integer pageIndex);
 }

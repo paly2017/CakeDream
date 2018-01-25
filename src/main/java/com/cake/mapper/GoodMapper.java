@@ -25,7 +25,7 @@ public interface GoodMapper {
             @Result(property = "stock",column = "stock"),
             @Result(property = "typeId",column = "type_id")
     })
-     public Good slectGoodByGoodId(Integer good_id);
+     public Good slectGoodByGoodId(@Param("good_id") Integer good_id);
 
 
 

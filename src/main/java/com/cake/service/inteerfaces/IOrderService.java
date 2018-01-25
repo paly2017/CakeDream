@@ -40,6 +40,5 @@ public interface IOrderService {
      */
     List<Order> packagingOrder(HttpSession httpSession,Integer payType);
 
-    List<OrderManager> showOrderList(List<OrderManager> managerList,Integer index);
 
 }
