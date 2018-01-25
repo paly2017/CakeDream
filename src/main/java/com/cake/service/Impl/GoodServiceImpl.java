@@ -166,6 +166,14 @@ public class GoodServiceImpl implements IGoodService {
         }
         return totalPrice;
     }
+    //查询全部商品
+    public List<Good> selectAllGood() {
+        return goodMapper.selectAllGood();
+    }
+    //分页查询所有商品
+    public List<Good> selectLimitGood(Integer fromIndex, Integer pageSize) {
+        return goodMapper.selectLimitGood(fromIndex,pageSize);
+    }
 
     /**
      * 根据商品id获取一系列商品集合

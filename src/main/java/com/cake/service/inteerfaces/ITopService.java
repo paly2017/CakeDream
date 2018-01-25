@@ -14,5 +14,8 @@ public interface ITopService {
    /* List<Top> oneShow(Integer type,Integer pageNum);*/
     //循环遍历，根据商品id查出商品，，根据商品type_id查出商品类型名称
     List<Top> foreach(List<Top> list);
+    //查询所有推荐商品--还没有用
+    List<Top> selectAllTaops ();
+
 
 }

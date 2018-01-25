@@ -24,10 +24,7 @@ public class TopControl {
     //service实现类作为属性注入
     @Autowired
     private TopServiceImpl topServiceImpl;
-    @Autowired
-    private GoodServiceImpl goodServiceImpl;
-    @Autowired
-    private TypeServiceImpl typeServiceImpl;
+
     @RequestMapping("/index")
     public ModelAndView selectIndexGoods(ModelAndView modelAndView){
         //调用service曾的方法，获得首页展示商品的集合
@@ -48,7 +45,9 @@ public class TopControl {
     @RequestMapping("/tops")
     public ModelAndView selectHotGoods(@RequestParam(value ="type",required = false)Integer type,
                                         @RequestParam(value ="pageNum",required = false)Integer pageNum,//当前页数
-                                       ModelAndView modelAndView){
+                                       @RequestParam(value ="admin",required = false)Integer admin,//参数--判断是哪个请求，跳到哪个学校页面
+                                       ModelAndView modelAndView,
+                                       HttpServletRequest request){
         //根据传入的type查询--先查出总共多少条
         List<Top> AllList =topServiceImpl.selectTopListByType(type);
        //总共多少条数据
@@ -69,15 +68,18 @@ public class TopControl {
         //判断
         //分页查询，得到分页查询的集合
         List<Top> limit =topServiceImpl.selectByLimit(type,fromIndex,pageSize);
-        //循环便利，将商品加入集合
+        Integer flag=2;//遍历Top
+        request.getSession().setAttribute("good",flag);
         //将数据和页面放入ModelAndView
         modelAndView.addObject("limitList",limit);
         //将页数也要放入ModelAndView
         modelAndView.addObject("pageNum",pageNum);
         modelAndView.addObject("pageCount",pageCount);
-        modelAndView.setViewName("index/top");
-
+        if(admin==1){
+            modelAndView.setViewName("index/top");
+        }else{
+            modelAndView.setViewName("admin/good_list");
+        }
         return modelAndView;
     }
-
 }

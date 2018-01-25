@@ -50,11 +50,25 @@ public class TopServiceImpl implements ITopService {
         //返回每页显示商品的集合
     }*/
 
+    /**
+     * 没有用
+     * @return
+     */
+    //查询所有推荐商品
+   public List<Top> selectAllTaops (){
+       //调用topMapper实现类的全查方法
+      List<Top> all= topMapper.selectAllTaops();
+      //循环遍历集合，添加商品信息和type信息
+       List<Top> allList=foreach(all);//调用goodServiceImpl的根据good_id查询商品的方法
+       return allList;
+   }
+
+
 
     //循环遍历，根据商品id查出商品，，根据商品type_id查出商品类型名称
     public  List<Top> foreach(List<Top> list) {
         for (Top top : list) {
-            //查出来一个商品
+            //根据good_id查出来一个商品
             Good good = goodServiceImpl.slectGoodByGoodId(top.getGoodId());
             //根据商品的type_id查出来一个Type
             Type type = typeServiceImpl.selectTpyeById(good.getTypeId());

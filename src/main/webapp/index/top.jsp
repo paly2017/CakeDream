@@ -71,13 +71,13 @@
             <div class="clearfix"> </div>
         </div>
         <div><div style='text-align:center;'>
-            <a class='btn btn-info' href="/tops?type=${limitList[0].type}&pageNum=1">首页</a>
-            <a class='btn btn-info' href="/tops?type=${limitList[0].type}&pageNum=${pageNum-1}">上一页</a>
+            <a class='btn btn-info' href="/tops?type=${limitList[0].type}&pageNum=1&admin=1">首页</a>
+            <a class='btn btn-info' href="/tops?type=${limitList[0].type}&pageNum=${pageNum-1}&admin=1">上一页</a>
             <h2 style='display:inline;'>[${pageNum}/${pageCount}]</h2>
             <h2 style='display:inline;'>[${pageCount}]</h2>
-            <a class='btn btn-info' href="/tops?type=${limitList[0].type}&pageNum=${pageNum+1}">下一页</a>
-            <a class='btn btn-info' href="/tops?type=${limitList[0].type}&pageNum=${pageCount}">尾页</a>
-            <input id="hotgo" type='text' class='form-control' style='display:inline;width:60px;' value=''/><a class='btn btn-info'  onclick="go(${limitList[0].type},this)">GO</a>
+            <a class='btn btn-info' href="/tops?type=${limitList[0].type}&pageNum=${pageNum+1}&admin=1">下一页</a>
+            <a class='btn btn-info' href="/tops?type=${limitList[0].type}&pageNum=${pageCount}&admin=1">尾页</a>
+            <input id="hotgo" type='text' class='form-control' style='display:inline;width:60px;' value=''/><a class='btn btn-info' onclick="go(${limitList[0].type},this)">GO</a>
         </div>
         </div>
     </div>

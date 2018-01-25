@@ -94,5 +94,35 @@ public interface GoodMapper {
     })
     Good slectGoodsByGoodId(Integer goodId);
 
+    //查询全部商品
+    @Select("SELECT * FROM goods;")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "name",column = "name") ,
+            @Result(property = "cover",column = "cover"),
+            @Result(property = "image1",column = "image1"),
+            @Result(property = "image2",column = "image2"),
+            @Result(property = "price",column = "price"),
+            @Result(property = "intro",column = "intro"),
+            @Result(property = "stock",column = "stock"),
+            @Result(property = "typeId",column = "type_id")
+    })
+    List<Good> selectAllGood();
+
+    //分页查询所有商品
+    @Select("SELECT * FROM goods LIMIT #{fromIndex},#{pageSize};")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "name",column = "name") ,
+            @Result(property = "cover",column = "cover"),
+            @Result(property = "image1",column = "image1"),
+            @Result(property = "image2",column = "image2"),
+            @Result(property = "price",column = "price"),
+            @Result(property = "intro",column = "intro"),
+            @Result(property = "stock",column = "stock"),
+            @Result(property = "typeId",column = "type_id")
+    })
+    List<Good> selectLimitGood(@Param("fromIndex") Integer fromIndex,@Param("pageSize")Integer pageSize);
+
 
 }

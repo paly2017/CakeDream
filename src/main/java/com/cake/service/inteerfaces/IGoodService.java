@@ -63,6 +63,13 @@ public interface IGoodService {
 
     Integer getTotalPrice(HttpServletRequest request);
 
+
+  //查询全部商品
+    List<Good> selectAllGood();
+
+  //分页查询所有商品
+  List<Good> selectLimitGood(Integer fromIndex,Integer pageSize);
+
   /**
    * 获取当前插入购物车的所有商品名称 用于在页面显示
    * @param httpSession

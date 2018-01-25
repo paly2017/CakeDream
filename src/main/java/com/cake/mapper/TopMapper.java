@@ -27,7 +27,20 @@ public interface TopMapper {
             @Result(property = "type",column = "type"),
             @Result(property = "goodId",column = "good_id")
     })
-    public List<Top> selectByLimit(@Param("type") Integer type, @Param("fromIndex") Integer fromIndex, @Param("pageSize") Integer pageSize);
+     List<Top> selectByLimit(@Param("type") Integer type, @Param("fromIndex") Integer fromIndex, @Param("pageSize") Integer pageSize);
+
+    /**
+     * 还没有用
+     * @return
+     */
+    //查询所有推荐商品
+    @Select("SELECT * FROM tops;")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "type",column = "type"),
+            @Result(property = "goodId",column = "good_id")
+    })
+    List<Top> selectAllTaops ();
 
 
     //满哥
