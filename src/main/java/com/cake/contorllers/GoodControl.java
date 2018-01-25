@@ -48,7 +48,7 @@ public class GoodControl {
         List<Good> limitList= goodServiceImpl.selectLimitGood(fromIndex,pageSize);
         //循环遍历集合--查商品推荐、商品类型
         for (Good good:limitList) {
-            good.setTop(topServiceImpl.selectTopByGoodId(good.getId()));
+          /*  good.setTop(topServiceImpl.selectTopByGoodId(good.getId()));*/
             good.setType(typeServiceImpl.selectTpyeById(good.getTypeId()));
         }
         modelAndView.addObject("goodList",limitList);

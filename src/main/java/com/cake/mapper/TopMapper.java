@@ -37,7 +37,7 @@ public interface TopMapper {
             @Result(property = "type",column = "type"),
             @Result(property = "goodId",column = "good_id")
     })
-    Top selectTopByGoodId (Integer good_id);
+    List<Top> selectTopByGoodId (@Param("good_id") Integer good_id);
  /**
   * 通过商品id，更改商品的推荐属性type，1、条幅  2、热销  3、新品
   */

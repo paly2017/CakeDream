@@ -15,7 +15,7 @@ public interface ITopService {
     //循环遍历，根据商品id查出商品，，根据商品type_id查出商品类型名称
     List<Top> foreach(List<Top> list);
     //查询商品id查询推荐
-    Top selectTopByGoodId (Integer good_id);
+    List<Top> selectTopByGoodId (Integer good_id);
     /**
      * 通过商品id，更改商品的推荐属性type，1、条幅  2、热销  3、新品
      */

@@ -51,7 +51,7 @@ public class TopServiceImpl implements ITopService {
     }*/
 
     //查询商品id查询推荐
-    public Top selectTopByGoodId (Integer good_id){
+    public List<Top> selectTopByGoodId (Integer good_id){
         return topMapper.selectTopByGoodId(good_id);
     }
 
@@ -80,8 +80,8 @@ public class TopServiceImpl implements ITopService {
             //根据商品的type_id查出来一个Type
             Type type = typeServiceImpl.selectTpyeById(good.getTypeId());
             //根据商品id，查出它是什么推荐类型
-            Top top1=selectTopByGoodId(good.getId());
-            good.setTop(top1);
+            List<Top> top1=selectTopByGoodId(good.getId());
+            //一个商品有两种推荐怎么解决这个问题呢
             good.setType(type);
             top.setGood(good);
             top.setGoodType(type);

@@ -19,7 +19,7 @@ public class Good {
 
     private Integer typeId;
 
-    private Top top;//根据商品id，查出它是什么推荐是用
+    private Top top;//根据商品id，查出它是什么推荐时用
 
     private Type type;//根据用户type_id查询商品类型
 
