@@ -23,6 +23,25 @@ public interface OrderMapper {
 
     int insertSelective(Order record);
 
+    /***
+     * 根据主键i查询order
+     * @param id
+     * @return
+     */
+    @Select(value = "SELECT * FROM orders WHERE id=#{id}")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "total",column = "total"),
+            @Result(property = "amount",column = "amount"),
+            @Result(property = "status",column = "status"),
+            @Result(property = "paytype",column = "paytype"),
+            @Result(property = "name",column = "name"),
+            @Result(property = "phone",column = "phone"),
+            @Result(property = "address",column = "address"),
+            @Result(property = "systime",column = "systime"),
+            @Result(property = "userId",column = "user_id"),
+            @Result(property = "orderNo",column = "order_No")
+    })
     Order selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Order record);

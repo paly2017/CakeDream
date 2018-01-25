@@ -78,7 +78,7 @@ public class OrderServiceImpl implements IOrderService {
     public void getOrderListFunction(HttpSession httpSession) {
         //获取购物车商品集合
         List<MiniCart> miniCartList = (List<MiniCart>) httpSession.getAttribute("minGoodsNum");
-     /*   User user = (User) httpSession.getAttribute("loginUser");*/
+        /*   User user = (User) httpSession.getAttribute("loginUser");*/
         //循环遍历集合 获取商品总价
         Integer allAmount = 0;
         for (MiniCart miniCart:

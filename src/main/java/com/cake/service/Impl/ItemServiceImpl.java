@@ -1,7 +1,10 @@
 package com.cake.service.Impl;
 
+import com.cake.mapper.GoodMapper;
 import com.cake.mapper.ItemMapper;
 import com.cake.mapper.OrderMapper;
+import com.cake.mapper.UserMapper;
+import com.cake.pojo.*;
 import com.cake.pojo.Item;
 import com.cake.pojo.MiniCart;
 import com.cake.service.inteerfaces.IItemService;
@@ -17,8 +20,32 @@ public class ItemServiceImpl implements IItemService {
     @Autowired
     private ItemMapper itemMapper;
     @Autowired
+    private GoodMapper goodMapper;
+    @Autowired
     private OrderMapper orderMapper;
+    @Autowired
+    private UserMapper userMapper;
 
+    /****
+     * 查询所有item,级相关的order,user,goog,信息，并封装为
+     * OrderManager 对象，存入集合中，返回该集合
+     * @return
+     */
+    public List<OrderManager> orderManger() {
+        List<Item> itemList = itemMapper.seleItems();
+        if (null==itemList){
+            return null;
+        }
+        List<OrderManager> managerList = new ArrayList<OrderManager>();
+        for (Item item : itemList){
+            Good good = goodMapper.slectGoodByGoodId(item.getGoodId());
+            Order order =orderMapper.selectByPrimaryKey(item.getOrderId());
+            User user = userMapper.selectByPrimaryKey(order.getUserId());
+            OrderManager orderManager = new OrderManager(good,item,user,order);
+            managerList.add(orderManager);
+        }
+        return managerList;
+    }
     /**
      *  给数据库表格items表格添加数据
      * @param item item对象

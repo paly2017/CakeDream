@@ -15,6 +15,7 @@ import java.util.List;
 public class Uilt{
     public static Integer pageCount;
     public static final Integer pageSize = 4;
+    public static final Integer AdminpageSize = 10;
     public static Integer startSize ;
     public static Integer pageIndex;
     private static  Gson gson;
