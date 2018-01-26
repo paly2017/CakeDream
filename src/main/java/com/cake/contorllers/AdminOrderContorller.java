@@ -9,7 +9,7 @@ import com.google.common.base.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,7 +34,13 @@ public class AdminOrderContorller {
         if (null==orderManagers){
             return "nodate";
         }
-        return Uilt.getGsonToString(orderManagers);
+        List<OrderManager> orderManagers1 = new ArrayList<OrderManager>();
+        for (OrderManager orderManager: orderManagers){
+            if (orderManager.getOrder().getDelete()==1){
+                orderManagers1.add(orderManager);
+            }
+        }
+        return Uilt.getGsonToString(orderManagers1);
     }
 
     /***
@@ -62,6 +68,29 @@ public class AdminOrderContorller {
         Item item = itemService.getItemByGoodId(goodId);
         Optional.of(item);
         int num =orderService.deleteOrder(item.getOrderId());
-        return null;
+        int num1 = itemService.deleteItem(goodId);
+        if(num>0&&num1>0){
+            return "ok";
+        }else {
+            return "no";
+        }
     }
+    @PostMapping("/nopay")
+    @ResponseBody
+    public String noPay(@RequestParam("orderstatu") Integer statu,
+                        @RequestParam("pageIndex")Integer pageIndex){
+        Optional.of(statu);
+        List<OrderManager> orderManagers =
+                itemService.orderManger(statu,pageIndex);
+        if (null==orderManagers){
+            return "nodate";
+        }
+        List<OrderManager> orderManagers1 = new ArrayList<OrderManager>();
+        for (OrderManager orderManager: orderManagers){
+            if (orderManager.getOrder().getDelete()==1){
+                orderManagers1.add(orderManager);
+            }
+        }
+        return Uilt.getGsonToString(orderManagers1);
+    };
 }

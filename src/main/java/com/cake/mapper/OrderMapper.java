@@ -41,12 +41,13 @@ public interface OrderMapper {
             @Result(property = "address",column = "address"),
             @Result(property = "systime",column = "systime"),
             @Result(property = "userId",column = "user_id"),
-            @Result(property = "orderNo",column = "order_No")
+            @Result(property = "orderNo",column = "order_No"),
+            @Result(property = "delete",column = "delete_status")
     })
     Order selectByPrimaryKey(@Param("id") Integer id);
 
     int updateByPrimaryKeySelective(Order record);
-    @Update(value = "UPDATE orders SET status=3 WHERE id=#{orderId} ;")
+    @Update(value = "UPDATE orders SET status=3 WHERE id=#{orderId}  ;")
     int updateByPrimaryKey(Integer orderId);
 
     /**

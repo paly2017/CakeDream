@@ -28,6 +28,8 @@ public class Order {
 
     private String orderNo;//订单号
 
+    private Integer delete;
+
 
 
     public String getOrderNo() {
@@ -137,7 +139,15 @@ public class Order {
             this.userId = userId;
         }
 
-        @Override
+    public Integer getDelete() {
+        return delete;
+    }
+
+    public void setDelete(Integer delete) {
+        this.delete = delete;
+    }
+
+    @Override
         public String toString() {
             return "Order{" +
                     "id=" + id +

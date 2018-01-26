@@ -19,10 +19,10 @@
 <br>
 <ul role="tablist" class="nav nav-tabs">
     <li class="active" role="presentation"><a href="orderList.action">全部订单</a></li>
-    <li  role="presentation"><a href="orderList.action?status=1">未付款</a></li>
-    <li  role="presentation"><a href="orderList.action?status=2">已付款</a></li>
-    <li  role="presentation"><a href="orderList.action?status=3">配送中</a></li>
-    <li  role="presentation"><a href="orderList.action?status=4">已完成</a></li>
+    <li  role="presentation"><a class="btn" onclick="nopay(1,1)">未付款</a></li>
+    <li  role="presentation"><a class="btn" onclick="nopay(2,1)">已付款</a></li>
+    <li  role="presentation"><a class="btn" onclick="nopay(3,1)">配送中</a></li>
+    <li  role="presentation"><a class="btn" onclick="nopay(4,1)">已完成</a></li>
 </ul>
 <br>
 <table class="table table-bordered table-hover">

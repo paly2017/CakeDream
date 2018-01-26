@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,7 +27,13 @@ public class ItemContorller {
         if (null==orderManagers){
            return modelAndView;
         }
-        modelAndView.addObject("adminorder",orderManagers);
+        List<OrderManager> orderManagers1 = new ArrayList<OrderManager>();
+        for (OrderManager orderManager: orderManagers){
+            if (orderManager.getOrder().getDelete()==1){
+                orderManagers1.add(orderManager);
+            }
+        }
+        modelAndView.addObject("adminorder",orderManagers1);
         modelAndView.addObject("pagecount",Uilt.pageCount);
         modelAndView.addObject("pageindex",Uilt.pageIndex);
         return modelAndView;

@@ -30,4 +30,11 @@ public interface IItemService {
      * @return
      */
     Item getItemByGoodId(Integer goodid);
+
+    /***
+     * 根据商品删除购买记录
+     * @param goodId
+     * @return
+     */
+    Integer deleteItem(Integer goodId);
 }

@@ -57,8 +57,49 @@ public class ItemServiceImpl implements IItemService {
         return managerList;
     }
 
+    /***
+     * 重载分页查询方法
+     * @param status
+     * @param pageindex
+     * @return
+     */
+    public List<OrderManager> orderManger(Integer status, Integer pageindex){
+        if (null==pageindex){pageindex=0;}
+        int itemCount= itemMapper.getCount();
+        if (itemCount==0){
+            return null;
+        }
+        List<OrderManager> managerList = new ArrayList<OrderManager>();
+        Uilt.getPageNum(pageindex,itemCount);
+        List<Item> itemList = itemMapper.seleItems(Uilt.startSize,Uilt.AdminpageSize);
+        for (Item item : itemList){
+            Good good = goodMapper.slectGoodByGoodId(item.getGoodId());
+            Order order =orderMapper.selectByPrimaryKey(item.getOrderId());
+            User user = userMapper.selectByPrimaryKey(order.getUserId());
+            if (order.getStatus().equals(status)){
+                OrderManager orderManager = new OrderManager(good,item,user,order);
+                orderManager.setPageCount(Uilt.pageCount);
+                managerList.add(orderManager);
+            }
+        }
+        return managerList;
+    }
+    /***
+     * 根据商品id,返回item
+     * @param goodid
+     * @return
+     */
     public Item getItemByGoodId(Integer goodid) {
         return itemMapper.selectByGoodId(goodid);
+    }
+
+    /***
+     * 根据商品id 删除item
+     * @param goodId
+     * @return
+     */
+    public Integer deleteItem(Integer goodId) {
+        return itemMapper.deleteByPrimaryKey(goodId);
     }
 
     /**
