@@ -11,8 +11,9 @@
     <title>重置密码</title>
 </head>
 <body>
+<%--<head>--%>
 <jsp:include page="header.jsp"/>
-
+<%--</head>--%>
 <br><br>
 
 <form class="form-horizontal" action="userReset.action" method="post">

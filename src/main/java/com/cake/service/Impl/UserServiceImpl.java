@@ -11,6 +11,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -124,5 +125,18 @@ public class UserServiceImpl implements IUserService {
         User user = userMapper.selectUserByUserName(username);
         //返回
         return user;
+    }
+
+    /**
+     * 查询数据库所有用户信息
+     * 在后台管理页面显示
+     * @return 返回用户集合
+     */
+    public List<User> findAllUser() {
+        //System.out.println("进入查询用户信息的实现接口方法");
+        //调用方法查询用户信息
+        List<User> userList = userMapper.selectAllUser();
+        //System.out.println("调用了userMapper映射的方法");
+        return userList;
     }
 }

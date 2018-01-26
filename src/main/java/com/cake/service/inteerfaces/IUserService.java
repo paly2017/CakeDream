@@ -3,6 +3,7 @@ package com.cake.service.inteerfaces;
 import com.cake.pojo.User;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public interface IUserService {
 
@@ -17,10 +18,12 @@ public interface IUserService {
      *   个人中心页面修改地址--返回int受影响的行数
      */
      Integer updataInfo(Integer id,String name,String phone,String address);
-    /**
+
+     /**
      * 根据密码查询用户信息---返回用户对象
      */
     User selectByPsw(String password);
+
     /**
      *  修改密码--返回int受影响的行数
      */
@@ -46,4 +49,8 @@ public interface IUserService {
 
     //用户名判断处理接口
      User selectUserByUsername(String username);
+
+     //查询数据库所有users表里面的user信息
+     List<User> findAllUser();
+
 }

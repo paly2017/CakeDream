@@ -5,6 +5,8 @@ import com.cake.pojo.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Mapper
 @Component
 public interface UserMapper {
@@ -116,4 +118,23 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+
+    /**
+     * 查询数据库所有用户信息，在后台管理页面显示
+     * @return 用户对象集合
+     */
+    @Select("SELECT * FROM users;")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "username",column = "username"),
+            @Result(property = "password",column = "password"),
+            @Result(property = "name",column = "name"),
+            @Result(property = "phone",column = "phone"),
+            @Result(property = "adress",column = "adress")
+    })
+    List<User> selectAllUser();
+
+
+
 }

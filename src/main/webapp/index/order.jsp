@@ -66,13 +66,16 @@
                         </td>
                         <td>
                             <p>
-                                <span style="color:red;" align="cerent">${order.status}</span>
+                                <c:if test="${order.status==1}"><span style="color:red;" align="cerent">未付款</span></c:if>
+                                <c:if test="${order.status==2}"><span style="color:red;" align="cerent">已付款</span></c:if>
+                                <c:if test="${order.status==3}"><span style="color:red;" align="cerent">已发货</span></c:if>
+                                <c:if test="${order.status==4}"><span style="color:red;" align="cerent">已完成</span></c:if>
                             </p>
                         </td>
                         <td>
-                            <p align="cerent">
-                                ${order.paytype}
-                            </p>
+                            <c:if test="${order.paytype==1}"><p align="cerent">微信支付</p></c:if>
+                            <c:if test="${order.paytype==2}"><p align="cerent">支付宝支付</p></c:if>
+                            <c:if test="${order.paytype==3}"><p align="cerent">货到付款</p></c:if>
                         </td>
                         <td><p align="cerent">${order.systime}</p></td>
                         <td>
