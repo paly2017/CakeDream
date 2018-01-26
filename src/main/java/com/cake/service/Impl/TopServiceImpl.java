@@ -50,7 +50,7 @@ public class TopServiceImpl implements ITopService {
         //返回每页显示商品的集合
     }*/
 
-    //查询商品id查询推荐
+    //查询商品id查询推荐集合
     public List<Top> selectTopByGoodId (Integer good_id){
         return topMapper.selectTopByGoodId(good_id);
     }
@@ -61,10 +61,9 @@ public class TopServiceImpl implements ITopService {
     //移出条幅----根据商品id，在tops表中删除该字段
     //移出热销
     //移除新品
-    public Integer removeTops(Integer good_id) {
-        return topMapper.removeTops(good_id);
+    public Integer removeTops(Integer type,Integer good_id) {
+        return topMapper.removeTops(type,good_id);
     }
-
     //加入条幅--在tops表中插入 good_id  type字段--id自动生成,type:1、条幅  2、热销  3、新品
     //加入热销
     //加入新品
@@ -77,6 +76,14 @@ public class TopServiceImpl implements ITopService {
         for (Top top : list) {
             //根据good_id查出来一个商品
             Good good = goodServiceImpl.slectGoodByGoodId(top.getGoodId());
+            //设置good的商品推荐属性
+            if(top.getType()==1){
+                good.setTopScroll(true);
+            }else if(top.getType()==2){
+                good.setTopHotSale(true);
+            }else{
+                good.setTopNewgood(true);
+            }
             //根据商品的type_id查出来一个Type
             Type type = typeServiceImpl.selectTpyeById(good.getTypeId());
             //根据商品id，查出它是什么推荐类型

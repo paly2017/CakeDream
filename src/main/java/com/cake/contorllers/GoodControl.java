@@ -1,6 +1,6 @@
 package com.cake.contorllers;
-
 import com.cake.pojo.Good;
+import com.cake.pojo.Top;
 import com.cake.service.Impl.GoodServiceImpl;
 import com.cake.service.Impl.TopServiceImpl;
 import com.cake.service.Impl.TypeServiceImpl;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -46,9 +45,20 @@ public class GoodControl {
         Integer flag=1;//遍历Good
         request.getSession().setAttribute("good",flag);
         List<Good> limitList= goodServiceImpl.selectLimitGood(fromIndex,pageSize);
-        //循环遍历集合--查商品推荐、商品类型
+        //循环遍历集合--查商品推荐集合、商品类型
         for (Good good:limitList) {
-          /*  good.setTop(topServiceImpl.selectTopByGoodId(good.getId()));*/
+            //查出每一个商品对应的推荐类型集合，一盒商品对应多个推荐类型
+            List<Top> topList =topServiceImpl.selectTopByGoodId(good.getId());
+            //循环遍历集合，设置商品的推荐属性
+            for (Top top:topList) {
+                if(top.getType()==1){//如果商品推荐表的类型为1、条幅，为2、热销3、新品
+                    good.setTopScroll(true);
+                }else if (top.getType()==2){
+                    good.setTopHotSale(true);
+                }else{
+                    good.setTopNewgood(true);
+                }
+            }
             good.setType(typeServiceImpl.selectTpyeById(good.getTypeId()));
         }
         modelAndView.addObject("goodList",limitList);

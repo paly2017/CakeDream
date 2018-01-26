@@ -31,7 +31,7 @@ public interface TopMapper {
 
 
     //查询商品id查询推荐
-    @Select("SELECT * FROM tops WHERE good_id=#{good_id}")
+    @Select("SELECT * FROM tops WHERE good_id=#{good_id} AND top_status=1")
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "type",column = "type"),
@@ -41,22 +41,22 @@ public interface TopMapper {
  /**
   * 通过商品id，更改商品的推荐属性type，1、条幅  2、热销  3、新品
   */
-    //移出条幅----根据商品id，在tops表中删除该字段
+    //移出条幅----根据商品id，在tops表中修改字段top_status=0
     //移出热销
     //移除新品
-    @Delete("DELETE * FROM tops WHERE good_id=#{good_id}")
+    @Delete("UPDATE tops SET top_status=0 WHERE good_id=#{good_id} AND `type`=#{type}")
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "type",column = "type"),
             @Result(property = "goodId",column = "good_id")
     })
-    Integer removeTops(@Param("good_id") Integer good_id);
+    Integer removeTops(@Param("type")Integer type,@Param("good_id")Integer good_id);
 
     //加入条幅--在tops表中插入 good_id  type字段--id自动生成,type:1、条幅  2、热销  3、新品
     //加入热销
     //加入新品
 
-    @Insert("INSERT INTO tops(`type`,good_id) VALUES('#{type}','#{good_id}');")
+    @Insert("INSERT INTO tops(`type`,good_id,top_status) VALUES('#{type}','#{good_id}'),1;")
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "type",column = "type"),

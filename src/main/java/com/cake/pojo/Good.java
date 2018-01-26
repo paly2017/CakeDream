@@ -1,5 +1,7 @@
 package com.cake.pojo;
 
+import java.util.List;
+
 public class Good {
     private Integer id;
 
@@ -19,7 +21,11 @@ public class Good {
 
     private Integer typeId;
 
-    private Top top;//根据商品id，查出它是什么推荐时用
+   //根据商品id，查出它是什么推荐时用,一商品可以对应多个推荐类型，三个对应一个推荐类型
+    //给每个商品增加三个属性，是否为条幅，是否为热销、是否为新品
+    private boolean topScroll;
+    private boolean topHotSale;
+    private boolean topNewgood;
 
     private Type type;//根据用户type_id查询商品类型
 
@@ -113,17 +119,31 @@ public class Good {
     public Type getType() {
         return type;
     }
+    public boolean isTopScroll() {
+        return topScroll;
+    }
 
+    public void setTopScroll(boolean topScroll) {
+        this.topScroll = topScroll;
+    }
+
+    public boolean isTopHotSale() {
+        return topHotSale;
+    }
+
+    public void setTopHotSale(boolean topHotSale) {
+        this.topHotSale = topHotSale;
+    }
+
+    public boolean isTopNewgood() {
+        return topNewgood;
+    }
+
+    public void setTopNewgood(boolean topNewgood) {
+        this.topNewgood = topNewgood;
+    }
     public void setType(Type type) {
         this.type = type;
-    }
-
-    public Top getTop() {
-        return top;
-    }
-
-    public void setTop(Top top) {
-        this.top = top;
     }
 
 }

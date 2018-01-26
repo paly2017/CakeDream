@@ -1,15 +1,6 @@
 package com.cake.uilt;
-
-import com.cake.pojo.Good;
-import com.cake.pojo.Top;
-import com.cake.pojo.Type;
-import com.cake.service.Impl.GoodServiceImpl;
-import com.cake.service.Impl.TypeServiceImpl;
 import com.google.gson.Gson;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 
 public class Uilt{
