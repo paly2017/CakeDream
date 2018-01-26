@@ -7,6 +7,10 @@ public class Top {
 
     private Integer goodId;
 
+    private Integer topStatus;
+
+
+
     //首页展示需要商品，还有商品类型，需要两个表--tops和types,点故意两个属性,引入两个类
     //商品
     private Good good;
@@ -47,6 +51,14 @@ public class Top {
 
     public void setGoodId(Integer goodId) {
         this.goodId = goodId;
+    }
+
+    public Integer getTopStatus() {
+        return topStatus;
+    }
+
+    public void setTopStatus(Integer topStatus) {
+        this.topStatus = topStatus;
     }
     //good---goodType的setter/getter
     public Good getGood() {

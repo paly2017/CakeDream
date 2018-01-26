@@ -44,11 +44,12 @@ public interface TopMapper {
     //移出条幅----根据商品id，在tops表中修改字段top_status=0
     //移出热销
     //移除新品
-    @Delete("UPDATE tops SET top_status=0 WHERE good_id=#{good_id} AND `type`=#{type}")
+    @Delete("UPDATE tops SET top_status=0 WHERE `type`=#{type} AND good_id=#{good_id}")
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "type",column = "type"),
-            @Result(property = "goodId",column = "good_id")
+            @Result(property = "goodId",column = "good_id"),
+            @Result(property = "topStatus",column = "top_status")
     })
     Integer removeTops(@Param("type")Integer type,@Param("good_id")Integer good_id);
 
@@ -56,15 +57,16 @@ public interface TopMapper {
     //加入热销
     //加入新品
 
-    @Insert("INSERT INTO tops(`type`,good_id,top_status) VALUES('#{type}','#{good_id}'),1;")
+    @Insert("INSERT INTO tops(`type`,good_id,top_status) VALUES(#{type},#{good_id},1);")
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "type",column = "type"),
-            @Result(property = "goodId",column = "good_id")
+            @Result(property = "goodId",column = "good_id"),
+            @Result(property = "topStatus",column = "top_status")
     })
     Integer addTops(@Param("type")Integer type,@Param("good_id")Integer good_id);
 
-    //
+
 
 
     //满哥

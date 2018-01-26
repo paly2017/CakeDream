@@ -19,26 +19,52 @@ function goTop(type,obj) {
     function goGood(obj) {
         $(document).ready(function () {
             //获取页码input输入的页码
-            var num=$(".form-control").val();
-            if(isNaN(num)){
-                $(obj).attr("href","/allGood?pageNum=1");
-            }else{
-                $(obj).attr("href","/allGood?pageNum="+num);
+            var num = $(".form-control").val();
+            if (isNaN(num)) {
+                $(obj).attr("href", "/allGood?pageNum=1");
+            } else {
+                $(obj).attr("href", "/allGood?pageNum=" + num);
             }
 
         });
+    }
 
-        $(document).ready(function () {
-            $(".remove").click(function () {
-                $.ajax({
-                    type:"post",
-                    url:"/remove",
-                    data:{
-                        "good_id":
-                    }
-                })
-            });
-        });
+      function remove(type,id) {
+          $(document).ready(function () {
+              $.ajax({
+                  type:"post",
+                  url:"/remove",
+                  data:{
+                      "topType":type,
+                      "goodId":id
+                  },
+                  success:function (data) {
+                      if(data=="success"){
+                          location.reload();
+                      }
+                  }
+              });
+          });
+}
+
+function addTop(type,id) {
+    $(document).ready(function () {
+        $.ajax({
+            type:"post",
+            url:"/add",
+            data:{
+                "topType":type,
+                "goodId":id
+            },
+            success:function (data) {
+                if(data=="success"){
+                    location.reload();
+                }
+            }
+        })
+
+    });
+
 }
 
 

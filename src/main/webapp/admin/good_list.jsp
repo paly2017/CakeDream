@@ -28,7 +28,7 @@
     <jsp:include page="header.jsp"/>
 
 
-    <div class="text-right"><a class="btn btn-warning" href="goodAdd.action">添加商品</a></div>
+    <div class="text-right"><a class="btn btn-warning" href="/goodAdd">添加商品</a></div>
 
     <br>
 
@@ -66,12 +66,12 @@
                     <td><p>${good.type.name}</p></td>
                     <td>
                         <p>
-                            <c:if test="${good.topHotSale}"><a class="btn btn-info remove" onclick="remove(${top.good.id})">移出条幅</a></c:if>
-                            <c:if test="${!good.topHotSale}"><a class="btn btn-primary" href="/add?type=1&good.id=${top.good.id}">加入条幅</a></c:if>
-                            <c:if test="${good.topHotSale}"><a class="btn btn-info remove" href="/remove?good.id=${top.good.id}">移出热销</a></c:if>
-                            <c:if test="${!good.topHotSale}"><a class="btn btn-primary" href="/add?type=2&good.id=${top.good.id}}">加入热销</a></c:if>
-                            <c:if test="${good.topNewgood}"><a class="btn btn-info remove" href="/remove?good.id=${top.good.id}">移出新品</a></c:if>
-                            <c:if test="${!good.topNewgood}"><a class="btn btn-primary" href="/add?type=3&good.id=${top.good.id}">加入新品</a></c:if>
+                            <c:if test="${good.topScroll}"><a class="btn btn-info remove" onclick="remove(1,${good.id})">移出条幅</a></c:if>
+                            <c:if test="${!good.topScroll}"><a class="btn btn-primary" onclick="addTop(1,${good.id})">加入条幅</a></c:if>
+                            <c:if test="${good.topHotSale}"><a class="btn btn-info remove" onclick="remove(2,${good.id})">移出热销</a></c:if>
+                            <c:if test="${!good.topHotSale}"><a class="btn btn-primary" onclick="addTop(2,${good.id})">加入热销</a></c:if>
+                            <c:if test="${good.topNewgood}"><a class="btn btn-info remove" onclick="remove(3,${good.id})">移出新品</a></c:if>
+                            <c:if test="${!good.topNewgood}"><a class="btn btn-primary" onclick="addTop(3,${good.id})">加入新品</a></c:if>
                         </p>
                         <a class="btn btn-success" href="goodEdit.action?id=14">修改</a>
                         <a class="btn btn-danger" href="goodDelete.action?good.id=14">删除</a>

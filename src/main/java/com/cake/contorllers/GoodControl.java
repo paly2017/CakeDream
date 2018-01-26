@@ -68,18 +68,9 @@ public class GoodControl {
         modelAndView.setViewName("admin/good_list");
         return modelAndView;
     }
-/**
- * 通过商品id，更改商品的推荐属性，1、条幅  2、热销  3、新品
- */
-    //移出条幅
-    //移出热销
-    //移除新品
-    public ModelAndView removeTops(Integer id,
-                                    ModelAndView modelAndView){
-        topServiceImpl.removeTops(id);
-        return modelAndView;
+    //跳到商品添加页面
+    @RequestMapping("/goodAdd")
+    public String jumpAddGood(){
+        return "admin/good_add";
     }
-    //加入条幅
-    //加入热销
-    //加入新品
 }

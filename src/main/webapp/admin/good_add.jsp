@@ -9,6 +9,10 @@
 <html>
 <head>
     <title>商品添加</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="admin/css/bootstrap.css"/>
+    <%-- //jq--%>
+    <script src="admin/js/jquery.js"></script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
