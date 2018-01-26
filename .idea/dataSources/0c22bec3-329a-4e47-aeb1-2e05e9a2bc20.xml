@@ -1039,100 +1039,110 @@
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="215" name="order_NO">
+    <column id="249" parent="215" name="delete_status">
       <Position>11</Position>
+      <DataType>int(2)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="250" parent="215" name="order_NO">
+      <Position>12</Position>
       <DataType>varchar(64)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="215" name="good_id">
-      <Position>12</Position>
+    <column id="251" parent="215" name="good_id">
+      <Position>13</Position>
       <DataType>int(32)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="251" parent="215" name="PRIMARY">
+    <key id="252" parent="215" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="252" parent="216" name="id">
+    <column id="253" parent="216" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="216" name="type">
+    <column id="254" parent="216" name="type">
       <Position>2</Position>
       <Comment>推荐类型(1条幅/2大图/3小图)</Comment>
       <DataType>tinyint(4)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="216" name="good_id">
+    <column id="255" parent="216" name="good_id">
       <Position>3</Position>
       <Comment>蛋糕id</Comment>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="255" parent="216" name="PRIMARY">
+    <column id="256" parent="216" name="top_status">
+      <Position>4</Position>
+      <DataType>int(2)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="257" parent="216" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="256" parent="217" name="id">
+    <column id="258" parent="217" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="257" parent="217" name="name">
+    <column id="259" parent="217" name="name">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="258" parent="217" name="PRIMARY">
+    <key id="260" parent="217" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="259" parent="218" name="id">
+    <column id="261" parent="218" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="218" name="username">
+    <column id="262" parent="218" name="username">
       <Position>2</Position>
       <Comment>用户名</Comment>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="218" name="password">
+    <column id="263" parent="218" name="password">
       <Position>3</Position>
       <Comment>密码</Comment>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="218" name="name">
+    <column id="264" parent="218" name="name">
       <Position>4</Position>
       <Comment>收货人</Comment>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="218" name="phone">
+    <column id="265" parent="218" name="phone">
       <Position>5</Position>
       <Comment>收货电话</Comment>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="218" name="address">
+    <column id="266" parent="218" name="address">
       <Position>6</Position>
       <Comment>收货地址</Comment>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="265" parent="218" name="PRIMARY">
+    <key id="267" parent="218" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

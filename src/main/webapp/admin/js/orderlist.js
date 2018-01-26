@@ -56,7 +56,7 @@ function pagenext(index) {
                 "</p> </td> <td><p>"+value.user.username+"</p></td>"+
               "  <td><p>"+value.order.systime+"</p></td> <td>"+
                 "<input type='hidden' value='"+value.order.id+"'><a class='btn btn-success' onclick='goOrder("+value.good.id+")'>发货</a>"+
-                    "<a class='btn btn-danger' href=''>删除</a> </td> </tr>")
+                    "<a class='btn btn-danger' onclick='deleteOrder("+value.good.id+")'>删除</a> </td> </tr>")
             });
 
             if (index<=0){
@@ -93,6 +93,21 @@ function goOrder(orderid) {
         },
         error:function () {
             alert("发货失败");
+        }
+    })
+}
+
+/****
+ * 删除订单
+ * @param goodid
+ */
+function deleteOrder(goodid) {
+    $.ajax({
+        type:"post",
+        url:"/deleteorder",
+        data:{deleteorderid:goodid},
+        success:function (msg) {
+            alert(msg);
         }
     })
 }

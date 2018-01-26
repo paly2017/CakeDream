@@ -162,5 +162,13 @@ public class OrderServiceImpl implements IOrderService {
         return orderMapper.updateByPrimaryKey(orderId);
     }
 
+    /***
+     * 删除订单
+     * @param orderId
+     * @return
+     */
+    public int deleteOrder(Integer orderId){
+        return  orderMapper.deleteByPrimaryKey(orderId);
+    }
 
 }

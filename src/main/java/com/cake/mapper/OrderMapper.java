@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Mapper
 @Component
 public interface OrderMapper {
+    @Update(value = "UPDATE orders SET delete_status=0 WHERE id=#{orderId}")
     int deleteByPrimaryKey(Integer id);
 
     /**
@@ -54,4 +55,5 @@ public interface OrderMapper {
      */
     @Select("SELECT max(id) AS ID FROM orders")
     Integer searchMaxId();
+
 }

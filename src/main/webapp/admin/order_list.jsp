@@ -67,7 +67,7 @@
         <td>
             <input type="hidden" value="${model.order.id}">
             <a class="btn btn-success" onclick="goOrder(${model.good.id})">发货</a>
-            <a class="btn btn-danger" href="orderDelete.action?id=3&status=0">删除</a>
+            <a class="btn btn-danger" onclick="deleteOrder(${model.good.id})">删除</a>
         </td>
     </tr>
     </c:forEach>

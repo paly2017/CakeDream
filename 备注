@@ -7,3 +7,5 @@ ALTER TABLE  orders ADD good_id INT(32) AFTER  order_NO;
 ALTER TABLE orders DROP COLUMN good_id;
 
 tops表增加状态：ALTER TABLE tops ADD top_status INT(2) AFTER good_id;
+
+orders表增加：ALTER TABLE orders ADD delete_status INT(2) AFTER user_id;

@@ -45,7 +45,6 @@ public class AdminOrderContorller {
     @PostMapping("/goorder")
     @ResponseBody
     public String goOrder(@RequestParam("goid") Integer goodId){
-        System.out.println("进来了"+goodId);
         Optional.of(goodId);
         Item item = itemService.getItemByGoodId(goodId);
         Optional.of(item);
@@ -55,5 +54,14 @@ public class AdminOrderContorller {
         }else {
             return "no";
         }
+    }
+    @ResponseBody
+    @PostMapping("/deleteorder")
+    public String deleteOrder(@RequestParam("deleteorderid") Integer goodId){
+        Optional.of(goodId);
+        Item item = itemService.getItemByGoodId(goodId);
+        Optional.of(item);
+        int num =orderService.deleteOrder(item.getOrderId());
+        return null;
     }
 }
