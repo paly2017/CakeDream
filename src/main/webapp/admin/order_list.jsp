@@ -11,6 +11,8 @@
 <head>
     <title>订单列表</title>
     <link rel="stylesheet" href="admin/css/bootstrap.css"/>
+    <script src="admin/js/jquery.js"></script>
+    <script src="admin/js/orderlist.js"></script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -72,12 +74,12 @@
 </table>
 
 <br><div style='text-align:center;'>
-    <a class='btn btn-info' disabled >首页</a>
-    <a class='btn btn-info' disabled >上一页</a>
-    <h2 style='display:inline;'>[1/2]</h2>
-    <h2 style='display:inline;'>[12]</h2>
-    <a class='btn btn-info' href='http://localhost:8080/ssh_cake/admin/orderList.action?page=2'>下一页</a>
-    <a class='btn btn-info' href='http://localhost:8080/ssh_cake/admin/orderList.action?page=2'>尾页</a>
+    <a class='btn btn-info' onclick="pagenext(1)">首页</a>
+    <a class='btn btn-info' id="page2" onclick="pagenext(1)">上一页</a>
+    <h2 style='display:inline;' id="page1">[<span id="page4" >${requestScope.pageindex}</span>/<span>${requestScope.pagecount}</span>]</h2>
+    <h2 style='display:inline;'>[${requestScope.pagecount}]</h2>
+    <a class='btn btn-info' id="page3" onclick="pagenext(2)">下一页</a>
+    <a class='btn btn-info' onclick="pagenext(${requestScope.pagecount})">尾页</a>
     <input type='text' class='form-control' style='display:inline;width:60px;' value=''/><a class='btn btn-info' href='javascript:void(0);' onclick='location.href="http://localhost:8080/ssh_cake/admin/orderList.action?page="+(this.previousSibling.value)+""'>GO</a>
 </div>
 <br>

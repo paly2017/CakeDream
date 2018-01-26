@@ -27,6 +27,8 @@ public class ItemContorller {
            return modelAndView;
         }
         modelAndView.addObject("adminorder",orderManagers);
+        modelAndView.addObject("pagecount",Uilt.pageCount);
+        modelAndView.addObject("pageindex",Uilt.pageIndex);
         return modelAndView;
     }
 }

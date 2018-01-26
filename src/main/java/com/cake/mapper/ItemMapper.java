@@ -24,7 +24,7 @@ public interface ItemMapper {
     int updateByPrimaryKeySelective(Item record);
 
     int updateByPrimaryKey(Item record);
-    @Select(value = "SELECT * FROM items WHERE 1=1 ORDER BY id ;")
+    @Select(value = "SELECT * FROM items WHERE 1=1 ORDER BY id LIMIT #{pageIndex},#{pageSize};")
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "price",column = "price"),
@@ -32,7 +32,7 @@ public interface ItemMapper {
             @Result(property = "orderId",column = "order_id"),
             @Result(property = "goodId",column = "good_id")
     })
-    List<Item> seleItems(Integer pageIndex,Integer pageSize);
+    List<Item> seleItems(@Param("pageIndex") Integer pageIndex,@Param("pageSize") Integer pageSize);
 
     /****
      * 查询数据库中数据条数

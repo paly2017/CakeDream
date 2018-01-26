@@ -42,6 +42,7 @@ public class ItemServiceImpl implements IItemService {
         //计算分页显示数据的起始下标
         Uilt.getPageNum(pageindex,itemCount);
         List<Item> itemList = itemMapper.seleItems(Uilt.startSize,Uilt.AdminpageSize);
+        System.out.println(itemList);
         if (null==itemList){
             return null;
         }
