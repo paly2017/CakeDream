@@ -18,29 +18,29 @@
 <jsp:include page="header.jsp"/>
 
 <br><br>
-<form class="form-horizontal" action="goodSave.action" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="/goosSave" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="input_name" class="col-sm-1 control-label">名称</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name" name="good.name"  required="required">
+            <input type="text" class="form-control" id="input_name" name="goodName"  required="required">
         </div>
     </div>
     <div class="form-group">
         <label for="input_name1" class="col-sm-1 control-label">价格</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name1" name="good.price" >
+            <input type="text" class="form-control" id="input_name1" name="goodPrice" >
         </div>
     </div>
     <div class="form-group">
         <label for="input_name2" class="col-sm-1 control-label">介绍</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name2" name="good.intro" >
+            <input type="text" class="form-control" id="input_name2" name="goodIntro" >
         </div>
     </div>
     <div class="form-group">
         <label for="input_name3" class="col-sm-1 control-label">库存</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name3" name="good.stock" >
+            <input type="text" class="form-control" id="input_name3" name="goodStock" >
         </div>
     </div>
     <div class="form-group">
@@ -64,7 +64,7 @@
     <div class="form-group">
         <label for="select_topic" class="col-sm-1 control-label">类目</label>
         <div class="col-sm-6">
-            <select class="form-control" id="select_topic" name="good.type.id">
+            <select class="form-control" id="select_topic" name="goodTypeId">
 
                 <option value="5">经典系列</option>
 

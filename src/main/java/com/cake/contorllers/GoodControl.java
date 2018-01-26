@@ -4,13 +4,22 @@ import com.cake.pojo.Top;
 import com.cake.service.Impl.GoodServiceImpl;
 import com.cake.service.Impl.TopServiceImpl;
 import com.cake.service.Impl.TypeServiceImpl;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.servlet.ServletRequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class GoodControl {
@@ -72,5 +81,11 @@ public class GoodControl {
     @RequestMapping("/goodAdd")
     public String jumpAddGood(){
         return "admin/good_add";
+    }
+
+    @RequestMapping("/goosSave")
+    public ModelAndView MutilForm(ModelAndView modelAndView){
+
+        return modelAndView;
     }
 }
