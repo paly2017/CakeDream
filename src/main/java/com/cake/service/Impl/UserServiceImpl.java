@@ -18,7 +18,11 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper userMapper;
 
-
+    /**
+     * 根据用户id查询用户信息
+     * @param userId 用户id
+     * @return 返回一个用户对象
+     */
     public User getUserByUserId(Integer userId) {
 
         //调用映射的根据id查询用户信息的方法
@@ -138,5 +142,16 @@ public class UserServiceImpl implements IUserService {
         List<User> userList = userMapper.selectAllUser();
         //System.out.println("调用了userMapper映射的方法");
         return userList;
+    }
+
+    /**
+     * 修改用户密码
+     * @param userId 用户id
+     * @param passWord 用户新密码
+     * @return
+     */
+    public void changeUserPwd(Integer userId, String passWord) {
+        //调用修改用户密码的mapper
+        userMapper.changeUserPwd(userId,passWord);
     }
 }

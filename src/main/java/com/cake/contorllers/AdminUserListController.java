@@ -24,7 +24,7 @@ public class AdminUserListController {
         HttpSession httpSession = httpServletRequest.getSession();
         //调用获取用户对象集合
         List<User> userList = userService.findAllUser();
-        System.out.println("获取到的用户集合是："+userList.toString());
+        //System.out.println("获取到的用户集合是："+userList.toString());
         //将集合放入session中
         httpSession.setAttribute("userList",userList);
         //返回用户列表页面
@@ -33,13 +33,25 @@ public class AdminUserListController {
 
     //根据用户id查询用户，准备修改用户密码
     @RequestMapping("/userReset")
-    public String changeUserPwd(@RequestParam("userId")Integer userId){
-
-        
-
-
+    public String changeUserPwd(@RequestParam("userId")Integer userId,
+                                HttpServletRequest httpServletRequest
+                                ){
+        HttpSession httpSession = httpServletRequest.getSession();
+        //获取用户对象
+        User user = userService.getUserByUserId(userId);
+        //用户放入session中
+        httpSession.setAttribute("user",user);
         return "admin/user_reset";
     }
-
+    //从页面获取用户填写的新密码，进行修改
+    @RequestMapping("userResetChange")
+    public String commitUserPwd(@RequestParam("userId")Integer userId,
+                                @RequestParam("user_password") String userPassWord
+                                ){
+        //调用service方法修改密码
+        userService.changeUserPwd(userId,userPassWord);
+        //返回用户列表页面
+        return "admin/user_list";
+    }
 
 }

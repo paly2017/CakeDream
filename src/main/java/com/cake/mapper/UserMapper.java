@@ -123,6 +123,7 @@ public interface UserMapper {
     /**
      * 查询数据库所有用户信息，在后台管理页面显示
      * @return 用户对象集合
+     * @author Philip
      */
     @Select("SELECT * FROM users;")
     @Results({
@@ -135,6 +136,10 @@ public interface UserMapper {
     })
     List<User> selectAllUser();
 
-
-
+    /**
+     * 根据用户id修改用户登录密码
+     * @return
+     */
+    @Update("UPDATE users SET password=#{password } WHERE id=#{id };")
+    Integer changeUserPwd(Integer userId, String passWord);
 }

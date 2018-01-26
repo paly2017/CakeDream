@@ -36,6 +36,8 @@ public interface IUserService {
      * @return
      */
     User getUserByUserId(Integer userId);
+
+
     /***
      * 用户登录处理方法
      * @param username
@@ -52,5 +54,13 @@ public interface IUserService {
 
      //查询数据库所有users表里面的user信息
      List<User> findAllUser();
+
+    /**
+     * 根据用户id修改用户密码
+     * @param userId 用户id
+     * @param passWord 用户新密码
+     * @return
+     */
+     void changeUserPwd(Integer userId,String passWord);
 
 }
