@@ -56,6 +56,11 @@ public class ItemServiceImpl implements IItemService {
         }
         return managerList;
     }
+
+    public Item getItemByGoodId(Integer goodid) {
+        return itemMapper.selectByGoodId(goodid);
+    }
+
     /**
      *  给数据库表格items表格添加数据
      * @param item item对象

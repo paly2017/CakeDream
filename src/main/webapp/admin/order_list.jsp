@@ -39,7 +39,7 @@
     </tr>
     <c:forEach var="model" items="${requestScope.adminorder}" varStatus="count">
     <tr>
-        <td><p>${model.order.id}</p></td>
+        <td><p>${count.count}</p></td>
         <td><p>${model.order.total}</p></td>
         <td>${model.good.name} (${model.good.price})x${model.order.amount}</td>
         <td>
@@ -65,7 +65,8 @@
         <td><p>${model.user.username}</p></td>
         <td><p>${model.order.systime}</p></td>
         <td>
-            <a class="btn btn-success" href="orderDispose.action?id=3&status=0">发货</a>
+            <input type="hidden" value="${model.order.id}">
+            <a class="btn btn-success" onclick="goOrder(${model.good.id})">发货</a>
             <a class="btn btn-danger" href="orderDelete.action?id=3&status=0">删除</a>
         </td>
     </tr>
@@ -76,11 +77,11 @@
 <br><div style='text-align:center;'>
     <a class='btn btn-info' onclick="pagenext(1)">首页</a>
     <a class='btn btn-info' id="page2" onclick="pagenext(1)">上一页</a>
-    <h2 style='display:inline;' id="page1">[<span id="page4" >${requestScope.pageindex}</span>/<span>${requestScope.pagecount}</span>]</h2>
+    <h2 style='display:inline;' id="page1">[<span id="page4" >${requestScope.pageindex}</span>/<span id="page5">${requestScope.pagecount}</span>]</h2>
     <h2 style='display:inline;'>[${requestScope.pagecount}]</h2>
     <a class='btn btn-info' id="page3" onclick="pagenext(2)">下一页</a>
     <a class='btn btn-info' onclick="pagenext(${requestScope.pagecount})">尾页</a>
-    <input type='text' class='form-control' style='display:inline;width:60px;' value=''/><a class='btn btn-info' href='javascript:void(0);' onclick='location.href="http://localhost:8080/ssh_cake/admin/orderList.action?page="+(this.previousSibling.value)+""'>GO</a>
+    <input type='text' class='form-control' style='display:inline;width:60px;' value=''/><a class='btn btn-info'onclick="pagenext(this.previousSibling.value )">GO</a>
 </div>
 <br>
 </div>

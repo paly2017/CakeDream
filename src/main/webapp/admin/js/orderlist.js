@@ -3,7 +3,6 @@
  * @param index
  */
 function pagenext(index) {
-    alert("123");
     $.ajax({
         type:"post",
         url:"/pageindex",
@@ -22,6 +21,7 @@ function pagenext(index) {
                 "        <th width=\"10%\">操作</th>\n" +
                 "    </tr>\n");
             var msgObj = jQuery.parseJSON(msg);
+            var count=0;
             msgObj.forEach(function (value) {
                 var paytype;
                 if (value.order.paytype==1){
@@ -32,17 +32,18 @@ function pagenext(index) {
                     paytype="货到付款";
                 }
                 var paystats;
-                if (value.order.status=1){
+                if (value.order.status==1){
                     paystats="未付款"
-                }else if (value.order.status=2){
+                }else if (value.order.status==2){
                     paystats="已付款"
-                }else if (value.order.status=3){
+                }else if (value.order.status==3){
                     paystats="已发货"
                 }else {
                     paystats="已收货"
                 }
+                ++count;
                 $("table").append("<tr>"+
-                "<td><p>"+value.order.id+"</p></td>"+
+                "<td><p>"+count+"</p></td>"+
                 "<td><p>"+value.order.total+"</p></td>"+
                 "<td>"+value.good.name+" ("+value.good.price+")x"+value.order.amount+"</td>"+
                 "<td>"+
@@ -54,13 +55,44 @@ function pagenext(index) {
                     "<span style='color:green;'>"+paytype+"</span>"+
                 "</p> </td> <td><p>"+value.user.username+"</p></td>"+
               "  <td><p>"+value.order.systime+"</p></td> <td>"+
-                "<a class='btn btn-success' href='orderDispose.action?id=3&status=0'>发货</a>"+
+                "<input type='hidden' value='"+value.order.id+"'><a class='btn btn-success' onclick='goOrder("+value.good.id+")'>发货</a>"+
                     "<a class='btn btn-danger' href=''>删除</a> </td> </tr>")
-            })
+            });
+
+            if (index<=0){
+                index=1;
+            }
+            var maxpage = $("#page5").html();
+            if (maxpage<index){
+                index=maxpage;
+            }
             //设置分页属性
             $("#page4").html(index);
             $("#page2").attr("onclick","pagenext("+parseInt(index-1)+")");
             $("#page3").attr("onclick","pagenext("+parseInt(index+1)+")");
+        }
+    })
+}
+
+/***
+ * 发货
+ */
+function goOrder(orderid) {
+    $.ajax({
+        type:"post",
+        url:"/goorder",
+        data:{goid:orderid},
+        success:function (msg) {
+            if (msg=="ok"){
+                $(this).parent().siblings().eq(4).find("p").find("span").text("已发货")
+            }
+            if(msg=="no"){
+                alert("发货失败")
+            }
+
+        },
+        error:function () {
+            alert("发货失败");
         }
     })
 }

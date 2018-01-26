@@ -23,4 +23,11 @@ public interface IItemService {
      * @return
      */
     List<OrderManager> orderManger(Integer pageIndex);
+
+    /***
+     * 根据goodid返回item
+     * @param goodid
+     * @return
+     */
+    Item getItemByGoodId(Integer goodid);
 }

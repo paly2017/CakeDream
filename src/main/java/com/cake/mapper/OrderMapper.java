@@ -45,8 +45,8 @@ public interface OrderMapper {
     Order selectByPrimaryKey(@Param("id") Integer id);
 
     int updateByPrimaryKeySelective(Order record);
-
-    int updateByPrimaryKey(Order record);
+    @Update(value = "UPDATE orders SET status=3 WHERE id=#{orderId} ;")
+    int updateByPrimaryKey(Integer orderId);
 
     /**
      * 查询数据库当前订单信息表中的最大id

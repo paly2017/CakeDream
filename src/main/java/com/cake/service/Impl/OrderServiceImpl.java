@@ -153,5 +153,14 @@ public class OrderServiceImpl implements IOrderService {
         return orderList;
     }
 
+    /****
+     * 更新order状态
+     * @param orderId
+     * @return
+     */
+    public int changeOrderStatus(Integer orderId) {
+        return orderMapper.updateByPrimaryKey(orderId);
+    }
+
 
 }

@@ -40,5 +40,7 @@ public interface IOrderService {
      */
     List<Order> packagingOrder(HttpSession httpSession,Integer payType);
 
+    int changeOrderStatus(Integer orderId);
+
 
 }

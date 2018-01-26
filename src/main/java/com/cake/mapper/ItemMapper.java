@@ -47,4 +47,13 @@ public interface ItemMapper {
             @Result(property = "goodId",column = "good_id")
     })
     int getCount();
+    @Select(value = "SELECT *  FROM items WHERE good_id=#{goodid};")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "price",column = "price"),
+            @Result(property = "amount",column = "amount"),
+            @Result(property = "orderId",column = "order_id"),
+            @Result(property = "goodId",column = "good_id")
+    })
+    Item selectByGoodId(@Param("goodid") Integer goodid);
 }
