@@ -71,6 +71,6 @@ public class GoodControl {
     //跳到商品添加页面
     @RequestMapping("/goodAdd")
     public String jumpAddGood(){
-        return "admin/good_add";     
+        return "admin/good_add";
     }
 }
