@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -47,9 +48,14 @@ public class TypeController {
         return modelAndView;
 
     }
-
-    public String changeType(@RequestParam("deleteTypeId") Integer typeId,
-                             @RequestParam("") String name){
+    @RequestMapping("/changetype")
+    public ModelAndView changeType(@RequestParam("type.name") String name,
+                                   ModelAndView modelAndView,
+                                   HttpServletRequest request){
+        Integer integer = (Integer) request.getSession().getAttribute("typeid");
+        if (typeService.changeTypeService(integer,name)){
+           return adminMsgGoodsType(modelAndView);
+        }
         return null;
     }
 
@@ -66,5 +72,16 @@ public class TypeController {
             return Uilt.getGsonToString(typeList);
         }
         return "no";
+    }
+
+    /***
+     * 页面跳转
+     * @return
+     */
+    @RequestMapping("/typeedit")
+    public String sendChangeType(HttpServletRequest request ,
+                                 @RequestParam("typeId") Integer index){
+        request.getSession().setAttribute("typeid",index);
+        return "admin/type_edit";
     }
 }

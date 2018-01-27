@@ -23,7 +23,7 @@ function deteleType(typeId) {
                         "        <td><p>"+value.id+"</p></td> " +
                         "        <td><p>"+value.name+"</p></td> " +
                         "        <td> " +
-                        "            <a class= 'btn btn-primary ' onclick= 'changeType("+value.id+") ' >修改</a> " +
+                        "            <a class= 'btn btn-primary ' href='/typeedit?="+value.id+"'>修改</a> " +
                         "            <a class= 'btn btn-danger ' onclick= 'deteleType("+value.id+") '>删除</a> " +
                         "        </td> " +
                         "    </tr>")
@@ -32,38 +32,6 @@ function deteleType(typeId) {
 
             }
 
-        }
-    })
-}
-
-/****
- * 修改type
- * @param typeId
- */
-function changeType(typeId) {
-    $.ajax({
-        type:"post",
-        url:"/deteleType",
-        data:{deleteTypeId:typeId},
-        success:function (msg) {
-            $("table").empty();
-            $("table").append(" <tr> " +
-                "        <th width= '5% '>ID</th> " +
-                "        <th width= '10% '>名称</th> " +
-                "        <th width= '10% '>操作</th> " +
-                "    </tr>");
-            var typelist = jquery.parseJSON(msg);
-            typelist.forEach(function (value) {
-                $("table").append("  <tr> " +
-                    "        <td><p>"+value.id+"</p></td> " +
-                    "        <td><p>"+value.name+"</p></td> " +
-                    "        <td> " +
-                    "            <a class= 'btn btn-primary ' onclick= 'changeType("+value.id+") ' >修改</a> " +
-                    "            <a class= 'btn btn-danger ' onclick= 'deteleType("+value.id+") '>删除</a> " +
-                    "        </td> " +
-                    "    </tr>")
-            });
-            alert("修改成功")
         }
     })
 }

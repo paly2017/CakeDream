@@ -43,7 +43,7 @@
         <td><p>${type.id}</p></td>
         <td><p>${type.name}</p></td>
         <td>
-            <a class="btn btn-primary" onclick="changeType(${type.id})" >修改</a>
+            <a class="btn btn-primary" href="/typeedit?typeId=${type.id}" >修改</a>
             <a class="btn btn-danger" onclick="deteleType(${type.id})">删除</a>
         </td>
     </tr>
