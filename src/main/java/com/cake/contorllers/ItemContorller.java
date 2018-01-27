@@ -17,7 +17,7 @@ import java.util.List;
 public class ItemContorller {
     @Autowired
     private ItemServiceImpl itemService;
-    @RequestMapping("/orderlist")
+    @RequestMapping("/1orderlist")
     public ModelAndView showItems(ModelAndView modelAndView,
                                     @RequestParam("index") Integer index){
         List<OrderManager> orderManagers =
