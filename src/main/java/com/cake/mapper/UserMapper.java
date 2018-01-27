@@ -138,8 +138,16 @@ public interface UserMapper {
 
     /**
      * 根据用户id修改用户登录密码
-     * @return
+     * @return 被影响行数
      */
     @Update("UPDATE users SET password=#{password } WHERE id=#{id };")
-    Integer changeUserPwd(Integer userId, String passWord);
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "username",column = "username"),
+            @Result(property = "password",column = "password"),
+            @Result(property = "name",column = "name"),
+            @Result(property = "phone",column = "phone"),
+            @Result(property = "adress",column = "adress")
+    })
+    Integer changeUserPwd(@Param("id")Integer id,@Param("password")String password);
 }

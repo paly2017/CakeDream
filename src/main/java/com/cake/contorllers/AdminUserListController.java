@@ -46,10 +46,16 @@ public class AdminUserListController {
     //从页面获取用户填写的新密码，进行修改
     @RequestMapping("userResetChange")
     public String commitUserPwd(@RequestParam("userId")Integer userId,
-                                @RequestParam("user_password") String userPassWord
+                                @RequestParam("passWord") String passWord,
+                                HttpServletRequest httpServletRequest
                                 ){
+        HttpSession httpSession = httpServletRequest.getSession();
+        List<User> userList = userService.findAllUser();
+        //System.out.println("获取到的用户集合是："+userList.toString());
+        //将集合放入session中
+        httpSession.setAttribute("userList",userList);
         //调用service方法修改密码
-        userService.changeUserPwd(userId,userPassWord);
+        userService.changeUserPwd(userId,passWord);
         //返回用户列表页面
         return "admin/user_list";
     }

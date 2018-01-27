@@ -26,7 +26,7 @@
     <div class="form-group">
         <label for="input_name" class="col-sm-1 control-label">密码</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name" name="user_password" value="" required="required">
+            <input type="text" class="form-control" id="input_name" name="passWord" value="" required="required">
         </div>
     </div>
     <div class="form-group">

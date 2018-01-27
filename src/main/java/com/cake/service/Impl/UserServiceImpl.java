@@ -153,5 +153,6 @@ public class UserServiceImpl implements IUserService {
     public void changeUserPwd(Integer userId, String passWord) {
         //调用修改用户密码的mapper
         userMapper.changeUserPwd(userId,passWord);
+
     }
 }
