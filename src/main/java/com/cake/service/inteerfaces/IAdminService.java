@@ -15,4 +15,8 @@ public interface IAdminService {
      */
     boolean AdminCheckLogin(Admin admin, HttpServletRequest request)
             throws NoSuchAlgorithmException;
+
+
+    //根据用户名修改密码
+    Integer modifyPassword( String username,  String password);
 }

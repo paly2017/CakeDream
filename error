@@ -100,3 +100,5 @@ css文件和js文件引入冲突
 
   22.HTTP Status 500 - /admin/order_list.jsp (line: 38, column: 4) According to TLD or attribute directive in tag file,
   attribute items does not accept any expressions
+  23、Required String parameter 'username' is not present 400错误--username不是input输入
+  解决：@RequestParam(value = "adminName",required = false)

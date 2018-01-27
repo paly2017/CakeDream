@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="admin/css/bootstrap.css"/>
     <%-- //jq--%>
     <script src="admin/js/jquery.js"></script>
+    <script src="admin/js/good_add.js"></script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -64,17 +65,7 @@
     <div class="form-group">
         <label for="select_topic" class="col-sm-1 control-label">类目</label>
         <div class="col-sm-6">
-            <select class="form-control" id="select_topic" name="goodTypeId">
-
-                <option value="5">经典系列</option>
-
-                <option value="4">法式系列</option>
-
-                <option value="3">儿童系列</option>
-
-                <option value="2">零食系列</option>
-
-                <option value="1">冰淇淋系列</option>
+            <select class="form-control" id="select_topic" onclick="getType()" name="goodTypeId">
 
             </select>
         </div>

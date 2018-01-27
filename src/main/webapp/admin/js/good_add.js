@@ -2,21 +2,20 @@
  * 下拉列表框的js
  */
 
-$(document).ready(
-    $("#select_topic").click(function () {
+function getType() {
+    $(document).ready(function () {
         $.ajax({
             type:"post",
             url:"/getType",
             success:function (type) {
-               var typeObj= jQuery.parseJSON(type);
+                $("#select_topic").empty();
+                var typeObj= jQuery.parseJSON(type);
                 //得到所有类目，循环显示
-                typeObj.forEach(function (obj,index) {
-
-
+                typeObj.forEach(function (obj){
+                        $("#select_topic").append("  <option value="+obj.id+">"+obj.name+"</option>");
                 })
             }
-
-
         })
-    })
-);
+
+});
+}

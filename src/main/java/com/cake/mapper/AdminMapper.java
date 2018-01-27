@@ -75,4 +75,18 @@ public interface AdminMapper {
     })
     Admin selectCheck(@Param("username") String username,
                       @Param("password") String password);
+
+
+
+    //根据用户名修改密码
+    @Update("UPDATE admins SET `password`=#{password} WHERE username=#{username}")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "username",column = "username") ,
+            @Result(property = "password",column = "password")
+    })
+    Integer modifyPassword(@Param("username") String username, @Param("password") String password);
 }
+
+
+

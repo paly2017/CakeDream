@@ -59,8 +59,8 @@
             <c:forEach var="good" items="${goodList}">
                 <tr>
                     <td><p>${good.id}</p></td>
-                    <td><p><a href="../index/detail.action?goodid=14" target="_blank"><img src="..//${good.cover}" width="100px" height="100px"></a></p></td>
-                    <td><p><a href="../index/detail.action?goodid=14" target="_blank">${good.name}</a></p></td>
+                    <td><p><a href="/edit?goodId=${good.id}" target="_blank"><img src="..//${good.cover}" width="100px" height="100px"></a></p></td>
+                    <td><p><a href="/edit?goodId=${good.id}" target="_blank">${good.name}</a></p></td>
                     <td><p>${good.intro}</p></td>
                     <td><p>${good.price}</p></td>
                     <td><p>${good.type.name}</p></td>
@@ -83,8 +83,8 @@
         <c:forEach var="top" items="${limitList}">
             <tr>
                 <td><p>${top.good.id}</p></td>
-                <td><p><a href="../index/detail.action?goodid=14" target="_blank"><img src="..//${top.good.cover}" width="100px" height="100px"></a></p></td>
-                <td><p><a href="../index/detail.action?goodid=14" target="_blank">${top.good.name}</a></p></td>
+                <td><p><a href="/edit?goodId=${top.good.id}" target="_blank"><img src="..//${top.good.cover}" width="100px" height="100px"></a></p></td>
+                <td><p><a href="/edit?goodId=${top.good.id}" target="_blank">${top.good.name}</a></p></td>
                 <td><p>${top.good.intro}</p></td>
                 <td><p>${top.good.price}</p></td>
                 <td><p>${top.goodType.name}</p></td>

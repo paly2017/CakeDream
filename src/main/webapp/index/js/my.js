@@ -67,7 +67,7 @@ $(document).ready(function () {
 
 
     $("#modify").click(function () {
-        //修改表单提交路径
+        //修改表单密码
         $.ajax({
             type: "POST",
             url: "/modifyPsw",

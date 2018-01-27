@@ -38,4 +38,14 @@ public class AdminServiceImpl implements IAdminService {
        }
         return false;
     }
+
+    //根据用户名和密码去数据库查询
+    public Admin selectAdmin(String username,String password){
+        return adminMapper.selectCheck(username,password);
+    }
+
+
+  public   Integer modifyPassword(String username,String password){
+        return adminMapper.modifyPassword(username,password);
+  }
 }

@@ -9,34 +9,52 @@
 <html>
 <head>
     <title>修改密码</title>
+    <meta charset="utf-8"/>
+    <%-- //jq--%>
+    <script src="admin/js/jquery.js"></script>
+    <link rel="stylesheet" href="admin/css/bootstrap.css"/>
+
+    <%--//validate--%>
+    <script src="index/js/jquery.validate.js"></script>
+    <script src="index/js/additional-methods.js"></script>
+    <script src="index/js/jquery.validate.min.js"></script>
+    <script src="index/js/messages_zh.js"></script>
+    <script src="admin/js/admin_reset.js"></script>
+<style>
+    .error{
+        color: red;
+    }
+</style>
+
+
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <br><br>
 
-<form class="form-horizontal" action="adminReset.action" method="post">
+<form  id="adminForm" class="form-horizontal" action="/reAdmin" method="post">
     <input type="hidden" name="admin.id" value="1">
     <input type="hidden" name="admin.username" value="1">
     <div class="form-group">
         <label for="input_name" class="col-sm-1 control-label">用户名</label>
-        <input id="input_name">
-        <div class="col-sm-5">1</div>
+        <input type="hidden" id="input_name">
+        <div id="username" class="col-sm-5">${admin.username}</div>
     </div>
     <div class="form-group">
-        <label for="input_pass1" class="col-sm-1 control-label">原密码</label>
+        <label for="input_pass1"  class="col-sm-1 control-label">原密码</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id="input_pass1" name="admin.password" required="required">
+            <input type="text" class="form-control" id="input_pass1" name="password" required="required">
         </div>
     </div>
     <div class="form-group">
         <label for="input_pass2" class="col-sm-1 control-label">新密码</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id="input_pass2" name="admin.passwordNew" required="required">
+            <input type="text" class="form-control" id="input_pass2" name="passwordNew" required="required">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-1 col-sm-10">
-            <button type="submit" class="btn btn-success">提交修改</button>
+            <button id="adminSub" type="submit" class="btn btn-success">提交修改</button>
         </div>
     </div>
 </form>

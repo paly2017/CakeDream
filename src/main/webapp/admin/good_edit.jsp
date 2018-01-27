@@ -9,6 +9,10 @@
 <html>
 <head>
     <title>商品编辑</title>
+    <meta charset="utf-8"/>
+    <%-- //jq--%>
+    <script src="admin/js/jquery.js"></script>
+    <link rel="stylesheet" href="admin/css/bootstrap.css"/>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -20,42 +24,42 @@
     <div class="form-group">
         <label for="input_name" class="col-sm-1 control-label">名称</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name" name="good.name" value="意大利芝士饼干" required="required">
+            <input type="text" class="form-control" id="input_name" name="good.name" value="${oneGood.name}" required="required">
         </div>
     </div>
     <div class="form-group">
         <label for="input_name1" class="col-sm-1 control-label">价格</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name1" name="good.price" value="39">
+            <input type="text" class="form-control" id="input_name1" name="good.price" value="${oneGood.price}">
         </div>
     </div>
     <div class="form-group">
         <label for="input_name2" class="col-sm-1 control-label">介绍</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name2" name="good.intro" value="采用帕玛森芝士为主要原材料制作的意大利芝士饼,奶香浓郁,鲜香可口.">
+            <input type="text" class="form-control" id="input_name2" name="good.intro" value="${oneGood.intro}.">
         </div>
     </div>
     <div class="form-group">
         <label for="input_name3" class="col-sm-1 control-label">库存</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name3" name="good.stock" value="10">
+            <input type="text" class="form-control" id="input_name3" name="good.stock" value="${oneGood.stock}">
         </div>
     </div>
     <div class="form-group">
         <label for="input_file1" class="col-sm-1 control-label">封面图片</label>
-        <div class="col-sm-6"><img src="..//picture/14-1.jpg" width="100" height="100"/>
+        <div class="col-sm-6"><img src="..//${oneGood.cover}" width="100" height="100"/>
             <input type="file" name="cover"  id="input_file1">推荐尺寸: 500 * 500
         </div>
     </div>
     <div class="form-group">
         <label for="input_file2" class="col-sm-1 control-label">详情图片1</label>
-        <div class="col-sm-6"><img src="..//picture/14-1.jpg" width="100" height="100"/>
+        <div class="col-sm-6"><img src="..//${oneGood.image1}" width="100" height="100"/>
             <input type="file" name="image1"  id="input_file2">推荐尺寸: 500 * 500
         </div>
     </div>
     <div class="form-group">
         <label for="input_file3" class="col-sm-1 control-label">详情图片2</label>
-        <div class="col-sm-6"><img src="..//picture/14-1.jpg" width="100" height="100"/>
+        <div class="col-sm-6"><img src="..//${oneGood.image2}" width="100" height="100"/>
             <input type="file" name="image2"  id="input_file3">推荐尺寸: 500 * 500
         </div>
     </div>

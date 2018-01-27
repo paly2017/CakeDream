@@ -89,5 +89,13 @@ public class GoodControl {
         return modelAndView;
     }
 
-
+//跳到商品编辑页
+    @RequestMapping("/edit")
+    public ModelAndView jumpEdit(@RequestParam("goodId")Integer goodId,ModelAndView modelAndView){
+        //根据商品id查询商品信息，返回商品编辑页面
+      Good good=  goodServiceImpl.slectGoodByGoodId(goodId);
+        modelAndView.addObject("oneGood",good);
+        modelAndView.setViewName("admin/good_edit");
+        return modelAndView;
+    }
 }

@@ -47,6 +47,7 @@ function goTop(type,obj) {
           });
 }
 
+
 function addTop(type,id) {
     $(document).ready(function () {
         $.ajax({

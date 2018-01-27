@@ -6,14 +6,15 @@ import com.cake.service.Impl.TypeServiceImpl;
 import com.cake.uilt.Uilt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import java.util.List;
 
 @Controller
 @ResponseBody
+@RequestMapping(value = "" ,method = RequestMethod.POST,produces = "text/jsp;charset=UTF-8")
 public class TopAjax {
     //service实现类作为属性注入
     @Autowired
@@ -52,7 +53,8 @@ public class TopAjax {
     //查询所有类目
     @PostMapping("/getType")
     public String getType(){
-        List<Type>type=typeServiceImpl.selectAllItemType();
+       List<Type> type=typeServiceImpl.selectAllItemType();
+
         return Uilt.getGsonToString(type);
     }
 }

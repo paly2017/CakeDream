@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 public class Admin {
     private Integer id;
 
-    private String username;
+                                                                                                                                                                                                                                                                                                                                                                                    private String username;
 
     private String password;
 
