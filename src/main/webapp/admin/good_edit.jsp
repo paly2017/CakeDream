@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>商品编辑</title>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8"/>      
     <%-- //jq--%>
     <script src="admin/js/jquery.js"></script>
     <link rel="stylesheet" href="admin/css/bootstrap.css"/>
