@@ -18,7 +18,7 @@
 <jsp:include page="header.jsp"/>
 <br>
 <ul role="tablist" class="nav nav-tabs">
-    <li class="active" role="presentation"><a href="orderList.action">全部订单</a></li>
+    <li class="active" role="presentation"><a class="btn" onclick="pagenext(0)">全部订单</a></li>
     <li  role="presentation"><a class="btn" onclick="nopay(1,1)">未付款</a></li>
     <li  role="presentation"><a class="btn" onclick="nopay(2,1)">已付款</a></li>
     <li  role="presentation"><a class="btn" onclick="nopay(3,1)">配送中</a></li>
@@ -73,7 +73,7 @@
     </c:forEach>
 
 </table>
-
+<div id="foot">
 <br><div style='text-align:center;'>
     <a class='btn btn-info' onclick="pagenext(1)">首页</a>
     <a class='btn btn-info' id="page2" onclick="pagenext(1)">上一页</a>
@@ -85,5 +85,6 @@
 </div>
 <br>
 </div>
+
 </body>
 </html>

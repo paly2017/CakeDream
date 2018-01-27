@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>header</title>
+    <script src="admin/js/jquery.js"></script>
+    <script src="admin/js/orderlist.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -18,7 +20,7 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/orderlist?index=0">订单管理</a></li>
+                <li class="active"><a class="btn" href="/1orderlist?index=0">订单管理</a></li>
                 <li ><a href="/userList">客户管理</a></li>
                 <li ><a href="/allGood">商品管理</a></li>
                 <li ><a href="typeList.action">类目管理</a></li>

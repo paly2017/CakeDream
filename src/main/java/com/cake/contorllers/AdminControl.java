@@ -33,7 +33,6 @@ public class AdminControl {
                                      @RequestParam("admin.username")String username,
                                      @RequestParam("admin.password")String password,
                                      HttpServletRequest request){
-        System.out.println("进来");
         Admin adminUser = new Admin();
         adminUser.setUsername(username);
         adminUser.setPassword(password);
