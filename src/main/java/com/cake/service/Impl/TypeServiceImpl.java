@@ -44,8 +44,8 @@ public class TypeServiceImpl implements ITypeService {
     }
 
     //查询所有类目的接口
-    public Type selectAllType(){
-        return typeMapper.selectAllType();
+    public List<Type> selectAllItemType(){
+        return typeMapper.selectAllItemType();
     }
 
 

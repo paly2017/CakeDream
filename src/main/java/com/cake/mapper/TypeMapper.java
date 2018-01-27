@@ -20,23 +20,7 @@ public interface TypeMapper {
     public Type selectTpyeById(Integer type_id);
     //结束
 
-    //查询所有类目
-    @Select("SELECT * FROM `types`;")
-    @Results({
-            @Result(id = true, property = "id",column = "id"),
-            @Result(property = "name",column = "name")
-    })
-    Type selectAllType();
 
-
-
-
-
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Type record);
-
-    int insertSelective(Type record);
 
     /**
      * 根据系列类型id查询系列对象

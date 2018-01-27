@@ -25,7 +25,7 @@ public interface ITypeService {
     Type selectTypeByGoodId();*/
 
     //查询所有类目的接口
-    Type selectAllType();
+    List<Type> selectAllItemType();
 
 
 }
