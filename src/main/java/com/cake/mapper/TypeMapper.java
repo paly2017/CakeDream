@@ -39,7 +39,19 @@ public interface TypeMapper {
     @Insert("INSERT INTO types(name) VALUES(#{taypename})")
     int insertByTypeName(@Param("taypename") String  typeName);
 
-    int updateByPrimaryKey(Type record);
+    /***
+     * 修改商品类型名字
+     * @param typeId
+     * @param name
+     * @return
+     */
+    @Update("UPDATE types SET  name=#{name} WHERE id = #{typeId};")
+    int updateByPrimaryKey(@Param("typeId") Integer typeId,@Param("name") String name);
+
+    /****
+     * 商品类型全查
+     * @return
+     */
     @Select(value = "SELECT id,name FROM types WHERE 1=1;")
     @Results({
             @Result(id = true,property = "id",column = "id"),
@@ -52,6 +64,14 @@ public interface TypeMapper {
             @Result(property = "name",column = "name")
     })
     Type selectGoodType(@Param("typeName") String typeName);
+
+    /***
+     * 删除商品id
+     * @param typeId
+     * @return
+     */
+    @Delete("DELETE FROM types WHERE id=#{typeId};")
+    int deteleType(@Param("typeId") Integer typeId);
 
 
 

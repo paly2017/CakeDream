@@ -2,11 +2,15 @@ package com.cake.contorllers;
 
 import com.cake.pojo.Type;
 import com.cake.service.Impl.TypeServiceImpl;
+import com.cake.uilt.Uilt;
 import com.google.common.base.Optional;
+import com.sun.org.glassfish.external.probe.provider.annotations.ProbeParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -42,5 +46,25 @@ public class TypeController {
         modelAndView.addObject("typegood",typeList);
         return modelAndView;
 
+    }
+
+    public String changeType(@RequestParam("deleteTypeId") Integer typeId,
+                             @RequestParam("") String name){
+        return null;
+    }
+
+    /***
+     * 类型删除
+     * @param typeId
+     * @return
+     */
+    @PostMapping("/deteleType")
+    @ResponseBody
+    public String deteleType(@RequestParam("deleteTypeId") Integer typeId){
+        if (typeService.deteleTypeService(typeId)){
+           List<Type> typeList =  typeService.selectAllItemType();
+            return Uilt.getGsonToString(typeList);
+        }
+        return "no";
     }
 }

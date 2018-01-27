@@ -29,5 +29,19 @@ public interface ITypeService {
 
     boolean addGoodType(Type type);
 
+    /***
+     * 修改商品类型名称
+     * @param typeId
+     * @return
+     */
+    boolean changeTypeService(Integer typeId,String name);
+
+    /***
+     * 删除商品类型
+     * @param typeId
+     * @return
+     */
+    boolean deteleTypeService(Integer typeId);
+
 
 }

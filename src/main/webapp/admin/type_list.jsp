@@ -10,8 +10,11 @@
 <html>
 <head>
     <title>类目列表</title>
-    <script src="admin/js/jquery.js"></script>
+    <meta http-equiv="Content-Type" content="text/jsp; charset=utf-8">
     <link rel="stylesheet" href="admin/css/bootstrap.css"/>
+    <script src="admin/js/jquery.js"></script>
+    <script src="admin/js/type.js"></script>
+
 
 
 </head>
@@ -27,8 +30,8 @@
 
 <br>
 
-<table class="table table-bordered table-hover">
-
+<table class="table table-bordered table-hover" width="60%">
+    <div id="table">
     <tr>
         <th width="5%">ID</th>
         <th width="10%">名称</th>
@@ -40,11 +43,12 @@
         <td><p>${type.id}</p></td>
         <td><p>${type.name}</p></td>
         <td>
-            <a class="btn btn-primary" href="typeEdit.action?id=5">修改</a>
-            <a class="btn btn-danger" href="typeDelete.action?type.id=5">删除</a>
+            <a class="btn btn-primary" onclick="changeType(${type.id})" >修改</a>
+            <a class="btn btn-danger" onclick="deteleType(${type.id})">删除</a>
         </td>
     </tr>
     </c:forEach>
+    </div>
 </table>
 </body>
 </html>
