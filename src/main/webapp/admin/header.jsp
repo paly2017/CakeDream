@@ -9,8 +9,6 @@
 <html>
 <head>
     <title>header</title>
-    <script src="admin/js/jquery.js"></script>
-    <script src="admin/js/orderlist.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">

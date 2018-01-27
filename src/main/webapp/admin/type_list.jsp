@@ -9,6 +9,10 @@
 <html>
 <head>
     <title>类目列表</title>
+    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+
+
 </head>
 <body>
 <jsp:include page="header.jsp"/>

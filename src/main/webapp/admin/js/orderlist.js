@@ -3,11 +3,13 @@
  * @param index
  */
 function pagenext(index) {
+    alert(index);
     $.ajax({
         type:"post",
         url:"/pageindex",
         data:{pageindex:index},
         success:function (msg) {
+            alert(msg)
             $("table").empty();
             $("table").append("<tr>\n" +
                 "        <th width=\"5%\">ID</th>\n" +
@@ -23,6 +25,7 @@ function pagenext(index) {
             var msgObj = jQuery.parseJSON(msg);
             var count=0;
             msgObj.forEach(function (value) {
+                alert("123")
                 var paytype;
                 if (value.order.paytype==1){
                      paytype="微信支付";
@@ -183,7 +186,7 @@ function nopay(count,index) {
             }
             $("#page4").html(index);
             $("#page5").text(pagecount);
-            $("#page6").text(pagecount);
+            $("#page6").text("["+pagecount+"]");
             $("#page2").attr("onclick","pagenext("+parseInt(index-1)+")");
             $("#page3").attr("onclick","pagenext("+parseInt(index+1)+")");
 

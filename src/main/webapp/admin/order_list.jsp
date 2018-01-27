@@ -77,7 +77,7 @@
 <br><div style='text-align:center;'>
     <a class='btn btn-info' onclick="pagenext(1)">首页</a>
     <a class='btn btn-info' id="page2" onclick="pagenext(1)">上一页</a>
-    <h2 style='display:inline;' id="page1">[<span id="page4" >${requestScope.pageindex}</span>/<span id="page5">${requestScope.pagecount}</span>]</h2>
+    <h2 style='display:inline;' id="page1">[<span id="page4" >${requestScope.pageindex}</span>/<span id="page5">${requestScope.pagecount}]</span></h2>
     <h2 style='display:inline;'id="page6">[${requestScope.pagecount}]</h2>
     <a class='btn btn-info' id="page3" onclick="pagenext(2)">下一页</a>
     <a class='btn btn-info' onclick="pagenext(${requestScope.pagecount})">尾页</a>

@@ -29,6 +29,8 @@ public class AdminOrderContorller {
     @PostMapping("/pageindex")
     @ResponseBody
     public String pageOerderlist(@RequestParam("pageindex")Integer pageIndex){
+        System.out.println("jinla1111i");
+        System.out.println("pageIndex = [" + pageIndex + "]");
         List<OrderManager> orderManagers =
                 itemService.orderManger(pageIndex);
         if (null==orderManagers){
@@ -40,6 +42,7 @@ public class AdminOrderContorller {
                 orderManagers1.add(orderManager);
             }
         }
+        System.out.println("pageIndex = [" + orderManagers1 + "]");
         return Uilt.getGsonToString(orderManagers1);
     }
 
