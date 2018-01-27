@@ -17,13 +17,11 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-
 <br>
-
 <div>
-    <form class="form-inline" method="post" action="typeSave.action">
+    <form class="form-inline" method="post" action="/addtype">
         <input type="text" class="form-control" id="input_name" name="type.name" placeholder="输入类目名称" required="required" style="width: 500px">
-        <input type="submit" class="btn btn-warning" value="添加类目"/>
+        <input type="submit" id="but" class="btn btn-warning" value="添加类目"/>
     </form>
 </div>
 

@@ -27,5 +27,7 @@ public interface ITypeService {
     //查询所有类目的接口
     List<Type> selectAllItemType();
 
+    boolean addGoodType(Type type);
+
 
 }

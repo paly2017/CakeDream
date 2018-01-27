@@ -50,6 +50,18 @@ public class TypeServiceImpl implements ITypeService {
         return list;
     }
 
+    public boolean addGoodType(Type type) {
+        Type oldType = typeMapper.selectGoodType(type.getName());
+        if (null!=oldType){
+            return false;
+        }else {
+            int count = typeMapper.insertByTypeName(type.getName());
+            if(count>0){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }
