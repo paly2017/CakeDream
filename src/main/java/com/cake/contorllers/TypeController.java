@@ -30,6 +30,7 @@ public class TypeController {
     @RequestMapping("/addtype")
     public ModelAndView addGoodType(ModelAndView modelAndView,
                                     @RequestParam("type.name")String typeNmae){
+        System.out.println("modelAndView = [" + modelAndView + "], typeNmae = [" + typeNmae + "]");
         Optional.of(typeNmae);
         Type type = new Type();
         type.setName(typeNmae);
