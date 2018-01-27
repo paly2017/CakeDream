@@ -6,11 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>类目列表</title>
-    <script src="js/jquery.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <script src="admin/js/jquery.js"></script>
+    <link rel="stylesheet" href="admin/css/bootstrap.css"/>
 
 
 </head>
@@ -36,53 +37,16 @@
         <th width="10%">操作</th>
     </tr>
 
-
+    <c:forEach var="type" items="${requestScope.typegood}">
     <tr>
-        <td><p>5</p></td>
-        <td><p>经典系列</p></td>
+        <td><p>${type.id}</p></td>
+        <td><p>${type.name}</p></td>
         <td>
             <a class="btn btn-primary" href="typeEdit.action?id=5">修改</a>
             <a class="btn btn-danger" href="typeDelete.action?type.id=5">删除</a>
         </td>
     </tr>
-
-    <tr>
-        <td><p>4</p></td>
-        <td><p>法式系列</p></td>
-        <td>
-            <a class="btn btn-primary" href="typeEdit.action?id=4">修改</a>
-            <a class="btn btn-danger" href="typeDelete.action?type.id=4">删除</a>
-        </td>
-    </tr>
-
-    <tr>
-        <td><p>3</p></td>
-        <td><p>儿童系列</p></td>
-        <td>
-            <a class="btn btn-primary" href="typeEdit.action?id=3">修改</a>
-            <a class="btn btn-danger" href="typeDelete.action?type.id=3">删除</a>
-        </td>
-    </tr>
-
-    <tr>
-        <td><p>2</p></td>
-        <td><p>零食系列</p></td>
-        <td>
-            <a class="btn btn-primary" href="typeEdit.action?id=2">修改</a>
-            <a class="btn btn-danger" href="typeDelete.action?type.id=2">删除</a>
-        </td>
-    </tr>
-
-    <tr>
-        <td><p>1</p></td>
-        <td><p>冰淇淋系列</p></td>
-        <td>
-            <a class="btn btn-primary" href="typeEdit.action?id=1">修改</a>
-            <a class="btn btn-danger" href="typeDelete.action?type.id=1">删除</a>
-        </td>
-    </tr>
-
-
+    </c:forEach>
 </table>
 </body>
 </html>

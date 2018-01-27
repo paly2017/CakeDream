@@ -21,7 +21,7 @@
                 <li class="active"><a class="btn" href="/1orderlist?index=0">订单管理</a></li>
                 <li ><a href="/userList">客户管理</a></li>
                 <li ><a href="/allGood">商品管理</a></li>
-                <li ><a href="typeList.action">类目管理</a></li>
+                <li ><a href="/getadminType">类目管理</a></li>
                 <li ><a href="adminRe.action">修改密码</a></li>
                 <li><a href="logout.action">退出</a></li>
             </ul>

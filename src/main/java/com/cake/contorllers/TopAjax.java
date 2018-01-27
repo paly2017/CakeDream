@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @ResponseBody
 public class TopAjax {
@@ -50,7 +52,7 @@ public class TopAjax {
     //查询所有类目
     @PostMapping("/getType")
     public String getType(){
-        Type type=typeServiceImpl.selectAllType();
+        List<Type>type=typeServiceImpl.selectAllItemType();
         return Uilt.getGsonToString(type);
     }
 }
