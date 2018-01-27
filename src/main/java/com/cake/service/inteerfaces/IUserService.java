@@ -63,4 +63,11 @@ public interface IUserService {
      */
      void changeUserPwd(Integer userId,String passWord);
 
+    /**
+     * 根据用户id修改用户信息
+     * @param userId
+     * @param userPhone 用户电话
+     * @param userAddress 用户地址
+     */
+     Integer changeUserMes(Integer userId,String userPhone,String userAddress);
 }

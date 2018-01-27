@@ -150,4 +150,23 @@ public interface UserMapper {
             @Result(property = "adress",column = "adress")
     })
     Integer changeUserPwd(@Param("id")Integer id,@Param("password")String password);
+
+
+    /**
+     * 修改用户信息
+     * @param id 用户id
+     * @param phone 电话
+     * @param address 地址
+     * @return
+     */
+    @Update("UPDATE users SET phone = #{phone},address=#{address} WHERE id=#{id};")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "username",column = "username"),
+            @Result(property = "password",column = "password"),
+            @Result(property = "name",column = "name"),
+            @Result(property = "phone",column = "phone"),
+            @Result(property = "adress",column = "adress")
+    })
+    Integer changeUserMessage(@Param("id")Integer id,@Param("phone")String phone,@Param("address")String address);
 }

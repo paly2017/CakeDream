@@ -155,4 +155,16 @@ public class UserServiceImpl implements IUserService {
         userMapper.changeUserPwd(userId,passWord);
 
     }
+
+    /**
+     * 根据用户id修改用户电话和地址信息
+     * @param userId
+     * @param userPhone 用户电话
+     * @param userAddress 用户地址
+     * @Author Philip
+     */
+    public Integer changeUserMes(Integer userId, String userPhone, String userAddress) {
+        Integer rollBack = userMapper.changeUserMessage(userId,userPhone,userAddress);
+        return rollBack;
+    }
 }
