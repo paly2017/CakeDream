@@ -202,5 +202,9 @@ public class GoodServiceImpl implements IGoodService {
         Good good = goodMapper.slectGoodsByGoodId(goodID);
         return good;
     }
+    //添加商品
+   public Integer addGood(String name,String cover,String image1,String image2,Integer price,String intro,Integer stock,Integer typeId){
+       return goodMapper.addGood(name,cover,image1,image2,price,intro,stock,typeId);
+    }
 
 }

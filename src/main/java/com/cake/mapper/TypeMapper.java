@@ -20,6 +20,14 @@ public interface TypeMapper {
     public Type selectTpyeById(Integer type_id);
     //结束
 
+    //查询所有类目
+    @Select("SELECT * FROM `types`;")
+    @Results({
+            @Result(id = true, property = "id",column = "id"),
+            @Result(property = "name",column = "name")
+    })
+    Type selectAllType();
+
 
 
 

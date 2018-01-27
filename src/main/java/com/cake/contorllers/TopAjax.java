@@ -1,6 +1,9 @@
 package com.cake.contorllers;
 
+import com.cake.pojo.Type;
 import com.cake.service.Impl.TopServiceImpl;
+import com.cake.service.Impl.TypeServiceImpl;
+import com.cake.uilt.Uilt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +16,9 @@ public class TopAjax {
     //service实现类作为属性注入
     @Autowired
     private TopServiceImpl topServiceImpl;
+    @Autowired
+    private TypeServiceImpl typeServiceImpl;
+
     //移除商品推荐
     @PostMapping("/remove")
     public String removeTop(@RequestParam("topType")Integer topType,
@@ -41,5 +47,10 @@ public class TopAjax {
         }
          return status;
     }
-
+    //查询所有类目
+    @PostMapping("/getType")
+    public String getType(){
+        Type type=typeServiceImpl.selectAllType();
+        return Uilt.getGsonToString(type);
+    }
 }

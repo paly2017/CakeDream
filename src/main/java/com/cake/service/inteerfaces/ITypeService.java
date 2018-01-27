@@ -24,6 +24,8 @@ public interface ITypeService {
    /* //根据用户type_id查询商品类型
     Type selectTypeByGoodId();*/
 
+    //查询所有类目的接口
+    Type selectAllType();
 
 
 }

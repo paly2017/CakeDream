@@ -77,4 +77,7 @@ public interface IGoodService {
    */
   List<Good> packagingGood(HttpSession httpSession);
 
+  //添加商品
+  Integer addGood(String name,String cover,String image1,String image2,Integer price,String intro,Integer stock,Integer typeId);
+
 }
