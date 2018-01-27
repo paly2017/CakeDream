@@ -9,34 +9,44 @@
 <html>
 <head>
     <title>客户添加</title>
+    <link rel="stylesheet" href="admin/css/bootstrap.css"/>
+
 </head>
 <body>
+<%--<head>--%>
 <jsp:include page="header.jsp"/>
+<%--</head>--%>
 
 <br><br>
-<form class="form-horizontal" action="userSave.action" method="post">
+<form class="form-horizontal" action="userSave" method="post">
     <div class="form-group">
         <label for="input_name" class="col-sm-1 control-label">用户名</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name" name="user.username" required="required">
+            <input type="text" class="form-control" id="input_name" name="user_username" required="required">
         </div>
     </div>
     <div class="form-group">
         <label for="input_name1" class="col-sm-1 control-label">密码</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name1" name="user.password" required="required">
+            <input type="text" class="form-control" id="input_name1" name="user_password" required="required">
         </div>
     </div>
     <div class="form-group">
-        <label for="input_name2" class="col-sm-1 control-label">电话</label>
+        <label for="input_name2" class="col-sm-1 control-label">收货人姓名</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name2" name="user.phone" >
+            <input type="text" class="form-control" id="input_name2" name="user_name" required="required">
         </div>
     </div>
     <div class="form-group">
-        <label for="input_name3" class="col-sm-1 control-label">地址</label>
+        <label for="input_name3" class="col-sm-1 control-label">电话</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name3" name="user.address" >
+            <input type="text" class="form-control" id="input_name3" name="user_phone" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="input_name4" class="col-sm-1 control-label">地址</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="input_name4" name="user_address" >
         </div>
     </div>
     <div class="form-group">

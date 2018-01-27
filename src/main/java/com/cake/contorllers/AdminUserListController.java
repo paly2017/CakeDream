@@ -20,7 +20,13 @@ import java.util.List;
 public class AdminUserListController {
     @Autowired
     private UserServiceImpl userService;
-    //查询所有的用户信息，在用户详情页面显示
+
+    /**
+     * 查询所有的用户信息，在用户详情页面显示
+     * @param httpServletRequest
+     * @return
+     * @Author Philip
+     */
     @RequestMapping("/userList")
     public String searchAllUser(HttpServletRequest httpServletRequest){
         HttpSession httpSession = httpServletRequest.getSession();
@@ -33,9 +39,16 @@ public class AdminUserListController {
         return "admin/user_list";
     }
 
-    //根据用户id查询用户，准备修改用户密码
+    /**
+     *  //根据用户id查询用户，准备修改用户密码
+     * @param userId
+     * @param httpServletRequest
+     * @return
+     * @Author Philip
+     */
+
     @RequestMapping("/userReset")
-    public String changeUserPwd(@RequestParam("userId")Integer userId,
+    public String changeUserPwdPag(@RequestParam("userId")Integer userId,
                                 HttpServletRequest httpServletRequest
                                 ){
         HttpSession httpSession = httpServletRequest.getSession();
@@ -45,7 +58,12 @@ public class AdminUserListController {
         httpSession.setAttribute("user",user);
         return "admin/user_reset";
     }
-    //从页面获取用户填写的新密码，进行修改
+
+
+    /**
+     * 从页面获取用户填写的新密码，进行修改
+     * @Author Philip
+     */
     @RequestMapping("userResetChange")
     public String commitUserPwd(@RequestParam("userId")Integer userId,
                                 @RequestParam("passWord") String passWord,
@@ -68,9 +86,10 @@ public class AdminUserListController {
      * @param userId
      * @param httpServletRequest
      * @return
+     * @Author Philip
      */
     @RequestMapping("/userEdit")
-    public  String editUserMessage(@RequestParam("userId")Integer userId,
+    public  String editUserMessagePag(@RequestParam("userId")Integer userId,
                                    HttpServletRequest httpServletRequest
                                     ){
         HttpSession httpSession = httpServletRequest.getSession();
@@ -82,24 +101,72 @@ public class AdminUserListController {
     }
 
     /**
-     * 修改用户信息
+     * 确认修改用户信息
      * @param userId
      * @param phone
      * @param address
-     * @param httpServletRequest
      * @return
+     * @Author Philip
      */
     @RequestMapping("userEditOK")
     public String commitUserMessage(@RequestParam("userId")Integer userId,
                                     @RequestParam("user_phone") String phone,
-                                    @RequestParam("user_address")String address,
-                                    HttpServletRequest httpServletRequest
-
+                                    @RequestParam("user_address")String address
     ){
         //调用修改用户信息的方法
             Integer effectRow = userService.changeUserMes(userId,phone,address);
-            System.out.println("修改用户信息被影响的行数"+effectRow);
         return "admin/user_list";
     }
+
+    /**
+     * 后台添加新用户
+     * @return
+     * @Author Philip
+     */
+    @RequestMapping("/userAdd")
+    public String addNewUserPag(){
+
+        return "admin/user_add";
+    }
+
+    /**
+     * 后台添加新用户
+     * @param username
+     * @param password
+     * @param name
+     * @param phone
+     * @param address
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @Author Philip
+     */
+    @RequestMapping("/userSave")
+    public String addNewUser(@RequestParam("user_username")String username,
+                             @RequestParam("user_password")String password,
+                             @RequestParam("user_name")String name,
+                             @RequestParam("user_phone")String phone,
+                             @RequestParam("user_address")String address) throws NoSuchAlgorithmException {
+        //对用户密码进行加密处理
+        String userPwd = UserUitl.encodeMD5(password);
+        //调用方法添加用户对象
+        User user = userService.insertUser(username,userPwd,name,phone,address);
+        //添加完新用户以后重新进入添加用户页面
+        return "admin/user_add";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

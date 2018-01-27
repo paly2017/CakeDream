@@ -18,7 +18,7 @@
 <%--</head>--%>
 
 
-<div class="text-right"><a class="btn btn-warning" href="userAdd.action">添加客户</a></div>
+<div class="text-right"><a class="btn btn-warning" href="userAdd">添加客户</a></div>
 
 <br>
 

@@ -24,9 +24,21 @@
         <div class="col-sm-5">${user.username }</div>
     </div>
     <div class="form-group">
-        <label for="input_name" class="col-sm-1 control-label">密码</label>
+        <label for="input_name" class="col-sm-1 control-label">原密码</label>
         <div class="col-sm-6">
             <input type="text" class="form-control" id="input_name" name="passWord" value="" required="required">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="input_name1" class="col-sm-1 control-label">新密码</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="input_name1" name="passWord" value="" required="required">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="input_name2" class="col-sm-1 control-label">再次输入新密码</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="input_name2" name="passWord" value="" required="required">
         </div>
     </div>
     <div class="form-group">
