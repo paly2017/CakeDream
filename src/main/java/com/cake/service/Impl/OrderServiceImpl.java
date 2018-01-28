@@ -81,8 +81,7 @@ public class OrderServiceImpl implements IOrderService {
         /*   User user = (User) httpSession.getAttribute("loginUser");*/
         //循环遍历集合 获取商品总价
         Integer allAmount = 0;
-        for (MiniCart miniCart:
-                miniCartList) {
+        for (MiniCart miniCart: miniCartList) {
             //单个商品总价
             allAmount =  (miniCart.getGood().getPrice())*(miniCart.getCount());
             //所有商品总价
@@ -127,8 +126,7 @@ public class OrderServiceImpl implements IOrderService {
         String orderNumber = (String) httpSession.getAttribute("orderNumber"); //订单号
         String orderDate = (String) httpSession.getAttribute("orderDate"); //生成订单号时间
         List<Order> orderList =  new ArrayList<Order>();
-        for (MiniCart miniCart:
-                miniCartList) {
+        for (MiniCart miniCart: miniCartList) {
             //创建order对象
             Order order = new Order();
             /******************* 对order对象进行组装********************/
@@ -160,6 +158,10 @@ public class OrderServiceImpl implements IOrderService {
      */
     public int changeOrderStatus(Integer orderId) {
         return orderMapper.updateByPrimaryKey(orderId);
+    }
+
+    public List<Order> getOrderByPayType(Integer paytype) {
+        return orderMapper.selectByPayType(paytype);
     }
 
     /***

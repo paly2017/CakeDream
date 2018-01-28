@@ -18,11 +18,11 @@
 <jsp:include page="header.jsp"/>
 <br>
 <ul role="tablist" class="nav nav-tabs">
-    <li class="active" role="presentation"><a class="btn" onclick="pagenext(0)">全部订单</a></li>
-    <li  role="presentation"><a class="btn" onclick="nopay(1,1)">未付款</a></li>
-    <li  role="presentation"><a class="btn" onclick="nopay(2,1)">已付款</a></li>
-    <li  role="presentation"><a class="btn" onclick="nopay(3,1)">配送中</a></li>
-    <li  role="presentation"><a class="btn" onclick="nopay(4,1)">已完成</a></li>
+    <li class="active" role="presentation"><a class="btn" href="/orderlist">全部订单</a></li>
+    <li  role="presentation"><a class="btn" href="/showOrderInfo?statusorder=1">未付款</a></li>
+    <li  role="presentation"><a class="btn" href="/showOrderInfo?statusorder=2">已付款</a></li>
+    <li  role="presentation"><a class="btn" href="/showOrderInfo?statusorder=3">配送中</a></li>
+    <li  role="presentation"><a class="btn" href="/showOrderInfo?statusorder=4">已完成</a></li>
 </ul>
 <br>
 <table class="table table-bordered table-hover">
@@ -66,21 +66,21 @@
         <td><p>${model.order.systime}</p></td>
         <td>
             <input type="hidden" value="${model.order.id}">
-            <a class="btn btn-success" onclick="goOrder(${model.good.id})">发货</a>
-            <a class="btn btn-danger" onclick="deleteOrder(${model.good.id})">删除</a>
+            <a class="btn btn-success" onclick="goOrder(${model.item.id})">发货</a>
+            <a class="btn btn-danger" onclick="deleteOrder(${model.item.id})">删除</a>
         </td>
     </tr>
     </c:forEach>
 
 </table>
 <div id="foot">
-<br><div style='text-align:center;'>
-    <a class='btn btn-info' onclick="pagenext(1)">首页</a>
-    <a class='btn btn-info' id="page2" onclick="pagenext(1)">上一页</a>
-    <h2 style='display:inline;' id="page1">[<span id="page4" >${requestScope.pageindex}</span>/<span id="page5">${requestScope.pagecount}]</span></h2>
+<br><div style='text-align:center;' id="page">
+    <a class='btn btn-info' href="/pageIndex?pageindex=1">首页</a>
+    <a class='btn btn-info' id="page2" href="/pageIndex?pageindex=${requestScope.pageindex-1}">上一页</a>
+    <h2 style='display:inline;' id="page1">[<span id="page4" >${requestScope.pageindex}</span>/<span id="page5">${requestScope.pagecount}</span>]</h2>
     <h2 style='display:inline;'id="page6">[${requestScope.pagecount}]</h2>
-    <a class='btn btn-info' id="page3" onclick="pagenext(2)">下一页</a>
-    <a class='btn btn-info' onclick="pagenext(${requestScope.pagecount})">尾页</a>
+    <a class='btn btn-info' id="page3" href="/pageIndex?pageindex=${requestScope.pageindex+1} ">下一页</a>
+    <a class='btn btn-info' href="/pageIndex?pageindex=${requestScope.pagecount}">尾页</a>
     <input type='text' class='form-control' style='display:inline;width:60px;' value=''/><a class='btn btn-info'onclick="pagenext(this.previousSibling.value )">GO</a>
 </div>
 <br>

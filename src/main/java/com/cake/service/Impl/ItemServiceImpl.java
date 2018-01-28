@@ -58,30 +58,31 @@ public class ItemServiceImpl implements IItemService {
     }
 
     /***
-     * 重载分页查询方法
+     * 重载分页查询方法,根据支付状态查询
      * @param status
      * @param pageindex
      * @return
      */
     public List<OrderManager> orderManger(Integer status, Integer pageindex){
         if (null==pageindex){pageindex=0;}
-        int itemCount= itemMapper.getCount();
-        if (itemCount==0){
+        int orderCount = orderMapper.searchCountByPayStatus(status);
+        if (orderCount==0){
             return null;
         }
+        List<Item> itemList = itemMapper.selectItems();
+        if (itemList==null){return null;}
         List<OrderManager> managerList = new ArrayList<OrderManager>();
-        Uilt.getPageNum(pageindex,itemCount);
-        List<Item> itemList = itemMapper.seleItems(Uilt.startSize,Uilt.AdminpageSize);
         for (Item item : itemList){
-            Good good = goodMapper.slectGoodByGoodId(item.getGoodId());
-            Order order =orderMapper.selectByPrimaryKey(item.getOrderId());
-            User user = userMapper.selectByPrimaryKey(order.getUserId());
-            if (order.getStatus().equals(status)){
-                OrderManager orderManager = new OrderManager(good,item,user,order);
-                orderManager.setPageCount(Uilt.pageCount);
-                managerList.add(orderManager);
-            }
+             Order order = orderMapper.selectByPrimaryKey(item.getOrderId());
+             if (order.getStatus()==status){
+                 Good good = goodMapper.slectGoodByGoodId(item.getGoodId());
+                 User user = userMapper.selectByPrimaryKey(order.getUserId());
+                 OrderManager orderManager = new OrderManager(good,item,user,order);
+                 managerList.add(orderManager);
+             }
         }
+        System.out.println("status = [" + status + "], pageindex = [" + pageindex + "]");
+        Uilt.getPageNum(pageindex,managerList.size());
         return managerList;
     }
     /***
@@ -100,6 +101,14 @@ public class ItemServiceImpl implements IItemService {
      */
     public Integer deleteItem(Integer goodId) {
         return itemMapper.deleteByPrimaryKey(goodId);
+    }
+
+    public Item selectByPrimaryKey(Integer id) {
+        return itemMapper.selectByPrimaryKey(id);
+    }
+
+    public List<Item> getAllItem() {
+        return itemMapper.selectItems();
     }
 
     /**

@@ -19,7 +19,14 @@ public interface ItemMapper {
     int insert(Item item);
 
     int insertSelective(Item record);
-
+    @Select(value = "SELECT *  FROM items WHERE id=#{id} AND order_id>0 ;")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "price",column = "price"),
+            @Result(property = "amount",column = "amount"),
+            @Result(property = "orderId",column = "order_id"),
+            @Result(property = "goodId",column = "good_id")
+    })
     Item selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Item record);
@@ -57,6 +64,15 @@ public interface ItemMapper {
             @Result(property = "goodId",column = "good_id")
     })
     Item selectByGoodId(@Param("goodid") Integer goodid);
+    @Select(value = "SELECT * FROM items WHERE order_id>0 ORDER BY id;")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "price",column = "price"),
+            @Result(property = "amount",column = "amount"),
+            @Result(property = "orderId",column = "order_id"),
+            @Result(property = "goodId",column = "good_id")
+    })
+    List<Item> selectItems();
 
 
 }

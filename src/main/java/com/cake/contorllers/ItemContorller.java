@@ -17,23 +17,90 @@ import java.util.List;
 public class ItemContorller {
     @Autowired
     private ItemServiceImpl itemService;
-    @RequestMapping("/1orderlist")
-    public ModelAndView showItems(ModelAndView modelAndView,
-                                    @RequestParam("index") Integer index){
+    @RequestMapping("/orderlist")
+    public ModelAndView showItems(ModelAndView modelAndView){
         List<OrderManager> orderManagers =
-                                itemService.orderManger(index);
-        System.out.println(orderManagers);
+                                itemService.orderManger(0);
         modelAndView.setViewName("admin/order_list");
         if (null==orderManagers){
            return modelAndView;
         }
-        List<OrderManager> orderManagers1 = new ArrayList<OrderManager>();
-        for (OrderManager orderManager: orderManagers){
-            if (orderManager.getOrder().getDelete()==1){
-                orderManagers1.add(orderManager);
+        modelAndView.addObject("adminorder",orderManagers);
+        modelAndView.addObject("pagecount",Uilt.pageCount);
+        modelAndView.addObject("pageindex",Uilt.pageIndex);
+        return modelAndView;
+    }
+    @RequestMapping("/pageIndex")
+    public ModelAndView showItems(ModelAndView modelAndView,
+                                  @RequestParam("pageindex") Integer index){
+        List<OrderManager> orderManagers =
+                itemService.orderManger(index);
+        modelAndView.setViewName("admin/order_list");
+        if (null==orderManagers){
+            return modelAndView;
+        }
+        modelAndView.addObject("adminorder",orderManagers);
+        modelAndView.addObject("pagecount",Uilt.pageCount);
+        modelAndView.addObject("pageindex",Uilt.pageIndex);
+        return modelAndView;
+    }
+
+    /********以上商品管理不分类型********/
+    /****
+     * 根据支付类型查询商品
+     * @param modelAndView
+     * @param status
+     * @return
+     */
+    @RequestMapping("/showOrderInfo")
+    public ModelAndView showOrderInfo(ModelAndView modelAndView,
+                                      @RequestParam("statusorder")Integer status){
+        System.out.println("jinlai");
+        System.out.println("modelAndView = [" + modelAndView + "], status = [" + status + "]");
+        List<OrderManager> orderManagers =
+                itemService.orderManger(status,0);
+        int count = 0;
+        modelAndView.setViewName("admin/order_list");
+        if (orderManagers==null){
+            return modelAndView;
+        }
+        List<OrderManager> orderManagerList= new ArrayList<OrderManager>();
+        for (OrderManager orderManager :orderManagers){
+            ++count;
+            System.out.println(Uilt.pageCount);
+            if (0<=count&&count<Uilt.AdminpageSize){
+                orderManagerList.add(orderManager);
             }
         }
-        modelAndView.addObject("adminorder",orderManagers1);
+
+        if (null==orderManagerList){
+            return modelAndView;
+        }
+        modelAndView.addObject("adminorder",orderManagerList);
+        modelAndView.addObject("pagecount",Uilt.pageCount);
+        modelAndView.addObject("pageindex",Uilt.pageIndex);
+        return modelAndView;
+    }
+
+
+    @RequestMapping("/pageIndexStatus")
+    public ModelAndView showItems(ModelAndView modelAndView,
+                                  @RequestParam("pageindex") Integer index,
+                                  @RequestParam("status")Integer status){
+        List<OrderManager> orderManagers =
+                itemService.orderManger(index);
+        System.out.println(orderManagers);
+        modelAndView.setViewName("admin/order_list");
+        if (null==orderManagers){
+            return modelAndView;
+        }
+        List<OrderManager> managerList = new ArrayList<OrderManager>();
+        for (OrderManager orderManager : orderManagers){
+            if (orderManager.getOrder().getStatus()==status){
+                managerList.add(orderManager);
+            }
+        }
+        modelAndView.addObject("adminorder",managerList);
         modelAndView.addObject("pagecount",Uilt.pageCount);
         modelAndView.addObject("pageindex",Uilt.pageIndex);
         return modelAndView;

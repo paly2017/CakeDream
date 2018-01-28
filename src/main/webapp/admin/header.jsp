@@ -18,7 +18,7 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li class="active"><a class="btn" href="/1orderlist?index=0">订单管理</a></li>
+                <li class="active"><a class="btn" href="/orderlist">订单管理</a></li>
                 <li ><a href="/userList">客户管理</a></li>
                 <li ><a href="/allGood">商品管理</a></li>
                 <li ><a href="/admin">修改密码</a></li>

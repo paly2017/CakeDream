@@ -42,6 +42,13 @@ public interface IOrderService {
 
     int changeOrderStatus(Integer orderId);
 
+    /****
+     * 根据支付类型获取订单
+     * @param paytype
+     * @return
+     */
+    List<Order> getOrderByPayType(Integer paytype);
+
 
 
 }

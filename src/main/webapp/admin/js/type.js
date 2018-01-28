@@ -18,9 +18,9 @@ function deteleType(typeId) {
                     "        <th width= '10% '>操作</th> " +
                     "    </tr>");
                 var typelist = jQuery.parseJSON(msg);
-                typelist.forEach(function (value) {
+                typelist.forEach(function (value,index) {
                     $("table").append("  <tr> " +
-                        "        <td><p>"+value.id+"</p></td> " +
+                        "        <td><p>"+index+"</p></td> " +
                         "        <td><p>"+value.name+"</p></td> " +
                         "        <td> " +
                         "            <a class= 'btn btn-primary ' href='/typeedit?="+value.id+"'>修改</a> " +
@@ -31,7 +31,10 @@ function deteleType(typeId) {
                 alert("删除成功")
 
             }
-
+        },
+        error:function () {
+           alert("网络故障")
         }
+
     })
 }
