@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Controller
@@ -34,7 +35,8 @@ public class TypeController {
     }
     @RequestMapping("/addtype")
     public ModelAndView addGoodType(ModelAndView modelAndView,
-                                    @RequestParam("type.name")String typeNmae){
+                                    @RequestParam("type.name")String typeNmae,
+                                    HttpServletRequest request){
         System.out.println("modelAndView = [" + modelAndView + "], typeNmae = [" + typeNmae + "]");
         Optional.of(typeNmae);
         Type type = new Type();

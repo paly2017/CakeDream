@@ -98,4 +98,9 @@ public class AdminControl {
         }
         return "admin/admin_reset";
     }
+    @RequestMapping("/adminback")
+    public String adminBack(HttpServletRequest request){
+        request.getSession().removeAttribute("admin");
+        return "admin/login";
+    }
 }

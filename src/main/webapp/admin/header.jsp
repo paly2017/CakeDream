@@ -23,7 +23,7 @@
                 <li ><a href="/allGood">商品管理</a></li>
                 <li ><a href="/admin">修改密码</a></li>
                 <li ><a href="/getadminType">类目管理</a></li>
-                <li><a href="logout.action">退出</a></li>
+                <li><a href="/adminback">退出</a></li>
             </ul>
         </div>
     </div>
