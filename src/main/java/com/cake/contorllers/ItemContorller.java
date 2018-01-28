@@ -58,7 +58,6 @@ public class ItemContorller {
     @RequestMapping("/showOrderInfo")
     public ModelAndView showOrderInfo(ModelAndView modelAndView,
                                       @RequestParam("statusorder")Integer status){
-        System.out.println("jinlai");
         System.out.println("modelAndView = [" + modelAndView + "], status = [" + status + "]");
         List<OrderManager> orderManagers =
                 itemService.orderManger(status,0);
@@ -70,12 +69,11 @@ public class ItemContorller {
         List<OrderManager> orderManagerList= new ArrayList<OrderManager>();
         for (OrderManager orderManager :orderManagers){
             ++count;
-            System.out.println(Uilt.pageCount);
-            if (0<=count&&count<Uilt.AdminpageSize){
+            System.out.println("333"+Uilt.pageCount);
+            if (0<=count&&count<=Uilt.AdminpageSize){
                 orderManagerList.add(orderManager);
             }
         }
-
         if (null==orderManagerList){
             return modelAndView;
         }
@@ -90,6 +88,7 @@ public class ItemContorller {
     public ModelAndView showItems(ModelAndView modelAndView,
                                   @RequestParam("pageindex") Integer index,
                                   @RequestParam("status")Integer status){
+        System.out.println("laile");
         List<OrderManager> orderManagers =
                 itemService.orderManger(index);
         System.out.println(orderManagers);

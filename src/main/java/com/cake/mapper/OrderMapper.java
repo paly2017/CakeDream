@@ -58,7 +58,7 @@ public interface OrderMapper {
      */
     @Select("SELECT max(id) AS ID FROM orders")
     Integer searchMaxId();
-    @Select("SELECT count(id) AS payID FROM orders WHERE paytype=#{payType}")
+    @Select("SELECT count(id) AS payID FROM orders WHERE status=#{payType}")
     Integer searchCountByPayStatus(@Param("payType")Integer payType);
     @Select(value = "SELECT * FROM orders WHERE paytype=#{pay}")
     List<Order> selectByPayType(@Param("pay") Integer pay);

@@ -69,20 +69,22 @@ public class ItemServiceImpl implements IItemService {
         if (orderCount==0){
             return null;
         }
+        System.out.println("222"+orderCount);
+        Uilt.getPageNum(pageindex,orderCount);
         List<Item> itemList = itemMapper.selectItems();
         if (itemList==null){return null;}
         List<OrderManager> managerList = new ArrayList<OrderManager>();
         for (Item item : itemList){
              Order order = orderMapper.selectByPrimaryKey(item.getOrderId());
-             if (order.getStatus()==status){
+             if (order.getStatus().equals(status)){
                  Good good = goodMapper.slectGoodByGoodId(item.getGoodId());
                  User user = userMapper.selectByPrimaryKey(order.getUserId());
                  OrderManager orderManager = new OrderManager(good,item,user,order);
+                 orderManager.setPageCount(Uilt.pageCount);
+                 orderManager.setPageIndex(Uilt.pageIndex);
                  managerList.add(orderManager);
              }
         }
-
-        Uilt.getPageNum(pageindex,managerList.size());
         return managerList;
     }
     /***

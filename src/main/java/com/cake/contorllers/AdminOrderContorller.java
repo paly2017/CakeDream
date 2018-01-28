@@ -52,5 +52,23 @@ public class AdminOrderContorller {
             return "no";
         }
     }
-
+    @ResponseBody
+    @PostMapping("/paysataus")
+    public String payStatus(@RequestParam("paying")Integer status,
+                            @RequestParam("pageindex")Integer pageNum){
+        System.out.println("status = [" + status + "], pageNum = [" + pageNum + "]");
+        List<OrderManager> managerList = itemService.orderManger(status,pageNum);
+        if (managerList==null){
+            return "nodata";
+        }
+        int count=0;
+        List<OrderManager> orderManagerList = new ArrayList<OrderManager>();
+        for (OrderManager orderManager : managerList){
+            ++count;
+            if (Uilt.startSize<=count){
+                orderManagerList.add(orderManager);
+            }
+        }
+        return Uilt.getGsonToString(orderManagerList);
+    }
 }
