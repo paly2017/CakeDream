@@ -1,9 +1,6 @@
 package com.cake.service.inteerfaces;
 
-import com.cake.pojo.MiniCart;
-import com.cake.pojo.Order;
-import com.cake.pojo.OrderManager;
-import com.cake.pojo.User;
+import com.cake.pojo.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -38,7 +35,7 @@ public interface IOrderService {
      * @param payType  支付方法
      * @return  一个组装好的order对象
      */
-    List<Order> packagingOrder(HttpSession httpSession,Integer payType);
+    List<Item> packagingOrder(HttpSession httpSession, Integer payType);
 
     int changeOrderStatus(Integer orderId);
 

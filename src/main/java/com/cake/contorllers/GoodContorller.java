@@ -63,7 +63,6 @@ public class GoodContorller {
         modelAndView.addObject("size", Uilt.pageCount);
         modelAndView.addObject("index",Uilt.pageIndex);
         modelAndView.setViewName("index/goods");
-        System.out.println("index = [" + index + "], pageIndex = [" + Uilt.pageIndex + "], request = [" + pageCount+"]");
         return modelAndView;
     }
 

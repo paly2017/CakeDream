@@ -81,7 +81,7 @@ public class ItemServiceImpl implements IItemService {
                  managerList.add(orderManager);
              }
         }
-        System.out.println("status = [" + status + "], pageindex = [" + pageindex + "]");
+
         Uilt.getPageNum(pageindex,managerList.size());
         return managerList;
     }
@@ -109,6 +109,25 @@ public class ItemServiceImpl implements IItemService {
 
     public List<Item> getAllItem() {
         return itemMapper.selectItems();
+    }
+
+    /****
+     * 对李晶的代码修改，后增加方法
+     * @param itemList
+     * @param session
+     */
+    public void showOrder(List<Item> itemList,HttpSession session) {
+         List<OrderManager> orderList = new ArrayList<OrderManager>();
+        for (Item item : itemList){
+            OrderManager orderManager = new OrderManager();
+            Good good =goodMapper.slectGoodByGoodId(item.getGoodId());
+            Order order = orderMapper.selectByPrimaryKey(item.getOrderId());
+            orderManager.setGood(good);
+            orderManager.setItem(item);
+            orderManager.setOrder(order);
+            orderList.add(orderManager);
+        }
+        session.setAttribute("orderList",orderList);
     }
 
     /**

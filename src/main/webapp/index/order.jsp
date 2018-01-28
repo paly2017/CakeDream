@@ -49,42 +49,38 @@
             <%--循环遍历输出客户不同订单的信息--%>
 
             <c:forEach  items="${sessionScope.orderList}" var="order" varStatus="outer">
-                <c:forEach items="${sessionScope.itemList}" var="item"  varStatus="inner">
-                    <c:forEach items="${sessionScope.goodList}" var="good" varStatus="center">
                     <tr>
                         <%--判断两次循环的下标是否相等，相等的时候执行本次循环--%>
-                        <c:if test="${outer.index==inner.index&&inner.index==center.index}">
-                        <td><p align="cerent">${order.id}</p></td>
-                        <td><p align="cerent">${order.total}</p></td>
+                        <%--<c:if test="${outer.index==inner.index&&inner.index==center.index}">--%>
+                        <td><p align="cerent">${order.order.orderNo}</p></td>
+                        <td><p align="cerent">${order.order.total}</p></td>
                         <td>
-                            <p align="cerent">商品名称：${good.name}<br>单价:${good.price} <br>数量" ${item.amount}</p>
+                            <p align="cerent">商品名称：${order.good.name}<br>单价:${order.good.price} <br>数量" ${order.item.amount}</p>
                         </td>
                         <td>
-                            <p align="cerent">${order.name}</p>
-                            <p align="cerent">${order.phone}</p>
-                            <p align="cerent">${order.address}</p>
+                            <p align="cerent">${order.order.name}</p>
+                            <p align="cerent">${order.order.phone}</p>
+                            <p align="cerent">${order.order.address}</p>
                         </td>
                         <td>
                             <p>
-                                <c:if test="${order.status==1}"><span style="color:red;" align="cerent">未付款</span></c:if>
-                                <c:if test="${order.status==2}"><span style="color:red;" align="cerent">已付款</span></c:if>
-                                <c:if test="${order.status==3}"><span style="color:red;" align="cerent">已发货</span></c:if>
-                                <c:if test="${order.status==4}"><span style="color:red;" align="cerent">已完成</span></c:if>
+                                <c:if test="${order.order.status==1}"><span style="color:red;" align="cerent">未付款</span></c:if>
+                                <c:if test="${order.order.status==2}"><span style="color:red;" align="cerent">已付款</span></c:if>
+                                <c:if test="${order.order.status==3}"><span style="color:red;" align="cerent">已发货</span></c:if>
+                                <c:if test="${order.order.status==4}"><span style="color:red;" align="cerent">已完成</span></c:if>
                             </p>
                         </td>
                         <td>
-                            <c:if test="${order.paytype==1}"><p align="cerent">微信支付</p></c:if>
-                            <c:if test="${order.paytype==2}"><p align="cerent">支付宝支付</p></c:if>
-                            <c:if test="${order.paytype==3}"><p align="cerent">货到付款</p></c:if>
+                            <c:if test="${order.order.paytype==1}"><p align="cerent">微信支付</p></c:if>
+                            <c:if test="${order.order.paytype==2}"><p align="cerent">支付宝支付</p></c:if>
+                            <c:if test="${order.order.paytype==3}"><p align="cerent">货到付款</p></c:if>
                         </td>
-                        <td><p align="cerent">${order.systime}</p></td>
+                        <td><p align="cerent">${order.order.systime}</p></td>
                         <td>
                         </td>
-                        </c:if>
+                        <%--</c:if>--%>
                     </tr>
                     </c:forEach>
-                </c:forEach>
-            </c:forEach>
         </table>
     </div>
 </div>

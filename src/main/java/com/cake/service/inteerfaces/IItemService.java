@@ -46,4 +46,6 @@ public interface IItemService {
      * @return
      */
     List<Item> getAllItem();
+
+    void showOrder(List<Item> itemList,HttpSession session);
 }

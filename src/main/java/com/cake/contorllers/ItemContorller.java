@@ -13,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 
+/******
+ * 后台商品管理
+ */
 @Controller
 public class ItemContorller {
     @Autowired

@@ -1,5 +1,6 @@
 package com.cake.service.Impl;
 
+import com.cake.mapper.ItemMapper;
 import com.cake.mapper.OrderMapper;
 import com.cake.pojo.*;
 import com.cake.service.inteerfaces.IOrderService;
@@ -25,6 +26,8 @@ public class OrderServiceImpl implements IOrderService {
     private GoodServiceImpl goodService;
     @Autowired
     private ItemServiceImpl itemService;
+    @Autowired
+    private ItemMapper itemMapper;
 
     public String getOrderDate() {
         //创建时间对象
@@ -60,17 +63,17 @@ public class OrderServiceImpl implements IOrderService {
      */
     public void insertOrder(HttpSession httpSession,Integer payType) {
         //获取Order       item      good对象的集合
-        List<Order> orderList =  this.packagingOrder(httpSession,payType);
+        List<Item> itemList =  this.packagingOrder(httpSession,payType);
         //System.out.println("获取到的order集合"+orderList.toString());
-        List<Item> itemList = itemService.packagingItem(httpSession);
+        //List<Item> itemList = itemService.packagingItem(httpSession);
         //System.out.println("获取到的item集合"+itemList.toString());
-        List<Good> goodList = goodService.packagingGood(httpSession);
+        //List<Good> goodList = goodService.packagingGood(httpSession);
         //System.out.println("获取到的good集合"+goodList.toString());
 
         //将item     order       good集合放入session中
         httpSession.setAttribute("itemList",itemList);
-        httpSession.setAttribute("orderList",orderList);
-        httpSession.setAttribute("goodList",goodList);
+        //httpSession.setAttribute("orderList",orderList);
+        //httpSession.setAttribute("goodList",goodList);
     }
 
 
@@ -116,7 +119,7 @@ public class OrderServiceImpl implements IOrderService {
 
 
     //组装order对象
-    public List<Order> packagingOrder(HttpSession httpSession, Integer payType) {
+    public List<Item> packagingOrder(HttpSession httpSession, Integer payType) {
         //获取session中存放的MiniCart集合
         List<MiniCart> miniCartList = (List<MiniCart>) httpSession.getAttribute("minGoodsNum");
         //System.out.println("获取到的购物车集合"+miniCartList.toString());
@@ -125,7 +128,7 @@ public class OrderServiceImpl implements IOrderService {
         //从session中获取相应的信息
         String orderNumber = (String) httpSession.getAttribute("orderNumber"); //订单号
         String orderDate = (String) httpSession.getAttribute("orderDate"); //生成订单号时间
-        List<Order> orderList =  new ArrayList<Order>();
+        List<Item> orderList =  new ArrayList<Item>();
         for (MiniCart miniCart: miniCartList) {
             //创建order对象
             Order order = new Order();
@@ -146,7 +149,13 @@ public class OrderServiceImpl implements IOrderService {
             //System.out.println("插入order表格被影响的行数是"+rollBack);
             //查询最大id
             order.setId(orderMapper.searchMaxId());
-            orderList.add(order);
+            Item item = new Item();
+            item.setAmount(order.getAmount());
+            item.setOrderId(order.getId());
+            item.setGoodId(miniCart.getGood().getId());
+            item.setPrice(order.getTotal());
+            itemMapper.insert(item);
+            orderList.add(item);
         }
         return orderList;
     }
