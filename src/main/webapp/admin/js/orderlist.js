@@ -49,7 +49,6 @@ function deleteOrder(goodid) {
 function paying(payStatus,index) {
     if (!jQuery.isNumeric(index)){
         index = 0;
-        alert(index)
     }
     $.ajax({
         type:"POST",
