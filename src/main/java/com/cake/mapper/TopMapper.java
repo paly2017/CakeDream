@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface TopMapper {
     //根据商品推荐表的类型查询首页展示--jelly
-    @Select("SELECT * FROM tops WHERE `type`=#{type}")
+    @Select("SELECT * FROM tops WHERE `type`=#{type} AND top_status=1")
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "type",column = "type"),
@@ -21,7 +21,7 @@ public interface TopMapper {
     public List<Top> selectTopListByType(@Param("type") Integer type);
 
    //根据商品类型，起始下标、及页面容量 进行分页查询--jelly
-    @Select("SELECT * FROM tops WHERE `type`=#{type} LIMIT #{fromIndex},#{pageSize};")
+    @Select("SELECT * FROM tops WHERE `type`=#{type}  AND top_status=1 LIMIT #{fromIndex},#{pageSize};")
     @Results({
             @Result(id = true,property = "id",column = "id"),
             @Result(property = "type",column = "type"),

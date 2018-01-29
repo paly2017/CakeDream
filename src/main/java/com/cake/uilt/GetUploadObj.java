@@ -52,8 +52,8 @@ public class GetUploadObj {
                         //文件元素--读取文件的名称
                         String fieldName = item.getFieldName();
                         /* System.out.println("文件名：" + filename);*/
-                        //上传路径
-                        String path = "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\temp\\upload\\";
+                        //上传路径http://127.0.0.1:7070/cakeUpload/b1-4.jpg
+                        String path = "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\cakeUpload";
                         if (fieldName.equals("cover")) {
                             //获取文件名
                             String fileName = item.getName();
@@ -61,8 +61,9 @@ public class GetUploadObj {
                             File fullFile = new File(item.getName());
                             //从路径中提取文件名本身，并构建一个新的File实例
                             File saveFile = new File(path, fullFile.getName());
+                            item.write(saveFile);
                             //写入文件，实现上
-                            good.setCover("C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\temp\\upload\\" + fileName+".jpg");
+                            good.setCover("/cakeUpload/" + fileName);
                         } else if (fieldName.equals("image1")) {
                             //获取文件名
                             String fileName = item.getName();
@@ -70,8 +71,9 @@ public class GetUploadObj {
                             File fullFile = new File(item.getName());
                             //从路径中提取文件名本身，并构建一个新的File实例
                             File saveFile = new File(path, fullFile.getName());
+                            item.write(saveFile);
                             //写入文件，实现上
-                            good.setImage1("C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\temp\\upload\\" + fileName+".jpg");
+                            good.setImage1("/cakeUpload/" + fileName);
                         } else {
                             //获取文件名
                             String fileName = item.getName();
@@ -79,8 +81,9 @@ public class GetUploadObj {
                             File fullFile = new File(item.getName());
                             //从路径中提取文件名本身，并构建一个新的File实例
                             File saveFile = new File(path, fullFile.getName());
+                            item.write(saveFile);
                             //写入文件，实现上
-                            good.setImage2("C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\temp\\upload\\" + fileName+".jpg");
+                            good.setImage2("/cakeUpload/" + fileName);
                         }
                     }
                 }

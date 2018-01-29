@@ -65,7 +65,7 @@
     <div class="form-group">
         <label for="select_topic" class="col-sm-1 control-label">类目</label>
         <div class="col-sm-6">
-            <select class="form-control" id="select_topic" onclick="getType()" name="goodTypeId">
+            <select class="form-control" id="select_topic" onmouseover="getType()" name="goodTypeId">
 
             </select>
         </div>
