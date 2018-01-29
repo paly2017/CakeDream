@@ -37,4 +37,22 @@ public interface IItemService {
      * @return
      */
     Integer deleteItem(Integer goodId);
+
+
+    Item selectByPrimaryKey(Integer id);
+
+    /****
+     * 获取全部item
+     * @return
+     */
+    List<Item> getAllItem();
+
+    void showOrder(List<Item> itemList,HttpSession session);
+
+    /****
+     * 商品删除操作
+     * @param id
+     * @return
+     */
+    int deteleItem(Integer id);
 }

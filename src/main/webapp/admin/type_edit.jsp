@@ -9,13 +9,16 @@
 <html>
 <head>
     <title>类目编辑</title>
+    <link rel="stylesheet" href="admin/css/bootstrap.css"/>
+    <script src="admin/js/jquery.js"></script>
+    <script src="admin/js/type.js"></script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 
 <br><br>
 
-<form class="form-horizontal" action="typeUpdate.action" method="post">
+<form class="form-horizontal" action="/changetype" method="post">
     <input type="hidden" name="type.id" value="1">
     <div class="form-group">
         <label for="input_name" class="col-sm-1 control-label">类目名称</label>

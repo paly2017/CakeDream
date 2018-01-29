@@ -21,41 +21,15 @@ public class AdminOrderContorller {
     private OrderServiceImpl orderService;
 
     /***
-     * 后台订单管理，分页显示
-     * @param pageIndex
-     * @return
-     */
-
-    @PostMapping("/pageindex")
-    @ResponseBody
-    public String pageOerderlist(@RequestParam("pageindex")Integer pageIndex){
-        System.out.println("jinla1111i");
-        System.out.println("pageIndex = [" + pageIndex + "]");
-        List<OrderManager> orderManagers =
-                itemService.orderManger(pageIndex);
-        if (null==orderManagers){
-            return "nodate";
-        }
-        List<OrderManager> orderManagers1 = new ArrayList<OrderManager>();
-        for (OrderManager orderManager: orderManagers){
-            if (orderManager.getOrder().getDelete()==1){
-                orderManagers1.add(orderManager);
-            }
-        }
-        System.out.println("pageIndex = [" + orderManagers1 + "]");
-        return Uilt.getGsonToString(orderManagers1);
-    }
-
-    /***
      * 订单发货方法
-     * @param goodId
+     * @param itemId
      * @return
      */
     @PostMapping("/goorder")
     @ResponseBody
-    public String goOrder(@RequestParam("goid") Integer goodId){
-        Optional.of(goodId);
-        Item item = itemService.getItemByGoodId(goodId);
+    public String goOrder(@RequestParam("goid") Integer itemId){
+        Optional.of(itemId);
+        Item item = itemService.selectByPrimaryKey(itemId);
         Optional.of(item);
         int num=orderService.changeOrderStatus(item.getOrderId());
         if(num>0){
@@ -70,31 +44,29 @@ public class AdminOrderContorller {
         Optional.of(goodId);
         Item item = itemService.getItemByGoodId(goodId);
         Optional.of(item);
-        int num =orderService.deleteOrder(item.getOrderId());
-        int num1 = itemService.deleteItem(goodId);
-        if(num>0&&num1>0){
+        if(orderService.deteleOrder(item)){
             return "ok";
         }else {
             return "no";
         }
     }
-    @PostMapping("/nopay")
     @ResponseBody
-    public String noPay(@RequestParam("orderstatu") Integer statu,
-                        @RequestParam("pageIndex")Integer pageIndex){
-        Optional.of(statu);
-        List<OrderManager> orderManagers =
-                itemService.orderManger(statu,pageIndex);
-        if (null==orderManagers){
-            return "nodate";
+    @PostMapping("/paysataus")
+    public String payStatus(@RequestParam("paying")Integer status,
+                            @RequestParam("pageindex")Integer pageNum){
+        System.out.println("status = [" + status + "], pageNum = [" + pageNum + "]");
+        List<OrderManager> managerList = itemService.orderManger(status,pageNum);
+        if (managerList==null){
+            return "nodata";
         }
-        List<OrderManager> orderManagers1 = new ArrayList<OrderManager>();
-        for (OrderManager orderManager: orderManagers){
-            if (orderManager.getOrder().getDelete()==1){
-                orderManagers1.add(orderManager);
+        int count=0;
+        List<OrderManager> orderManagerList = new ArrayList<OrderManager>();
+        for (OrderManager orderManager : managerList){
+            ++count;
+            if (Uilt.startSize<=count){
+                orderManagerList.add(orderManager);
             }
         }
-        return Uilt.getGsonToString(orderManagers1);
-    };
-
+        return Uilt.getGsonToString(orderManagerList);
+    }
 }

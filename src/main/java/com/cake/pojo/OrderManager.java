@@ -6,6 +6,7 @@ public class OrderManager {
     private User user;
     private Order order;
     private Integer pageCount;
+    private Integer pageIndex;
 
     public OrderManager() {
     }
@@ -55,5 +56,13 @@ public class OrderManager {
 
     public void setPageCount(Integer pageCount) {
         this.pageCount = pageCount;
+    }
+
+    public Integer getPageIndex() {
+        return pageIndex;
+    }
+
+    public void setPageIndex(Integer pageIndex) {
+        this.pageIndex = pageIndex;
     }
 }

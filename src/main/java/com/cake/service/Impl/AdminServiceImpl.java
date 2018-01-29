@@ -20,7 +20,7 @@ public class AdminServiceImpl implements IAdminService {
 
 
     public Admin getAdminById(Integer integer) {
-        System.out.println("integer = [" + adminMapper + "]");
+
         return adminMapper.selectByPrimaryKey(integer);
     }
 

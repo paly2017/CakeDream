@@ -27,6 +27,7 @@ public class ItemServiceImpl implements IItemService {
     @Autowired
     private UserMapper userMapper;
 
+
     /****
      * 查询所有item,级相关的order,user,goog,信息，并封装为
      * OrderManager 对象，存入集合中，返回该集合
@@ -58,29 +59,32 @@ public class ItemServiceImpl implements IItemService {
     }
 
     /***
-     * 重载分页查询方法
+     * 重载分页查询方法,根据支付状态查询
      * @param status
      * @param pageindex
      * @return
      */
     public List<OrderManager> orderManger(Integer status, Integer pageindex){
         if (null==pageindex){pageindex=0;}
-        int itemCount= itemMapper.getCount();
-        if (itemCount==0){
+        int orderCount = orderMapper.searchCountByPayStatus(status);
+        if (orderCount==0){
             return null;
         }
+        System.out.println("222"+orderCount);
+        Uilt.getPageNum(pageindex,orderCount);
+        List<Item> itemList = itemMapper.selectItems();
+        if (itemList==null){return null;}
         List<OrderManager> managerList = new ArrayList<OrderManager>();
-        Uilt.getPageNum(pageindex,itemCount);
-        List<Item> itemList = itemMapper.seleItems(Uilt.startSize,Uilt.AdminpageSize);
         for (Item item : itemList){
-            Good good = goodMapper.slectGoodByGoodId(item.getGoodId());
-            Order order =orderMapper.selectByPrimaryKey(item.getOrderId());
-            User user = userMapper.selectByPrimaryKey(order.getUserId());
-            if (order.getStatus().equals(status)){
-                OrderManager orderManager = new OrderManager(good,item,user,order);
-                orderManager.setPageCount(Uilt.pageCount);
-                managerList.add(orderManager);
-            }
+             Order order = orderMapper.selectByPrimaryKey(item.getOrderId());
+             if (order.getStatus().equals(status)){
+                 Good good = goodMapper.slectGoodByGoodId(item.getGoodId());
+                 User user = userMapper.selectByPrimaryKey(order.getUserId());
+                 OrderManager orderManager = new OrderManager(good,item,user,order);
+                 orderManager.setPageCount(Uilt.pageCount);
+                 orderManager.setPageIndex(Uilt.pageIndex);
+                 managerList.add(orderManager);
+             }
         }
         return managerList;
     }
@@ -99,7 +103,43 @@ public class ItemServiceImpl implements IItemService {
      * @return
      */
     public Integer deleteItem(Integer goodId) {
-        return itemMapper.deleteByPrimaryKey(goodId);
+        return itemMapper.updateByPrimaryKey(goodId);
+    }
+
+    public Item selectByPrimaryKey(Integer id) {
+        return itemMapper.selectByPrimaryKey(id);
+    }
+
+    public List<Item> getAllItem() {
+        return itemMapper.selectItems();
+    }
+
+    /****
+     * 对李晶的代码修改，后增加方法
+     * @param itemList
+     * @param session
+     */
+    public void showOrder(List<Item> itemList,HttpSession session) {
+         List<OrderManager> orderList = new ArrayList<OrderManager>();
+        for (Item item : itemList){
+            OrderManager orderManager = new OrderManager();
+            Good good =goodMapper.slectGoodByGoodId(item.getGoodId());
+            Order order = orderMapper.selectByPrimaryKey(item.getOrderId());
+            orderManager.setGood(good);
+            orderManager.setItem(item);
+            orderManager.setOrder(order);
+            orderList.add(orderManager);
+        }
+        session.setAttribute("orderList",orderList);
+    }
+
+    /****
+     * item删除操作
+     * @param id
+     * @return
+     */
+    public int deteleItem(Integer id) {
+        return itemMapper.deteleByPrimaryKey(id);
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.cake.contorllers;
 
+import com.cake.mapper.GoodMapper;
 import com.cake.pojo.*;
 import com.cake.service.Impl.ItemServiceImpl;
 import com.cake.service.Impl.OrderServiceImpl;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,6 +25,7 @@ public class OrderController {
     private OrderServiceImpl orderService;
     @Autowired
     private ItemServiceImpl itemService;
+
 
     /**
      * 购物车提交订单页面controller
@@ -58,15 +61,12 @@ public class OrderController {
              HttpSession httpSession =
                              httpSession = httpServletRequest .getSession();
             //session当中获取所需集合
-            List<Order> orderList = (List<Order>) httpSession.getAttribute("orderList");
+            //List<Order> orderList = (List<Order>) httpSession.getAttribute("orderList");
             List<Item> itemList = (List<Item>)httpSession.getAttribute("itemList");
-            List<Good> goodList =(List<Good>) httpSession.getAttribute("goodList");
+            //List<Good> goodList =(List<Good>) httpSession.getAttribute("goodList");
             //System.out.println("即将跳转至订单详情页面");
             //集合仿佛session当中
-            httpSession.setAttribute("orderList",orderList);
-            httpSession.setAttribute("itemList",itemList);
-            httpSession.setAttribute("goodList",goodList);
-
+             itemService.showOrder(itemList,httpSession);
         //System.out.print("获取session中的order对象是："+order.toString());
             return "index/order";
 
