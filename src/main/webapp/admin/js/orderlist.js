@@ -57,10 +57,12 @@ function paying(payStatus,index) {
         success:function (msg) {
             $("table").empty();
             $("#page").empty();
-            $("table").append("  <tr><th width='5%'>ID</th><th width='5%'>总价</th><th width='15%'>商品详情</th>' " +
-                " <th width='20%'>收货信息</th><th width='10%'>订单状态</th>' " +
-                " <th width='10%'>支付方式</th> <th width='10%'>下单用户</th>' " +
-                " <th width='10%'>下单时间</th><th width='10%'>操作</th></tr>")
+            $("table").removeClass("table table-bordered table-hover")
+            $("table").addClass("table table-bordered table-hover")
+            $("table").append("  <tr><th width='5%'>ID</th><th width='5%'>总价</th><th width='15%'>商品详情</th> " +
+                " <th width='20%' >收货信息</th><th width='10%'>订单状态</th> " +
+                " <th width='10%'>支付方式</th> <th width='10%'>下单用户</th> " +
+                " <th width='10%'>下单时间</th><th width='10%'>操作</th></tr>");
             var paystatus;
             var orderinfo = jQuery.parseJSON(msg);
             var paytype;
@@ -89,32 +91,15 @@ function paying(payStatus,index) {
                     paytype="货到付款"
                 }
                 if(index<4) {
-                    $("table").last().append(" <tr> " +
-                        "        <td><p>" + index + "</p></td> " +
-                        "        <td><p>" + value.order.total + "</p></td>" +
-                        "        <td>" + value.good.name + " (" + value.good.price + ")x" + value.item.amount + "</td> " +
-                        "        <td>" +
-                        "            <p>" + value.user.name + "</p> " +
-                        "            <p>" + value.user.phone + "</p> " +
-                        "            <p>" + value.user.address + "</p> " +
-                        "        </td> " +
-                        "        <td>" +
-                        "            <p> " +
-                        "                <span style=\"color:green;\">" + paystatus + "</span> " +
-                        "            </p> " +
-                        "        </td> " +
-                        "        <td> " +
-                        "            <p> " +
-                        "                <span style=\"color:green;\">" + paytype + "</span>' " +
-                        "            </p>' " +
-                        "        </td> " +
-                        "        <td><p>" + value.user.username + "</p></td> " +
-                        "        <td><p>" + value.order.systime + "</p></td> " +
-                        "        <td> " +
-                        "            <a class=\"btn btn-success\" onclick=\"goOrder(36)\">发货</a> " +
-                        "            <a class=\"btn btn-danger\" onclick=\"deleteOrder(36)\">删除</a> " +
-                        "        </td>" +
-                        "    </tr>");
+                    $("table").last().append(" <tr><td><p>" + index + "</p></td><td><p>" + value.order.total + "</p></td>" +
+                        "<td>" + value.good.name + " (" + value.good.price + ")x" + value.item.amount + "</td> " +
+                        "<td><p>" + value.user.name + "</p> <p>" + value.user.phone + "</p><p>" + value.user.address + "</p> " +
+                        " </td><td><p><span style=\"color:green;\">" + paystatus + "</span> " +
+                        "</p></td><td> <p> <span style=\"color:green;\">" + paytype + "</span>" +
+                        "</p></td><td><p>" + value.user.username + "</p></td><td><p>" + value.order.systime + "</p></td> " +
+                        " <td><a class=\"btn btn-success\" onclick=\"goOrder("+value.item.id+")\">发货</a> " +
+                        " <a class=\"btn btn-danger\" onclick=\"deleteOrder("+value.item.id+")\">删除</a> </td>" +
+                        " </tr>");
                 }
             });
             $("table").trigger("create");

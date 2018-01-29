@@ -48,4 +48,11 @@ public interface IItemService {
     List<Item> getAllItem();
 
     void showOrder(List<Item> itemList,HttpSession session);
+
+    /****
+     * 商品删除操作
+     * @param id
+     * @return
+     */
+    int deteleItem(Integer id);
 }

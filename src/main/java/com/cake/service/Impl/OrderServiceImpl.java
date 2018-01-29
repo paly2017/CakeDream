@@ -169,8 +169,27 @@ public class OrderServiceImpl implements IOrderService {
         return orderMapper.updateByPrimaryKey(orderId);
     }
 
+    /****
+     * 根据支付类型查询订单
+     * @param paytype
+     * @return
+     */
     public List<Order> getOrderByPayType(Integer paytype) {
         return orderMapper.selectByPayType(paytype);
+    }
+
+    /***
+     * 订单删除
+     * @param item
+     * @return
+     */
+    public boolean deteleOrder(Item item) {
+       int nom = itemService.deteleItem(item.getId());
+       if (nom>0){
+           int mun = orderMapper.deleteByPrimaryKey(item.getOrderId());
+           return true;
+       }
+        return false;
     }
 
     /***

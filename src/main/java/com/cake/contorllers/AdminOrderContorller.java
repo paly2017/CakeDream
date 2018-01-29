@@ -44,9 +44,7 @@ public class AdminOrderContorller {
         Optional.of(goodId);
         Item item = itemService.getItemByGoodId(goodId);
         Optional.of(item);
-        int num =orderService.deleteOrder(item.getOrderId());
-        int num1 = itemService.deleteItem(goodId);
-        if(num>0&&num1>0){
+        if(orderService.deteleOrder(item)){
             return "ok";
         }else {
             return "no";

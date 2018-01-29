@@ -10,8 +10,8 @@ import java.util.List;
 @Mapper
 @Component
 public interface OrderMapper {
-    @Update(value = "UPDATE orders SET delete_status=0 WHERE id=#{orderId}")
-    int deleteByPrimaryKey(Integer id);
+    @Delete("DELETE FROM orders WHERE id=#{id};")
+    int deleteByPrimaryKey(@Param("id") Integer id);
 
     /**
      * 数据库插入Order对象

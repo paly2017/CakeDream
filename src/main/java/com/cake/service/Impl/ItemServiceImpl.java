@@ -27,6 +27,7 @@ public class ItemServiceImpl implements IItemService {
     @Autowired
     private UserMapper userMapper;
 
+
     /****
      * 查询所有item,级相关的order,user,goog,信息，并封装为
      * OrderManager 对象，存入集合中，返回该集合
@@ -102,7 +103,7 @@ public class ItemServiceImpl implements IItemService {
      * @return
      */
     public Integer deleteItem(Integer goodId) {
-        return itemMapper.deleteByPrimaryKey(goodId);
+        return itemMapper.updateByPrimaryKey(goodId);
     }
 
     public Item selectByPrimaryKey(Integer id) {
@@ -130,6 +131,15 @@ public class ItemServiceImpl implements IItemService {
             orderList.add(orderManager);
         }
         session.setAttribute("orderList",orderList);
+    }
+
+    /****
+     * item删除操作
+     * @param id
+     * @return
+     */
+    public int deteleItem(Integer id) {
+        return itemMapper.deteleByPrimaryKey(id);
     }
 
     /**

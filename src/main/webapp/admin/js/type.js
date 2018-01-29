@@ -17,9 +17,10 @@ function deteleType(typeId) {
                     "        <th width='10%'>名称</th> " +
                     "        <th width= '10% '>操作</th> " +
                     "    </tr>");
+                $("table").trigger("create");
                 var typelist = jQuery.parseJSON(msg);
                 typelist.forEach(function (value,index) {
-                    $("table").append("  <tr> " +
+                    $("table").last().append("  <tr> " +
                         "        <td><p>"+index+"</p></td> " +
                         "        <td><p>"+value.name+"</p></td> " +
                         "        <td> " +
@@ -28,6 +29,7 @@ function deteleType(typeId) {
                         "        </td> " +
                         "    </tr>")
                 });
+                $("table").trigger("create");
                 alert("删除成功")
 
             }

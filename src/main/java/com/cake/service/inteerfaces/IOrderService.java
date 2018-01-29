@@ -46,6 +46,13 @@ public interface IOrderService {
      */
     List<Order> getOrderByPayType(Integer paytype);
 
+    /****
+     * 订单删除方法
+     * @param item
+     * @return
+     */
+    boolean deteleOrder(Item item);
+
 
 
 }
