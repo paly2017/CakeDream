@@ -139,4 +139,20 @@ public interface GoodMapper {
     })
     Integer addGood(@Param("name") String name,@Param("cover")String cover,@Param("image1")String image1,@Param("image2")String image2,@Param("price")Integer price,@Param("intro")String intro,@Param("stock")Integer stock,@Param("typeId")Integer typeId);
 
+
+    //商品编辑，更新商品信息
+    @Update("UPDATE goods SET `name`=#{name} ,cover=#{cover} ,image1=#{image1}, image2=#{image2}, price=#{price},intro=#{intro}, stock=#{stock},type_id=#{typeId} WHERE id=#{id}")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "name",column = "name") ,
+            @Result(property = "cover",column = "cover"),
+            @Result(property = "image1",column = "image1"),
+            @Result(property = "image2",column = "image2"),
+            @Result(property = "price",column = "price"),
+            @Result(property = "intro",column = "intro"),
+            @Result(property = "stock",column = "stock"),
+            @Result(property = "typeId",column = "type_id")
+    })
+    Integer editorGood(@Param("id") Integer id,@Param("name") String name,@Param("cover")String cover,@Param("image1")String image1,@Param("image2")String image2,@Param("price")Integer price,@Param("intro")String intro,@Param("stock")Integer stock,@Param("typeId")Integer typeId);
+
 }

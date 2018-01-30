@@ -207,4 +207,10 @@ public class GoodServiceImpl implements IGoodService {
        return goodMapper.addGood(name,cover,image1,image2,price,intro,stock,typeId);
     }
 
+
+    // /商品编辑，更新商品信息
+   public Integer editorGood( Integer id, String name,String cover,String image1,String image2,Integer price,String intro,Integer stock,Integer typeId){
+        return goodMapper.editorGood(id,name,cover,image1,image2,price,intro,stock,typeId);
+   }
+
 }

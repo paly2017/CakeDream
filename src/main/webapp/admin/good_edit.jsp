@@ -18,31 +18,31 @@
 <jsp:include page="header.jsp"/>
 
 <br><br>
-<form class="form-horizontal" action="goodUpdate.action" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="good.id" value="14"/>
+<form class="form-horizontal" action="/edite" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="goodId" value="${oneGood.id}"/>
     <input type="hidden" name="good.cover" value="/picture/14-1.jpg"/>
     <div class="form-group">
         <label for="input_name" class="col-sm-1 control-label">名称</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name" name="good.name" value="${oneGood.name}" required="required">
+            <input type="text" class="form-control" id="input_name" name="goodName" value="${oneGood.name}" required="required">
         </div>
     </div>
     <div class="form-group">
         <label for="input_name1" class="col-sm-1 control-label">价格</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name1" name="good.price" value="${oneGood.price}">
+            <input type="text" class="form-control" id="input_name1" name="goodPrice" value="${oneGood.price}">
         </div>
     </div>
     <div class="form-group">
         <label for="input_name2" class="col-sm-1 control-label">介绍</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name2" name="good.intro" value="${oneGood.intro}.">
+            <input type="text" class="form-control" id="input_name2" name="goodIntro" value="${oneGood.intro}.">
         </div>
     </div>
     <div class="form-group">
         <label for="input_name3" class="col-sm-1 control-label">库存</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="input_name3" name="good.stock" value="${oneGood.stock}">
+            <input type="text" class="form-control" id="input_name3" name="goodStock" value="${oneGood.stock}">
         </div>
     </div>
     <div class="form-group">

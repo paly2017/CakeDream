@@ -8,6 +8,7 @@ import com.cake.service.Impl.TypeServiceImpl;
 import com.cake.uilt.GetUploadObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -95,6 +96,17 @@ public class GoodControl {
         //根据商品id查询商品信息，返回商品编辑页面
       Good good=  goodServiceImpl.slectGoodByGoodId(goodId);
         modelAndView.addObject("oneGood",good);
+        modelAndView.setViewName("admin/good_edit");
+        return modelAndView;
+    }
+
+    //保存商品编辑，更新数据库信息
+    @PostMapping("/edite")
+    public ModelAndView editorGood(@RequestParam(value = "goodId",required = false)Integer goodId,HttpServletRequest request ,ModelAndView modelAndView){
+        //调用工具包中，根据表单提交的数据封装的对象
+        Good good= GetUploadObj.GetUpdateGood(request);
+        //调用商品更新的方法
+        goodServiceImpl.editorGood(goodId,good.getName(),good.getCover(),good.getImage1(),good.getImage2(),good.getPrice(),good.getIntro(),good.getStock(),good.getTypeId());
         modelAndView.setViewName("admin/good_edit");
         return modelAndView;
     }

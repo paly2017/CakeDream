@@ -80,4 +80,7 @@ public interface IGoodService {
   //添加商品
   Integer addGood(String name,String cover,String image1,String image2,Integer price,String intro,Integer stock,Integer typeId);
 
+  // /商品编辑，更新商品信息
+  Integer editorGood( Integer id, String name,String cover,String image1,String image2,Integer price,String intro,Integer stock,Integer typeId);
+
 }
